@@ -1,0 +1,15 @@
+CREATE TABLE voie AS
+SELECT DISTINCT VOIEA FROM `article`;
+
+Update article a
+SET VOIEA = (Select ID
+    From voie
+    where VOIE = a.VOIEA);
+
+CREATE TABLE type AS
+SELECT DISTINCT TYPEA FROM `article`;
+
+Update article a
+SET TYPEA = (Select ID
+    From type
+    where TYPE = a.TYPEA);

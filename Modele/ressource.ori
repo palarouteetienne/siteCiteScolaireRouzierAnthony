@@ -1,0 +1,327 @@
+<?php
+
+class Ressource{
+
+	//Attributs
+	private $numero;
+	private $laFormation;
+	private $unUtilisateur;
+	private $nomRessource;
+	private $formatRessource;
+	private $cheminRessource;
+	private $poidsRessource;
+	private $dateDebut;
+	private $dateFin;
+
+
+	//Méthodes
+	//Constructeur
+	function __construct($numero=0, $laFormation="", $unUtilisateur="", $nomRessource="", $formatRessource="", $cheminRessource="", $poidsRessource=0, $dateDebut=NULL, $dateFin=NULL)
+	{
+		$this->numero = $numero;
+		$this->laFormation = $laFormation;
+		$this->unUtilisateur = $unUtilisateur;
+		$this->nomRessource = $nomRessource;
+		$this->formatRessource = $formatRessource;
+		$this->cheminRessource = $cheminRessource;
+		$this->poidsRessource = $poidsRessource;
+		$this->dateDebut = $dateDebut;
+		$this->dateFin = $dateFin;
+	}
+
+	//Get
+	public function getNumero()
+	{
+		return $this->numero;
+	}
+
+	public function getNomRessource()
+	{
+		return $this->nomRessource;
+	}
+
+	public function getFormatRessource()
+	{
+		return $this->formatRessource;
+	}
+
+	public function getCheminRessource()
+	{
+		return $this->cheminRessource;
+	}
+
+	public function getPoidsRessources()
+	{
+		return $this->poidsRessource;
+	}
+
+	public function getDateDebut()
+	{
+		return $this->dateDebut;
+	}
+
+	public function getDateFin()
+	{
+		return $this->dateFin;
+	}
+
+	public function getLaFormation()
+	{
+		return $this->laFormation;
+	}
+
+	public function getUnUtilisateur()
+	{
+		return $this->unUtilisateur;
+	}
+	
+	//Set
+	public function setNumero($numero)
+	{
+		$this->numero = $numero;
+	}
+	
+	public function setNomRessource($nomRessource)
+	{
+		$this->nomRessource = $nomRessource;
+	}
+	
+	public function setFormatRessource($formatRessource)
+	{
+		$this->formatRessource = $formatRessource;
+	}
+	
+	public function setCheminRessource($cheminRessource)
+	{
+		$this->cheminRessource = $cheminRessource;
+	}
+	
+	public function setPoidsRessources($poidsRessource)
+	{
+		$this->poidsRessource = $poidsRessource;
+	}
+
+	public function setDateDebut($dateDebut)
+	{
+		$this->dateDebut = $dateDebut;
+	}
+
+	public function setDateFin($dateFin)
+	{
+		$this->dateFin = $dateFin;
+	}
+	
+	public function setLaFormation($laFormation)
+	{
+		$this->laFormation = $laFormation;
+	}
+
+	public function setUnUtilisateur($unUtilisateur)
+	{
+		$this->unUtilisateur = $unUtilisateur;
+	}
+
+	public function create()
+	{
+		include "connexionBDD.php";
+
+		$req = "INSERT into RESSOURCE values ('".$this->numero."','".$this->getLaFormation()."','".$this->getUnUtilisateur()."','".$this->nomRessource."','".$this->formatRessource."','".$this->cheminRessource."','".$this->poidsRessource."','".$this->dateDebut."','".$this->dateFin."');";
+
+		$stmt = $connStr->query($req);
+	}
+
+	public function create2()
+	{
+		include "connexionBDD.php";
+
+		$req = "INSERT into RESSOURCE values ('".$this->numero."','".$this->getLaFormation()."','".$this->getUnUtilisateur()."','".$this->nomRessource."','".$this->formatRessource."','".$this->cheminRessource."','".$this->poidsRessource."', NULL, NULL);";
+
+		$stmt = $connStr->query($req);
+	}
+
+	public function delete($numero)
+	{
+		include "connexionBDD.php";
+		$req = "DELETE from RESSOURCE where NUMERO =".$numero;
+		$connStr->exec($req);
+
+	}
+
+	public function retrieve($condition)
+	{		
+		include "connexionBDD.php";
+
+		$req = "SELECT * FROM RESSOURCE WHERE ".$condition;
+
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		$this->numero= $ligne["NUMERO"];
+
+		$this->laFormation = new Article();
+		$this->laFormation->retrieve("IDFORMATION='".$ligne["FORMATION"]."'");
+
+		$this->unUtilisateur = new Utilisateur();
+		$this->unUtilisateur->retrieve("IDUTIL='".$ligne["UTILISATEUR"]."'");
+		
+		$this->nomRessource = $ligne["NOMRESSOURCE"];
+		$this->formatRessource = $ligne["FORMATRESSOURCE"];
+		$this->cheminRessource = $ligne["CHEMINRESSOURCE"];
+		$this->poidsRessource = $ligne["POIDSRESSOURCE"];
+		$this->dateDebut = $ligne["DATEDEBUT"];
+		$this->dateFin = $ligne["DATEFIN"];
+	}
+
+	public function findAll()
+	{
+		include "connexionBDD.php";
+		$req="SELECT * FROM RESSOURCE";
+		$lesRessources = array();
+
+		$stmt = $connStr->query($req);
+
+		while ($ligne = $stmt->fetch())
+		{
+			$laFormation = new Article();
+			$laFormation->retrieve("IDFORMATION='".$ligne["FORMATION"]."'");
+
+			$unUtilisateur = new Utilisateur();
+			$unUtilisateur->retrieve("IDUTIL='".$ligne["UTILISATEUR"]."'");
+
+			$newRessource = new Ressource($ligne["NUMERO"], $laFormation, $ligne["NOMRESSOURCE"], $ligne["FORMATRESSOURCE"], $ligne["CHEMINRESSOURCE"], $ligne["POIDSRESSOURCE"], $ligne["DATEDEBUT"], $ligne["DATEFIN"]);
+
+			array_push($lesRessources, $newRessource);
+		}
+
+		return $lesRessources;
+	}
+
+	public function numero()
+	{
+		include "connexionBDD.php";
+
+		$req="SELECT MAX(NUMERO) as MAX FROM RESSOURCE";
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		$nombre = $ligne["MAX"];
+
+		return $nombre + 1;
+
+	}
+
+	public function upload($index, $destination, $extension=false, $maxsize=false)
+	{
+		$codeErreur = "1";
+		$codeErreur2 = "1";
+		$_SESSION["codeErreur"]=$codeErreur;
+		$_SESSION["codeErreur2"]=$codeErreur2;
+
+		if (empty($_FILES[$index]) || $_FILES[$index]["error"] > 0)
+		{
+			$codeErreur = "2";
+			$codeErreur2 = "2";
+
+			$_SESSION["codeErreur"]=$codeErreur;
+			$_SESSION["codeErreur2"]=$codeErreur2;
+
+			return false;
+		}
+
+		$ext = strtolower(substr(strrchr($_FILES[$index]["name"], "."), 1));
+
+		if ($extension != false && !in_array($ext, $extension))
+		{
+			$codeErreur = "2";
+			$codeErreur2 = "3";
+
+			$_SESSION["codeErreur"]=$codeErreur;
+			$_SESSION["codeErreur2"]=$codeErreur2;
+
+			return false;
+		}
+
+		if ($maxsize != false && $_FILES[$index]["size"] > $maxsize)
+		{
+			$codeErreur = "2";
+			$codeErreur2 = "4";
+
+			$_SESSION["codeErreur"]=$codeErreur;
+			$_SESSION["codeErreur2"]=$codeErreur2;
+
+			return false;
+		}
+
+		$longueur = strpos($_FILES[$index]['name'], ".");
+		$chaine = substr($_FILES[$index]['name'], 0, $longueur);
+		$datetime = date("Y-m-d");
+		$chemin= $destination.$chaine.$datetime.".".$ext;
+
+		$formation = new Article();
+		$formation->retrieve("NOMFORMATION='".$_POST['NomF']."'");
+		$num = $formation->getIdFormation();
+
+		$utilisateur = new Utilisateur();
+		$utilisateur->retrieve("NOM='".$_POST['NomU']."'");
+		$nomU = $utilisateur->getIdUtil();
+
+		$ressource = new Ressource();
+		$nombre = $ressource->numero();
+
+		$nom=$chaine.$datetime.".".$ext;
+		$size = $_FILES[$index]["size"];
+
+		$cetteRessource = new Ressource();
+		$cetteRessource->retrieve("NOMRESSOURCE='".$nom."'");
+
+		if (!empty($cetteRessource->getNomRessource()))
+		{
+			
+			$codeErreur = "2";
+			$codeErreur2 = "5";
+
+			$_SESSION["codeErreur"]=$codeErreur;
+			$_SESSION["codeErreur2"]=$codeErreur2;
+
+			return false;
+		}
+
+		$dateD = $_POST['DateD'];
+		$dateF = $_POST['DateF'];
+		if (empty($dateD) && empty($dateF)) {
+
+			$laRessource = new Ressource($nombre, $num, $nomU, $nom, $ext, $chemin, $size);
+
+			$laRessource->create2();
+
+			return move_uploaded_file($_FILES[$index]['tmp_name'], $chemin);
+			
+		}
+		else{
+
+			$laRessource = new Ressource($nombre, $num, $nomU, $nom, $ext, $chemin, $size, $dateD, $dateF);
+
+			$laRessource->create();
+
+			return move_uploaded_file($_FILES[$index]['tmp_name'], $chemin);
+
+		}
+
+	}
+
+	public function tailleTotale(){
+		include "connexionBDD.php";
+
+		$req="SELECT SUM(POIDSRESSOURCE) as tailleTotale FROM RESSOURCE";
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		$tailleTotale = ($ligne["tailleTotale"]/1024)/1024;
+
+		return $tailleTotale;
+
+	}
+
+}
+
+?>

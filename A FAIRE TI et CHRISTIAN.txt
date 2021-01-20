@@ -1,0 +1,14 @@
+Actualités :
+Modifier index.php pour afficher un lien "PORTES OUVERTES du ... au ..."
+
+Répartition :
+(Christian) Formulaire Ajout Article v-ajouterArticle.php a-ajouterArticle.php
+(Thierry)	Ajout des boutons Modifier et Supprimer Article ainsi que Nouvel Article
+			Affichage Actu et ressources ordre dates décroissantes
+
+BDD :
+Mettre identifiant en FK pour voie dans article FAIT
+Idem pour type (créer aussi la table type) FAIT
+
+Formulaires création d'une voie
+Formulaires création d'un type

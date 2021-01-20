@@ -1,0 +1,197 @@
+		html{
+		 	height:100%;
+		}
+
+		#feedback-page{
+			text-align:center;
+		}
+
+		#mdp, #email{
+			border-radius: 15px;
+		}
+
+		#form-main{
+			width:100%;
+			float:left;
+			padding-top: 5%;
+			padding-bottom: 5%;
+		}
+		h2{
+			color:white;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 35px;
+			line-height: 22px;
+		}
+		h3{
+			color:gray;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 35px;
+			line-height: 22px;
+			float: right;
+			margin-right: 1em;
+		}
+		#form-div {
+			background-color:rgba(72,72,72,0.4);
+			padding-left:35px;
+			padding-right:35px;
+			padding-top:35px;
+			padding-bottom:20px;
+			margin-bottom:35px;
+			margin-top:35px;
+			margin-left:35px;
+			width: 450px;
+			float: left;
+			
+			position: relative;
+
+		  	border-radius: 15px;
+		}
+
+		.feedback-input {
+			color:black;
+		  	font-weight:500;
+			font-size: 18px;
+			border-radius: 0;
+			line-height: 22px;
+			background-color: #fbfbfb;
+			padding: 13px 13px 13px 54px;
+			margin-bottom: 10px;
+			width:100%;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			box-sizing: border-box;
+		  	border: 3px solid rgba(0,0,0,0);
+		}
+
+		.feedback-input:focus{
+			background: #fff;
+			box-shadow: 0;
+			border: 3px solid #0aaec4;
+			color: black;
+			outline: none;
+		  	padding: 13px 13px 13px 54px;
+		}
+
+		.focused{
+			color:black;
+			border:#0aaec4 solid 3px;
+		}
+
+		#button-blue{
+			float:left;
+			width: 100%;
+			border: #fbfbfb solid 4px;
+			cursor:pointer;
+			background-color: #0aaec4;
+			color:white;
+			font-size:24px;
+			padding-top:22px;
+			padding-bottom:22px;
+			-webkit-transition: all 0.3s;
+			-moz-transition: all 0.3s;
+			transition: all 0.3s;
+		  	margin-top:-4px;
+			font-weight:700;
+			border-radius: 15px;
+		}
+
+		#button-blue:hover{
+			background-color: rgba(0,0,0,0);
+			color: #0aaec4;
+			border-radius: 15px;
+		}
+			
+		.submit:hover {
+			color: #0aaec4;
+			border-radius: 15px;
+		}
+			
+		.ease {
+			width: 0px;
+			height: 74px;
+			background-color: #fbfbfb;
+			-webkit-transition: .3s ease;
+			-moz-transition: .3s ease;
+			-o-transition: .3s ease;
+			-ms-transition: .3s ease;
+			transition: .3s ease;
+			border-radius: 15px;
+		}
+
+		.submit:hover .ease{
+		  width:100%;
+		  background-color:white;
+		  border-radius: 15px;
+		}
+
+		@media only screen and (max-width: 580px) {
+			#form-div{
+				left: 3%;
+				margin-right: 3%;
+				width: 88%;
+				margin-left: 0;
+				padding-left: 3%;
+				padding-right: 3%;
+			}
+		}
+	table {
+		width: 100%;
+		border: #046470 solid 4px;
+		background-color: white;
+		color:#0aaec4;
+		font-size:18px;
+	}
+	table th {
+		color: #046470;
+	}
+	table tbody {
+        table-layout: fixed;
+    }
+	table tbody tr th,	table tbody tr td {
+        border-color: #e9e9e9;
+    }
+	table tbody th i {
+        font-size: 13px;
+        margin: 0 5px;
+        cursor: pointer;
+    }
+	table tbody th:last-child {
+        width: 100px;
+    }
+	table tbody td a {
+		cursor: pointer;
+        display: inline-block;
+        margin: 0 5px;
+		min-width: 24px;
+    }    
+	table tbody td a.add {
+        color: #27C46B;
+    }
+	table tbody td a.edit {
+        color: #FFC107;
+    }
+	table tbody td a.delete {
+        color: #E34724;
+    }
+	table tbody td i {
+        font-size: 19px;
+    }
+	table tbody td a.add i {
+        font-size: 24px;
+    	margin-right: -1px;
+        position: relative;
+        top: 3px;
+    }    
+	table tbody .form-control {
+        height: 32px;
+        line-height: 32px;
+        box-shadow: none;
+        border-radius: 2px;
+    }
+	table tbody .form-control.error {
+		border-color: #f50000;
+	}
+	table tbody tr td .add {
+		display: none;
+	}
