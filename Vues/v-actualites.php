@@ -217,7 +217,7 @@
             }//Fin du for
           }//Fin du si
                 //DEBUT CARTE : Une CARTE par ACTU -------------------------------------------------------------------
-                $nouvEtab->retrieve("NUMEROE=".$lesActusCiteScolaire[$i]->getetaba());
+                $nouvEtab->retrieve("IDE=".$lesActusCiteScolaire[$i]->getetaba());
                 echo 
                 //<div class="card-deck-group">
                   '<div class="card" style="max-width: "18rem">

@@ -70,7 +70,7 @@
 				    	<td id="num">
 				      	
 				      		<?php
-				      			echo $lesEtablissements[$i]->getNumeroE();
+				      			echo $lesEtablissements[$i]->getIDE();
 				      		?>
 
 				      	</td>

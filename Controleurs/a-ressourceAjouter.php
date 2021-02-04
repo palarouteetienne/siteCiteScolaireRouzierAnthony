@@ -3,12 +3,12 @@
 	$uneRessource = new Ressource();
 	$lesRessources = array();
 
-	$lesRessources = $uneRessource->findAll();
+	//$lesRessources = $uneRessource->findAll();
 
-	$uneFormation = new Article();
-	$lesFormations = array();
+	//$uneFormation = new Article();
+	//$lesFormations = array();
 
-	$lesFormations = $uneFormation->findAll();
+	//$lesFormations = $uneFormation->findAll();
 
 	$unUtilisateur = new Utilisateur();
 	$lesUtilisateurs = array();

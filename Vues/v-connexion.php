@@ -30,7 +30,12 @@
 	<div id="form-main">
 		<div id="form-div">
 	    	<form action="index.php?action=choixEtablissement" method="POST" id="form1">
-	      		
+				<?php 
+					if (isset($error)) 
+					{
+						echo $error;
+					} 
+				?>
 	      		<center>
 	      			<h2 style="color: white"> Utilisateur </h2>
 	      		</center>

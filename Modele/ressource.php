@@ -6,7 +6,7 @@ class Ressource
 		
 	 
 	//Attributs
-	private $numeror;
+	private $IDR;
 	private $articler;
 	private $nomr;
 	private $formatr;
@@ -15,9 +15,9 @@ class Ressource
 
 	//Méthodes
 	//Constructeur
-	function __construct($numeror="",$articler="", $nomr="", $formatr="", $cheminr="", $poidsr=0)
+	function __construct($IDR="",$articler="", $nomr="", $formatr="", $cheminr="", $poidsr=0)
 	{
-		$this->NUMEROR = $numeror;
+		$this->IDR = $IDR;
 		$this->articler = $articler;
 		$this->nomr = $nomr;
 		$this->formatr = $formatr;
@@ -27,7 +27,8 @@ class Ressource
 
 	public function create()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		$req = "INSERT into ressource values (NULL,'"
 
 			.$this->articler."',
@@ -36,17 +37,19 @@ class Ressource
 		$connStr->exec($req);
 	}
 
-	public function delete($NUMEROR)
+	public function delete($IDR)
 	{
-		include "connexionBDD.php";
-		$req = "DELETE from ressource where NUMEROR =".$NUMEROR;
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+		$req = "DELETE from ressource where IDR =".$IDR;
 		$connStr->exec($req);
 
 	}
 	
 	public function deleteParArticle($ida)
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		$req = "DELETE from ressource where ARTICLER =".$ida;
 		$connStr->exec($req);
 
@@ -54,14 +57,15 @@ class Ressource
 	
 	public function retrieve($condition)
 	{		
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req = "SELECT * FROM ressource WHERE ".$condition;
 
 		$stmt = $connStr->query($req);
 		$ligne = $stmt->fetch();
 
-		$this->NUMEROR= $ligne["NUMEROR"];
+		$this->IDR= $ligne["IDR"];
 
 		$this->articler = new Article();
 		$this->articler->retrieve("ida='".$ligne["article"]."'");
@@ -74,9 +78,10 @@ class Ressource
 
 	public function numero()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
-		$req="SELECT MAX(NUMEROR) as MAX FROM ressource";
+		$req="SELECT MAX(IDR) as MAX FROM ressource";
 		$stmt = $connStr->query($req);
 		$ligne = $stmt->fetch();
 
@@ -88,7 +93,8 @@ class Ressource
 
 
 	public function tailleTotale(){
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req="SELECT SUM(poidsr) as tailleTotale FROM ressource";
 		$stmt = $connStr->query($req);
@@ -99,9 +105,9 @@ class Ressource
 		return $tailleTotale;
 
 	}
-	public function getnumeror()
+	public function getIDR()
 	{
-		return $this->numeror;
+		return $this->IDR;
 	}
 	public function getarticler()
 	{
@@ -132,9 +138,9 @@ class Ressource
 		return $this->datefinr;
 	}
 
-	public function setnumeror($numeror)
+	public function setIDR($IDR)
 	{
-		$this->numeror=$numeror;
+		$this->IDR=$IDR;
 	}
 	public function setarticler($articler)
 	{

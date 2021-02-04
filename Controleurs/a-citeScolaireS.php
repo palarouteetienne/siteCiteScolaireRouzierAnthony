@@ -6,7 +6,7 @@
 	$lArticle = new Article();
 	$lesFormations = array();
 
-	//$lesFormations = $lArticle->findByEtab($unEtablissement->getnumeroE());
+	//$lesFormations = $lArticle->findByEtab($unEtablissement->getIDE());
 
 	//$laFormationIns = new Article();
 	//$lesFormationsIns = array();

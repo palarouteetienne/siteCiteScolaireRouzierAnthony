@@ -1,11 +1,13 @@
 <?php
 	include_once "Modele/utilisateur.php";
+	include_once "Modele/ressource.php";
+	include_once "Modele/article.php";
 	
 	//$unEtablissement = new Etablissement();
 	//$unEtablissement->retrieve("NOME='".$_POST['NomE']."'");
-	//$nume = $unEtablissement->getNumeroE();
+	//$nume = $unEtablissement->getIDE();
 
-	$numEtablissement = $_SESSION["numeroEtab"];
+	$numEtablissement = $_SESSION["IDEtab"];
 	
 	$unUtilisateur = new Utilisateur();
 	$unUtilisateur->retrieve("MAILU='".$_SESSION['email']."'");
@@ -17,7 +19,7 @@
 	$numArticleCree=$unArticle->numero();
 
 	$nomsFichiers=$_FILES['pieceJointe']['name'];
-	$taillesFichiers=$_FILES['pieceJointe']['size'];
+	$taillesFichiers=$_FILES['pieceJointe']['size']; 
 	$nomsTemps=$_FILES['pieceJointe']['tmp_name'];
 	$i=0;
 	while ($i<count($nomsFichiers)) {

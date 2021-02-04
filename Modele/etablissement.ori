@@ -3,7 +3,7 @@
 class Etablissement{
 
 	//Attributs
-	private $numeroE;
+	private $IDE;
 	private $nomE;
 	private $rueE;
 	private $codePostalE;
@@ -16,9 +16,9 @@ class Etablissement{
 
 	//Méthodes
 	//Constructeur
-	function __construct($numeroE=0, $nomE="", $rueE="", $codePostalE=0, $villeE="", $paysE="", $telephoneE=0, $mailE = "", $motProviseur="", $lesFormations="")
+	function __construct($IDE=0, $nomE="", $rueE="", $codePostalE=0, $villeE="", $paysE="", $telephoneE=0, $mailE = "", $motProviseur="", $lesFormations="")
 	{
-		$this->numeroE = $numeroE;
+		$this->IDE = $IDE;
 		$this->nomE = $nomE;
 		$this->rueE = $rueE;
 		$this->codePostalE = $codePostalE;
@@ -30,9 +30,9 @@ class Etablissement{
 	}
 
 	//Get
-	public function getNumeroE()
+	public function getIDE()
 	{
-		return $this->numeroE;
+		return $this->IDE;
 	}
 
 	public function getNomE()
@@ -83,9 +83,9 @@ class Etablissement{
 
 	
 	//Set
-	public function setNumeroE($numeroE)
+	public function setIDE($IDE)
 	{
-		$this->numeroE = $numeroE;
+		$this->IDE = $IDE;
 	}
 	
 	public function setNomE($nomE)
@@ -137,31 +137,34 @@ class Etablissement{
 
 	public function create()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
-		$req = "INSERT into ETABLISSEMENT values ('".$this->numeroE."','".$this->nomE."','".$this->rueE."','".$this->codePostalE."','".$this->villeE."','".$this->paysE."','".$this->telephoneE."','".$this->mailE."','".$this->motProviseur."');";
+		$req = "INSERT into ETABLISSEMENT values ('".$this->IDE."','".$this->nomE."','".$this->rueE."','".$this->codePostalE."','".$this->villeE."','".$this->paysE."','".$this->telephoneE."','".$this->mailE."','".$this->motProviseur."');";
 
 		$stmt = $connStr->query($req);
 	}
 
-	public function delete($numeroE)
+	public function delete($IDE)
 	{
-		include "connexionBDD.php";
-		$req = "DELETE from ETABLISSEMENT where NUMEROE =".$numeroE;
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+		$req = "DELETE from ETABLISSEMENT where IDE =".$IDE;
 		$connStr->exec($req);
 
 	}
 
 	public function retrieve($condition)
 	{		
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req = "SELECT * FROM ETABLISSEMENT WHERE ".$condition;
 
 		$stmt = $connStr->query($req);
 		$ligne = $stmt->fetch();
 
-		$this->numeroE= $ligne["NUMEROE"];
+		$this->IDE= $ligne["IDE"];
 
 		$this->nomE = $ligne["NOME"];
 		$this->rueE = $ligne["RUEE"];
@@ -175,7 +178,8 @@ class Etablissement{
 
 	public function findAll()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		$req="SELECT * FROM ETABLISSEMENT";
 		$lesEtablissements = array();
 
@@ -184,7 +188,7 @@ class Etablissement{
 		while ($ligne = $stmt->fetch())
 		{
 
-			$newEtablissement = new Etablissement($ligne["NUMEROE"],$ligne["NOME"], $ligne["RUEE"], $ligne["CODEPOSTALE"], $ligne["VILLEE"], $ligne["PAYSE"], $ligne["TELEPHONEE"], $ligne["MAILE"], $ligne["MOTPROVISEUR"]);
+			$newEtablissement = new Etablissement($ligne["IDE"],$ligne["NOME"], $ligne["RUEE"], $ligne["CODEPOSTALE"], $ligne["VILLEE"], $ligne["PAYSE"], $ligne["TELEPHONEE"], $ligne["MAILE"], $ligne["MOTPROVISEUR"]);
 
 			array_push($lesEtablissements, $newEtablissement);
 		}
@@ -192,9 +196,10 @@ class Etablissement{
 		return $lesEtablissements;
 	}
 
-	public function update($numeroE)
+	public function update($IDE)
 	{ 
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req = "UPDATE ETABLISSEMENT set
 		NOME = '".$this->nomE."',
@@ -205,16 +210,17 @@ class Etablissement{
 		TELEPHONEE = '".$this->telephoneE."',
 		MAILE = '".$this->mailE."',
 		MOTPROVISEUR = '".$this->motProviseur."'
-		where NUMEROE = '".$numeroE."'";
+		where IDE = '".$IDE."'";
 
 		$connStr->exec($req);
 	}
 
 	public function numero()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
-		$req="SELECT MAX(NUMEROE) as MAX FROM ETABLISSEMENT";
+		$req="SELECT MAX(IDE) as MAX FROM ETABLISSEMENT";
 		$stmt = $connStr->query($req);
 		$ligne = $stmt->fetch();
 

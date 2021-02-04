@@ -1,9 +1,9 @@
 <?php
 	//inclure les classes
-	include "Modele/etablissement.php";
+	/*include "Modele/etablissement.php";
 	include "Modele/article.php";
 	include "Modele/ressource.php";
-	include "Modele/utilisateur.php";
+	include "Modele/utilisateur.php";*/
 
 	session_start();
 

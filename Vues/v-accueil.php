@@ -641,11 +641,11 @@
 								{
 									echo 'index.php?action=connexion';
 								}
-							?>"> Connexion</a>
+							?>">
 
 		              			<p>
 		                			&copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
-		              			</p>
+		              			</p></a>
 
 		            		</div>
 		          		</div>

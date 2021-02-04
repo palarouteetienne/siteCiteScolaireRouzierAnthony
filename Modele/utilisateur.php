@@ -6,30 +6,33 @@ class Utilisateur
 		
 	 
 	private $idu; // type : int
+	private $etabu; // type : string
 	private $nomu; // type : string
 	private $prenomu; // type : string
 	private $mailu; // type : string
 	private $mdpu; // type : string
-	private $etabu; // type : string
-	//private $lesArticles;
+	
+	private $lesArticles;
 
 	//Operations
 	//Constructeur
-	function __construct($nomu="", $prenomu="", $mailu="", $mdpu="", $etabu="", $lesArticles="")
+	function __construct($idu=0, $etabu="",$nomu="", $prenomu="", $mailu="", $mdpu="")
 	{
-		$this->idu = $this->numero();
+		$this->idu = $idu;
+		$this->etabu = $etabu;
 		$this->nomu = $nomu;
 		$this->prenomu = $prenomu;
 		$this->mailu = $mailu;
-		$this->mdp = $mdpu;
-		$this->etabu = $etabu;
+		$this->mdpu = $mdpu;
+		
 	
-		//$this->lesArticles = $lesArticles;
+		$this->lesArticles = array();
 	}
 	
 	public function create()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
 
 		$req = "INSERT INTO UTILISATEUR values ('".$this->idu."','".$this->nomu."','".$this->prenomu."','".$this->mailu."','".$this->mdpu."','".$this->etabu."');";
 
@@ -39,7 +42,8 @@ class Utilisateur
 
 	public function delete($idu)
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
 		$req = "DELETE from UTILISATEUR where idu =".$idu;
 		$connStr->exec($req);
 
@@ -47,24 +51,29 @@ class Utilisateur
 
 	public function retrieve($condition)
 	{		
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
 
-		$req = "SELECT * FROM UTILISATEUR WHERE ".$condition;
-		
+		$req = "SELECT * FROM utilisateur WHERE ".$condition;
+		//var_dump($req);
+
 		$stmt = $connStr->query($req);
-		$ligne = $stmt->fetch();
-
-		$this->idu= $ligne["IDU"];
-		$this->nomu = $ligne["NOMU"];
-		$this->prenomu = $ligne["PRENOMU"];
-		$this->mailu = $ligne["MAILU"];
-		$this->mdpu = $ligne["MDPU"];
-		$this->etabu = $ligne["ETABU"];
+		// var_dump($stmt);
+		while ($ligne = $stmt->fetch())
+		{
+			$this->idu= $ligne["IDU"];
+			$this->nomu = $ligne["NOMU"];
+			$this->prenomu = $ligne["PRENOMU"];
+			$this->mailu = $ligne["MAILU"];
+			$this->mdpu = $ligne["MDPU"];
+			$this->etabu = $ligne["ETABU"];
+		}
 	}
 
 	public function findAll()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
 		$req="SELECT * FROM UTILISATEUR";
 		$lesUtilisateurs = array();
 
@@ -83,9 +92,10 @@ class Utilisateur
 
 	public function numero()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
 
-		$req="SELECT MAX(idu) as MAX FROM UTILISATEUR";
+		$req="SELECT MAX(idu) as MAX FROM utilisateur";
 		$stmt = $connStr->query($req);
 		$ligne = $stmt->fetch();
 
