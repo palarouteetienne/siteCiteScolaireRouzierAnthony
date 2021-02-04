@@ -17,7 +17,8 @@ class Voie
 	}
 	public function create()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req = "INSERT into voie values ('".$this->idv."','".$this->voie."');";
 
@@ -26,7 +27,8 @@ class Voie
 
 	public function delete($idv)
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		$req = "DELETE FROM voie where idv =".$idv;
 		$connStr->exec($req);
 
@@ -34,7 +36,8 @@ class Voie
 
 	public function retrieve($condition)
 	{		
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req = "SELECT * FROM voie WHERE ".$condition;
 
@@ -48,7 +51,8 @@ class Voie
 
 	public function findAll()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		$req="SELECT * FROM voie";
 		$lesVoies = array();
 
@@ -65,7 +69,8 @@ class Voie
 
 	public function update($idv)
 	{ 
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req = "UPDATE voie set 
 		IDV = '".$this->idv."',
@@ -77,7 +82,8 @@ class Voie
 
 	public function numero()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req="SELECT MAX(IDV) as MAX FROM voie";
 		$stmt = $connStr->query($req);

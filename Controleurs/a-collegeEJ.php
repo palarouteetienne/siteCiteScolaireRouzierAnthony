@@ -6,7 +6,7 @@
 	$unArticle = new Article();
 	$lesFormations = array();
 
-	$lesFormations = $unArticle->findByEtab($unEtablissement->getnumeroE());
+	$lesFormations = $unArticle->findByEtab($unEtablissement->getIDE());
 
 	$laRessource = new Ressource();
 	$lesRessources = array();

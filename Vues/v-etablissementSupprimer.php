@@ -81,7 +81,7 @@
 				    	<td id="num">
 				      	
 				      		<?php
-				      			echo $lesEtablissements[$i]->getNumeroE();
+				      			echo $lesEtablissements[$i]->getIDE();
 				      		?>
 
 				      	</td>
@@ -147,7 +147,7 @@
 				      			<input type="button" value="Supprimer" id="supprimer"
 
 				      			<?php
-				      				echo "onclick=".chr(34)."myFunction('".$lesEtablissements[$i]->getNumeroE()."','".addslashes($lesEtablissements[$i]->getLaCiteScolaire()->getNomCiteScolaire())."','".addslashes($lesEtablissements[$i]->getNomE())."','".addslashes($lesEtablissements[$i]->getRueE())."','".$lesEtablissements[$i]->getCodePostalE()."','".addslashes($lesEtablissements[$i]->getVilleE())."','".$lesEtablissements[$i]->getTelephoneE()."','".$lesEtablissements[$i]->getMailE()."','".addslashes($lesEtablissements[$i]->getMotProviseur())."')".chr(34);
+				      				echo "onclick=".chr(34)."myFunction('".$lesEtablissements[$i]->getIDE()."','".addslashes($lesEtablissements[$i]->getLaCiteScolaire()->getNomCiteScolaire())."','".addslashes($lesEtablissements[$i]->getNomE())."','".addslashes($lesEtablissements[$i]->getRueE())."','".$lesEtablissements[$i]->getCodePostalE()."','".addslashes($lesEtablissements[$i]->getVilleE())."','".$lesEtablissements[$i]->getTelephoneE()."','".$lesEtablissements[$i]->getMailE()."','".addslashes($lesEtablissements[$i]->getMotProviseur())."')".chr(34);
 				      			?>
 
 				      			data-toggle="modal" data-target="#exampleModal">

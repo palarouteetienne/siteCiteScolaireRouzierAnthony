@@ -91,11 +91,11 @@
         </script>
         <script>
 
-            var numeroEtabGlobal;
+            var IDEtabGlobal;
 
             function montrerListeArt(etab,nomEtab) 
             {
-                numeroEtabGlobal=etab;
+                IDEtabGlobal=etab;
                 
                 document.getElementById("message").innerHTML = null;
                 document.getElementById("boutonEtab").innerHTML=nomEtab;
@@ -104,7 +104,7 @@
                     document.getElementById("listeArticlesEtab").innerHTML = "Aucun établissement sélectionné.";
                     return;
                 }
-                else 
+                else
                 {
                     var xmlhttp = new XMLHttpRequest();
                     xmlhttp.onreadystatechange = function() 
@@ -134,7 +134,7 @@
             
             function ajouterArticle() 
             {
-				window.location.href="index.php?action=saisieArticle&numeroEtab="+numeroEtabGlobal;
+				window.location.href="index.php?action=saisieArticle&IDEtab="+IDEtabGlobal;
             }
             
         </script>
@@ -171,20 +171,22 @@
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
-                            <?php
+                            <button class="dropdown-item" type="button" name="1" onclick="montrerListeArt(this.name,`collège Eugène Jamot`)">1 collège Eugène Jamot </button><button class="dropdown-item" type="button" name="2" onclick="montrerListeArt(this.name,`lycée Eugène Jamot`)">2 lycée Eugène Jamot </button><button class="dropdown-item" type="button" name="3" onclick="montrerListeArt(this.name,`lycée Jean Jaurès`)">3 lycée Jean Jaurès </button><button class="dropdown-item" type="button" name="4" onclick="montrerListeArt(this.name,`cité Scolaire`)">4 cité Scolaire </button>                        </div>
+                    </div>
+                        <!--<div class="dropdown-menu">
+                             //?php
 
-                                $nb = count($lesEtablissements);
-
+                               /* $nb = count($lesEtablissements);
+                                var_dump($lesEtablissements);
                                 for($i=0; $i<$nb; $i++)
                                 {
-                                    echo '<button class="dropdown-item" type="button" name="'.$lesEtablissements[$i]->getNumeroE().'" onclick="montrerListeArt(this.name,`'.$lesEtablissements[$i]->getNomE().'`)">'
-                                    .$lesEtablissements[$i]->getNumeroE()
-                                    .' '.$lesEtablissements[$i]->getNomE()
+                                    echo '<button class="dropdown-item" type="button" name="'.$lesEtablissements[$i]->getIDE()->getNomE().'" onclick="montrerListeArt(this.name,`'.$lesEtablissements[$i]->getIDE()->getNomE().'`)">'
+                                    .$lesEtablissements[$i]->getIDE()->getNomE()
                                     .' '.'</button>';
-                                }
+                                }*/
                             ?>
                         </div>
-                    </div>
+                    </div>-->
                 </form>
 
                 <center>

@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/croix.css">
 
         <script src="lib/jquery/jquery.min.js"></script>
         <script src="lib/jquery/jquery-migrate.min.js"></script>
@@ -98,13 +99,53 @@
 				<div class="col-md-3">
 					<center><span class="btn btn-info">Pièce(s) jointe(s) :</span></center>
 					<br><br>
-					<input type="file" name="pieceJointe[]">
+					<!-- ADD CHOICE FILE -->
+					<button type="button" class="croix" onclick="addChoiceFile()" formnovalidate>
+						<span id="l1"></span>	
+						<span id="l2"></span>	
+					</button>
+
+					
+					<!--<form action="index.php?action=ressourceAjouter" method ="post" class="form" id="form1">-->
+					
+					<script>
+						function addChoiceFile()
+						{
+							let listChoiceFile = document.getElementById('listChoiceFile');
+							let node = document.createElement('input');
+    							node.type="file";
+								node.name="pieceJointe[]";
+							listChoiceFile.appendChild(node);
+						}
+					</script>
+					<!--<form action="index.php?action=ressourceSupprimer" method ="post" class="form" id="form1">-->
+					<div class="submit-2">
+				      			<input type="button" value="Supprimer" id="supprimer"
+
+				      			<?php
+				      				echo "onclick=".chr(34)."myFunction('".$lesRessources[$i]->getIDR()."','".addslashes($lesRessources[$i]->getnomr())."','".addslashes($lesRessources[$i]->getformatr())."','".addslashes($lesRessources[$i]->getcheminr())."','".$lesRessources[$i]->getpoidsr()."','".$lesRessources[$i]->getdatedebr()."','".$lesRessources[$i]->getdatefinr()."')".chr(34);
+				      			?>
+
+				      			data-toggle="modal" data-target="#exampleModal">
+				      			<div class="ease-2"></div>
+				      		</div>
+						<div class="submit">
+							<input type="button" value="Supprimer" id="button-blue"/>
+							<div class="ease"></div>
+						</div>
+					</form>
+					</script>
+					
+				
+					<div id="listChoiceFile"></div>
+					<!-- END ADD CHOICE FILE -->
+					<!--<input type="file" name="pieceJointe[]">
 					<br><br>
 					<input type="file" name="pieceJointe[]">
 					<br><br>
 					<input type="file" name="pieceJointe[]">
 					<br><br>
-					<input type="file" name="pieceJointe[]">
+					<input type="file" name="pieceJointe[]">-->
 				</div>
 			</div>
 

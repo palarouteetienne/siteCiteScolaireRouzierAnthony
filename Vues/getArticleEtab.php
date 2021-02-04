@@ -3,12 +3,14 @@
 include ('../Modele/etablissement.php');
 
 $etablissementChoisi=new Etablissement();
-$etablissementChoisi->retrieve("NUMEROE=".$_REQUEST['q']);
+$etablissementChoisi->retrieve("IDE=".$_REQUEST['q']);
 $lesArticlesEtab = $etablissementChoisi->getLesArticles();
 
 echo "<H3>".$etablissementChoisi->getNomE()."</H3>";
 
 ?>
+
+                
 <table rules=rows cellpadding="10">
 
     <thead>

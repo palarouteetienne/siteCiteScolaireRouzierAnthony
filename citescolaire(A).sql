@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost
--- Généré le :  sam. 08 fév. 2020 à 11:17
--- Version du serveur :  10.1.41-MariaDB-0+deb9u1
--- Version de PHP :  7.2.25-1+0~20191128.32+debian9~1.gbp108445
+-- Hôte : 127.0.0.1:3306
+-- Généré le : mer. 27 jan. 2021 à 11:19
+-- Version du serveur :  5.7.31
+-- Version de PHP : 7.3.21
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -19,8 +18,12 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `citescolaire`
+-- Base de données : `citescolaire`
 --
+DROP DATABASE IF EXISTS citescolaire;
+CREATE DATABASE IF NOT EXISTS citescolaire;
+USE citescolaire;
+
 
 -- --------------------------------------------------------
 
@@ -28,18 +31,23 @@ SET time_zone = "+00:00";
 -- Structure de la table `article`
 --
 
-CREATE TABLE `article` (
-  `IDA` int NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `article`;
+CREATE TABLE IF NOT EXISTS `article` (
+  `IDA` int(11) NOT NULL AUTO_INCREMENT,
   `ETABA` int(2) NOT NULL,
   `UTILA` int(2) DEFAULT NULL,
   `TITREA` char(100) NOT NULL,
-  `VOIEA` int DEFAULT NULL,
+  `VOIEA` int(11) DEFAULT NULL,
   `COMMENTAIREA` text,
-  `TYPEA` int NOT NULL,
+  `TYPEA` int(11) NOT NULL,
   `DATEDEBR` date DEFAULT NULL,
   `DATEFINR` date DEFAULT NULL,
-  PRIMARY KEY (IDA)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`IDA`),
+  KEY `FK_ARTICLE_ETABLISSEMENT` (`ETABA`),
+  KEY `FK_ARTICLE_UTIL` (`UTILA`),
+  KEY `FK_ARTICLE_VOIE` (`VOIEA`),
+  KEY `FK_ARTICLE_TYPE` (`TYPEA`)
+) ENGINE=InnoDB AUTO_INCREMENT=88 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `article`
@@ -84,7 +92,45 @@ INSERT INTO `article` (`IDA`, `ETABA`, `UTILA`, `TITREA`, `VOIEA`, `COMMENTAIREA
 (37, 1, 1, 'information_collegeEJ', 17, 'Informations Pratiques', 5, '2020-11-02', '2020-11-02'),
 (38, 3, 1, 'information_lyceeJJ', 17, 'Informations Pratiques', 5, '2020-11-02', '2020-11-02'),
 (39, 1, 1, 'portes_ouvertes_BTS', 17, 'ceci est une actualité portes ouvertes.', 5, '2020-11-02', '2020-11-02'),
-(40, 1, 1, 'portes_ouvertes_BTS', 17, 'ceci est une actualité portes ouvertes.', 5, '2020-11-02', '0000-00-00');
+(40, 1, 1, 'portes_ouvertes_BTS', 17, 'ceci est une actualité portes ouvertes.', 5, '2020-11-02', '0000-00-00'),
+(47, 2, 1, 'Réforme STMG', 1, '<p>zaazeazeaeae</p>', 1, '0000-00-00', '0000-00-00'),
+(48, 2, 1, 'Test 2', 1, '<p>Formation <span style=\"color: #ff0014;\"><strong>PGI</strong> </span>Salle 310</p>\r\n<p>Pleini&egrave;re Amphith&eacute;atre Cit&eacute; internationale de la tapisserie</p>', 1, '2020-02-08', '0000-00-00'),
+(49, 2, 1, 'Test required et dates', 2, '<p>bbbvvvvv</p>', 1, '2020-02-07', '2020-02-13'),
+(50, 2, 1, 'test upload 24/2/2020', 1, '<p>ceci est un premier test</p>', 1, '0000-00-00', '0000-00-00'),
+(51, 2, 1, 'test upload 2 24/2/2020', 1, '<p>Test 2</p>', 1, '0000-00-00', '0000-00-00'),
+(52, 2, 1, 'test upload 2 24/2/2020', 1, '<p>Test 2</p>', 1, '0000-00-00', '0000-00-00'),
+(53, 2, 1, 'test pb clé étrangère', 1, '<p>bla bla bla</p>', 1, '0000-00-00', '0000-00-00'),
+(54, 2, 1, 'test pb clé étrangère', 1, '<p>bla bla bla</p>', 1, '0000-00-00', '0000-00-00'),
+(55, 2, 1, 'test pb clé étrangère', 1, '<p>bla bla bla</p>', 1, '0000-00-00', '0000-00-00'),
+(56, 2, 1, 'test pb clé étrangère numéro 2', 1, '<p>bla bla bla 2 2 2&nbsp;</p>', 1, '0000-00-00', '0000-00-00'),
+(57, 2, 1, 'test pb clé étrangère numéro 2', 1, '<p>bla bla bla 2 2 2&nbsp;</p>', 1, '0000-00-00', '0000-00-00'),
+(58, 2, 1, 'test pb clé étrangère numéro 2', 1, '<p>bla bla bla 2 2 2&nbsp;</p>', 1, '0000-00-00', '0000-00-00'),
+(59, 2, 1, 'Test upload 25/2', 1, '<p>test du 25/2</p>', 1, '2020-02-24', '0000-00-00'),
+(60, 2, 1, 'Test upload 25/2 numéro 2', 1, '<p>V&eacute;rif cr&eacute;ation dans table ressource</p>', 1, '0000-00-00', '0000-00-00'),
+(61, 2, 1, 'test upload avec test strlen', 2, '<p>3 au lieu de 4 dans ressource</p>', 1, '0000-00-00', '0000-00-00'),
+(62, 4, 1, 'qvj', 7, 'zrnsgt vc', 1, '2021-01-01', '2021-03-21'),
+(63, 1, 1, 'Test', 1, '<p>Test</p>', 5, '2021-01-12', '2021-01-14'),
+(64, 1, 1, 'Semaine du Goût', 13, '<p>Test Semaine Gout</p>', 5, '2021-01-11', '2021-01-17'),
+(65, 3, 1, 'covid', 13, '<p>fchgjb</p>', 5, '2021-01-04', '2021-02-05'),
+(66, 4, 1, 'an', 1, 'an', 5, '2021-01-14', '2021-01-17'),
+(67, 2, 1, 'an', 2, 'an', 3, '2021-01-13', '2021-01-16'),
+(68, 4, 1, 'an', 2, 'an', 1, '2021-01-07', '2021-01-16'),
+(69, 4, 1, 'Ne marche plus', 4, 'Ne marche plus', 5, '2021-01-14', '2021-01-15'),
+(70, 2, 1, 'ça marche', 5, 'Normalement', 5, '2021-01-14', '2021-01-16'),
+(71, 2, 1, 'Avec Ressource', 3, 'Avec ', 5, '2021-01-06', '2021-01-07'),
+(72, 4, 1, 'Avec', 2, 'Avec', 5, '2021-01-07', '2021-01-20'),
+(73, 4, 1, 'avec', 12, '<p>avec</p>', 5, '2021-01-15', '2021-01-23'),
+(74, 3, 1, 'Avec', 13, 'Avec ', 5, '2021-01-14', '2021-01-23'),
+(78, 2, 1, '4', 4, '4', 2, '2021-01-19', '2021-01-21'),
+(79, 4, 1, 'aa', 3, 'aa', 1, '2021-01-20', '2021-01-23'),
+(80, 4, 1, 'aa', 3, 'aa', 1, '2021-01-20', '2021-01-23'),
+(81, 4, 1, 'aa', 3, 'aa', 1, '2021-01-20', '2021-01-23'),
+(82, 4, 1, 'A', 3, 'A', 5, '2021-01-20', '2021-01-22'),
+(83, 4, 1, 'AA', 7, 'AA', 5, '2021-01-06', '2021-01-28'),
+(84, 4, 1, 'AA', 7, 'AA', 5, '2021-01-06', '2021-01-28'),
+(85, 4, 1, 'AA', 7, 'AA', 5, '2021-01-06', '2021-01-28'),
+(86, 4, 1, 'AA', 7, 'AA', 5, '2021-01-06', '2021-01-28'),
+(87, 4, 1, 'AA', 7, 'AA', 5, '2021-01-06', '2021-01-28');
 
 -- --------------------------------------------------------
 
@@ -92,7 +138,8 @@ INSERT INTO `article` (`IDA`, `ETABA`, `UTILA`, `TITREA`, `VOIEA`, `COMMENTAIREA
 -- Structure de la table `etablissement`
 --
 
-CREATE TABLE `etablissement` (
+DROP TABLE IF EXISTS `etablissement`;
+CREATE TABLE IF NOT EXISTS `etablissement` (
   `IDE` int(2) NOT NULL AUTO_INCREMENT,
   `NOME` char(100) NOT NULL,
   `RUEE` char(100) NOT NULL,
@@ -101,8 +148,10 @@ CREATE TABLE `etablissement` (
   `TELEPHONEE` int(10) NOT NULL,
   `EMAILE` char(150) NOT NULL,
   `MOTPROVISEUR` text NOT NULL,
-  PRIMARY KEY (IDE)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`IDE`),
+  KEY `FK_ASSOCIE_ETAB` (`IDE`),
+  KEY `FK_POSSEDE_ETAB` (`IDE`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `etablissement`
@@ -120,15 +169,17 @@ INSERT INTO `etablissement` (`IDE`, `NOME`, `RUEE`, `CODEPOSTALE`, `VILLEE`, `TE
 -- Structure de la table `ressource`
 --
 
-CREATE TABLE `ressource` (
-  `IDR` int NOT NULL AUTO_INCREMENT,
-  `ARTICLER` int NOT NULL,
+DROP TABLE IF EXISTS `ressource`;
+CREATE TABLE IF NOT EXISTS `ressource` (
+  `IDR` int(11) NOT NULL AUTO_INCREMENT,
+  `ARTICLER` int(11) NOT NULL,
   `NOMR` char(200) NOT NULL,
   `FORMATR` char(100) NOT NULL,
   `CHEMINR` char(200) NOT NULL,
   `POIDSR` int(7) NOT NULL,
-  PRIMARY KEY (IDR)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`IDR`),
+  KEY `FK_RESSOURCE_ARTICLE` (`ARTICLER`)
+) ENGINE=InnoDB AUTO_INCREMENT=108 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `ressource`
@@ -198,7 +249,36 @@ INSERT INTO `ressource` (`IDR`, `ARTICLER`, `NOMR`, `FORMATR`, `CHEMINR`, `POIDS
 (63, 37, 'college Eugene Jamot2019-02-15.pdf', 'pdf', 'fichier/college Eugene Jamot2019-02-15.pdf', 4004503),
 (64, 37, 'college_EJ2019-02-15.jpg', 'jpg', 'fichier/college_EJ2019-02-15.jpg', 56648),
 (65, 38, 'Lycee_JJ2019-02-15.jpg', 'jpg', 'fichier/Lycee_JJ2019-02-15.jpg', 56788),
-(66, 38, 'Lycee Jean Jaures2019-02-15.pdf', 'pdf', 'fichier/Lycee Jean Jaures2019-02-15.pdf', 1070833);
+(66, 38, 'Lycee Jean Jaures2019-02-15.pdf', 'pdf', 'fichier/Lycee Jean Jaures2019-02-15.pdf', 1070833),
+(73, 60, '20200225-133501-Plan comptable.txt', '.txt', 'fichier/20200225-133501-Plan comptable.txt', 33),
+(74, 60, '20200225-133501-alert.php', '.php', 'fichier/20200225-133501-alert.php', 513),
+(75, 60, '20200225-133501-type.php', '.php', 'fichier/20200225-133501-type.php', 1880),
+(76, 60, '20200225-133501-', '', 'fichier/20200225-133501-', 0),
+(77, 61, '20200225-134345-Plan comptable.txt', '.txt', 'fichier/20200225-134345-Plan comptable.txt', 33),
+(78, 61, '20200225-134345-alert.php', '.php', 'fichier/20200225-134345-alert.php', 513),
+(79, 61, '20200225-134345-type.php', '.php', 'fichier/20200225-134345-type.php', 1880),
+(80, 73, '20210115-140845-CHAT2019-02-14.jpg', '.jpg', 'fichier/20210115-140845-CHAT2019-02-14.jpg', 16579),
+(81, 74, '20210115-141939-ULIS2019-02-14.jpg', '.jpg', 'fichier/20210115-141939-ULIS2019-02-14.jpg', 18251),
+(88, 78, '20210120-161317-20210115-95511-accueil.png', '.png', 'fichier/20210120-161317-20210115-95511-accueil.png', 619063),
+(89, 78, '20210120-161317-basket2019-02-14.jpg', '.jpg', 'fichier/20210120-161317-basket2019-02-14.jpg', 19478),
+(90, 78, '20210120-161317-mickey.jpg', '.jpg', 'fichier/20210120-161317-mickey.jpg', 244533),
+(91, 78, '20210120-161317-PC2019-02-14.jpg', '.jpg', 'fichier/20210120-161317-PC2019-02-14.jpg', 817899),
+(92, 87, '20210122-90958-20210113-150457-accueil.png', '.png', 'fichier/20210122-90958-20210113-150457-accueil.png', 619063),
+(93, 87, '20210122-92619-20210114-90736-accueil.png', '.png', 'fichier/20210122-92619-20210114-90736-accueil.png', 619063),
+(94, 87, '20210122-92619-Internat2019-02-14.jpg', '.jpg', 'fichier/20210122-92619-Internat2019-02-14.jpg', 0),
+(95, 87, '20210122-92851-20210114-90736-accueil.png', '.png', 'fichier/20210122-92851-20210114-90736-accueil.png', 619063),
+(96, 87, '20210122-92851-PC2019-02-14.jpg', '.jpg', 'fichier/20210122-92851-PC2019-02-14.jpg', 817899),
+(97, 87, '20210122-92851-mickey.jpg', '.jpg', 'fichier/20210122-92851-mickey.jpg', 244533),
+(98, 87, '20210122-92941-20210114-90736-accueil.png', '.png', 'fichier/20210122-92941-20210114-90736-accueil.png', 619063),
+(99, 87, '20210122-92941-PC2019-02-14.jpg', '.jpg', 'fichier/20210122-92941-PC2019-02-14.jpg', 817899),
+(100, 87, '20210122-92941-mickey.jpg', '.jpg', 'fichier/20210122-92941-mickey.jpg', 244533),
+(101, 87, '20210122-145341-20210114-90736-accueil.png', '.png', 'fichier/20210122-145341-20210114-90736-accueil.png', 619063),
+(102, 87, '20210122-145341-20210113-142223-accueil.png', '.png', 'fichier/20210122-145341-20210113-142223-accueil.png', 619063),
+(103, 87, '20210122-145341-20210114-151503-connn.png', '.png', 'fichier/20210122-145341-20210114-151503-connn.png', 23721),
+(104, 87, '20210124-220530-20210113-142223-accueil.png', '.png', 'fichier/20210124-220530-20210113-142223-accueil.png', 619063),
+(105, 87, '20210124-220530-20210122-92941-mickey.jpg', '.jpg', 'fichier/20210124-220530-20210122-92941-mickey.jpg', 244533),
+(106, 87, '20210124-220530-theatre_spe2019-02-14.jpg', '.jpg', 'fichier/20210124-220530-theatre_spe2019-02-14.jpg', 0),
+(107, 87, '20210124-220530-CHAM2019-02-14.jpg', '.jpg', 'fichier/20210124-220530-CHAM2019-02-14.jpg', 18933);
 
 -- --------------------------------------------------------
 
@@ -206,11 +286,12 @@ INSERT INTO `ressource` (`IDR`, `ARTICLER`, `NOMR`, `FORMATR`, `CHEMINR`, `POIDS
 -- Structure de la table `type`
 --
 
-CREATE TABLE `type` (
+DROP TABLE IF EXISTS `type`;
+CREATE TABLE IF NOT EXISTS `type` (
   `IDT` int(11) NOT NULL AUTO_INCREMENT,
   `TYPE` text NOT NULL,
-  PRIMARY KEY (IDT)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`IDT`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `type`
@@ -229,22 +310,30 @@ INSERT INTO `type` (`IDT`, `TYPE`) VALUES
 -- Structure de la table `utilisateur`
 --
 
-CREATE TABLE `utilisateur` (
-  `IDU` int NOT NULL AUTO_INCREMENT,
+DROP TABLE IF EXISTS `utilisateur`;
+CREATE TABLE IF NOT EXISTS `utilisateur` (
+  `IDU` int(11) NOT NULL AUTO_INCREMENT,
   `ETABU` int(2) NOT NULL,
   `NOMU` char(100) NOT NULL,
   `PRENOMU` char(100) NOT NULL,
   `MAILU` char(200) NOT NULL,
   `MDPU` char(200) NOT NULL,
-  PRIMARY KEY (IDU)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`IDU`),
+  KEY `FK_ETAB_UTIL` (`ETABU`),
+  KEY `FK_ASSOCIE_UTIL` (`IDU`),
+  KEY `FK_POSSEDE_UTIL` (`IDU`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`IDU`, `ETABU`, `NOMU`, `PRENOMU`, `MAILU`, `MDPU`) VALUES
-(1, 4, 'caribou', 'caribou', 'caribou@caribou.caribou', '$2y$10$D.FTv2py7bEXU//C8hYh6OHNRsWDvdrPrzkwyNsRQWJxsoxCwXqBm');
+(1, 4, 'administrateur', 'administrateur', 'administrateur@citeScolaire.fr', '$2y$10$D.FTv2py7bEXU//C8hYh6OHNRsWDvdrPrzkwyNsRQWJxsoxCwXqBm'),
+(2, 1, 'Collège', 'EJ', 'college.ej@citescolaire.com', 'cariboucej'),
+(3, 2, 'lycee', 'ej', 'lycee.ej@citescolaire.com', 'cariboulej'),
+(4, 3, 'lycee', 'jj', 'lycee.jj@citescolaire.com', 'caribouljj'),
+(5, 4, 'cite', 'scolaire', 'cite.scolaire@citescolaire.com', 'cariboucs');
 
 -- --------------------------------------------------------
 
@@ -252,11 +341,12 @@ INSERT INTO `utilisateur` (`IDU`, `ETABU`, `NOMU`, `PRENOMU`, `MAILU`, `MDPU`) V
 -- Structure de la table `voie`
 --
 
-CREATE TABLE `voie` (
+DROP TABLE IF EXISTS `voie`;
+CREATE TABLE IF NOT EXISTS `voie` (
   `IDV` int(11) NOT NULL AUTO_INCREMENT,
   `VOIE` char(100) DEFAULT NULL,
-  PRIMARY KEY (IDV)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  PRIMARY KEY (`IDV`)
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4;
 
 --
 -- Déchargement des données de la table `voie`
@@ -281,19 +371,40 @@ INSERT INTO `voie` (`IDV`, `VOIE`) VALUES
 (16, 'lycee_EJ'),
 (17, '');
 
---
--- Index pour les tables déchargées
---
+-- --------------------------------------------------------
 
 --
--- Index pour la table `article`
+-- Structure de la table `associe`
 --
-ALTER TABLE `article`
-  ADD KEY `FK_ARTICLE_ETABLISSEMENT` (`ETABA`),
-  ADD KEY `FK_ARTICLE_UTIL` (`UTILA`),
-  ADD KEY `FK_ARTICLE_VOIE` (`VOIEA`),
-  ADD KEY `FK_ARTICLE_TYPE` (`TYPEA`);
+CREATE TABLE IF NOT EXISTS `associe`
+  (
+    `IDU` int(11) NOT NULL,
+    `IDE` int(2) NOT NULL,
+    PRIMARY KEY (`IDU`,`IDE`)
+  );
+  
+--
+-- Déchargement des données de la table `associe`
+--
 
+INSERT INTO `associe` (`IDU`, `IDE`) VALUES
+(1, 4),
+(2, 1),
+(3, 2),
+(4, 3),
+(5, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `possede`
+--
+CREATE TABLE IF NOT EXISTS `possede`
+  (
+    `IDU` int(11) NOT NULL,
+    `IDE` int(2) NOT NULL,
+    PRIMARY KEY (`IDU`,`IDE`)
+  );
 
 --
 -- Contraintes pour les tables déchargées
@@ -309,6 +420,12 @@ ALTER TABLE `article`
   ADD CONSTRAINT `FK_ARTICLE_VOIE` FOREIGN KEY (`VOIEA`) REFERENCES `voie` (`IDV`);
 
 --
+/*-- Contraintes pour la table `etablissement`
+--
+ALTER TABLE `etablissement`
+  ADD CONSTRAINT `FK_ASSOCIE_ETAB` FOREIGN KEY (`IDE`) REFERENCES `associe`(`IDE`),
+  ADD CONSTRAINT `FK_POSSEDE_ETAB` FOREIGN KEY (`IDE`) REFERENCES `possede` (`IDE`);
+--*/
 -- Contraintes pour la table `ressource`
 --
 ALTER TABLE `ressource`
@@ -319,7 +436,20 @@ ALTER TABLE `ressource`
 --
 ALTER TABLE `utilisateur`
   ADD CONSTRAINT `FK_ETAB_UTIL` FOREIGN KEY (`ETABU`) REFERENCES `etablissement` (`IDE`);
-COMMIT;
+ /* ADD CONSTRAINT `FK_ASSOCIE_UTIL` FOREIGN KEY (`IDU`) REFERENCES `associe` (`IDU`),
+  ADD CONSTRAINT `FK_POSSEDE_UTIL` FOREIGN KEY (`IDU`) REFERENCES `possede` (`IDU`);*/
+--
+-- Contraintes pour la table `associe`
+--
+ALTER TABLE `associe`
+  ADD CONSTRAINT `FK_ASSOCIE_UTIL` FOREIGN KEY (`IDU`) REFERENCES `utilisateur` (`IDU`),
+  ADD CONSTRAINT `FK_ASSOCIE_ETAB` FOREIGN KEY (`IDE`) REFERENCES `etablissement` (`IDE`);
+--
+-- Contraintes pour la table `possede`
+--
+ALTER TABLE `possede`
+  ADD CONSTRAINT `FK_POSSEDE_UTIL` FOREIGN KEY (`IDU`) REFERENCES `utilisateur` (`IDU`),
+  ADD CONSTRAINT `FK_POSSEDE_ETAB` FOREIGN KEY (`IDE`) REFERENCES `etablissement` (`IDE`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

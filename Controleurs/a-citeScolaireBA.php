@@ -1,7 +1,7 @@
 <?php 
 
 	$citeScolaire = new Etablissement();
-	$citeScolaire->retrieve("NUMEROE=4");
+	$citeScolaire->retrieve("IDE=4");
 
 	//$laFormation = new Article();
 	//$lesFormations = array();

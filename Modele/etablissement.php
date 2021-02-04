@@ -5,7 +5,7 @@ class Etablissement
 	//Attributes
 		
 	 
-	private $numeroE; // type : int
+	private $IDE; // type : int
 	private $nomE; // type : string
 	private $rueE; // type : string
 	private $codePostalE; // type : int
@@ -17,9 +17,9 @@ class Etablissement
 
 	//Operations
 	//Constructeur
-	function __construct($numeroE="", $nomE="", $rueE="", $codePostalE=0, $villeE="", $telephoneE=0, $emailE = "", $motProviseur="")
+	function __construct($IDE="", $nomE="", $rueE="", $codePostalE=0, $villeE="", $telephoneE=0, $emailE = "", $motProviseur="")
 	{
-		$this->numeroE = $numeroE;
+		$this->IDE = $IDE;
 		$this->nomE = $nomE;
 		$this->rueE = $rueE;
 		$this->codePostalE = $codePostalE;
@@ -32,31 +32,36 @@ class Etablissement
 	public function create()
 	{
 		
-		include"connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
-		$req = "INSERT into etablissement values ('".$this->numeroE."','".$this->nomE."','".$this->rueE."','".$this->codePostalE."','".$this->villeE."','".$this->telephoneE."','".$this->emailE."','".$this->motProviseur."', '".$this->$lesArticles."');";
+		$req = "INSERT into etablissement values ('".$this->IDE."','".$this->nomE."','".$this->rueE."','".$this->codePostalE."','".$this->villeE."','".$this->telephoneE."','".$this->emailE."','".$this->motProviseur."', '".$this->$lesArticles."');";
 
 		$stmt = $connStr->query($req);
 	}
 
-	public function delete($numeroE)
+	public function delete($IDE)
 	{
-		include "connexionBDD.php";
-		$req = "DELETE from etablissement where NUMEROE =".$numeroE;
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+		$req = "DELETE from etablissement where IDE =".$IDE;
 		$connStr->exec($req);
 	}
 
 	public function retrieve($condition)
 	{		
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
 
-		$req = "SELECT * FROM etablissement WHERE ".$condition.";";
+		$req = "SELECT * FROM etablissement WHERE ".$condition;
 
 		$stmt = $connStr->query($req);
-		try
+
+		//var_dump($stmt);
+		
+		while ($ligne = $stmt->fetch()) 
 		{
-			$ligne = $stmt->fetch();
-			$this->numeroE= $ligne["NUMEROE"];
+			$this->IDE= $ligne["IDE"];
 			$this->nomE = $ligne["NOME"];
 			$this->rueE = $ligne["RUEE"];
 			$this->codePostalE = $ligne["CODEPOSTALE"];
@@ -65,16 +70,12 @@ class Etablissement
 			$this->emailE = $ligne["EMAILE"];
 			$this->motProviseur = $ligne["MOTPROVISEUR"];
 		}
-		catch (Exception $e)
-		{
-			echo 'Aucun établissement à traiter', $e->getMessage(), "\n";
-		}
-
 	}
 
 	public function findAll()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		$req="SELECT * FROM etablissement";
 		$lesEtablissements = array();
 
@@ -83,7 +84,7 @@ class Etablissement
 		while ($ligne = $stmt->fetch())
 		{
 
-			$newEtablissement = new Etablissement($ligne["NUMEROE"],$ligne["NOME"], $ligne["RUEE"], $ligne["CODEPOSTALE"], $ligne["VILLEE"], $ligne["TELEPHONEE"], $ligne["EMAILE"], $ligne["MOTPROVISEUR"]);
+			$newEtablissement = new Etablissement($ligne["IDE"],$ligne["NOME"], $ligne["RUEE"], $ligne["CODEPOSTALE"], $ligne["VILLEE"], $ligne["TELEPHONEE"], $ligne["EMAILE"], $ligne["MOTPROVISEUR"]);
 
 			array_push($lesEtablissements, $newEtablissement);
 		}
@@ -91,9 +92,10 @@ class Etablissement
 		return $lesEtablissements;
 	}
 
-	public function update($numeroE)
+	public function update($IDE)
 	{ 
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req = "UPDATE etablissement set
 		NOME = '".$this->nomE."',
@@ -103,16 +105,17 @@ class Etablissement
 		TELEPHONEE = '".$this->telephoneE."',
 		EMAILE = '".$this->emailE."',
 		MOTPROVISEUR = '".$this->motProviseur."'
-		where NUMEROE = '".$numeroE."'";
+		where IDE = '".$IDE."'";
 
 		$connStr->exec($req);
 	}
 
 	public function numero()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
-		$req="SELECT MAX(NUMEROE) as MAX FROM etablissement";
+		$req="SELECT MAX(IDE) as MAX FROM etablissement";
 		$stmt = $connStr->query($req);
 		$ligne = $stmt->fetch();
 
@@ -121,11 +124,11 @@ class Etablissement
 		return $nombre + 1;
 
 	}
-	public function getnumeroE()
+	public function getIDE()
 	{
-		return $this->numeroE;
+		return $this->IDE;
 	}
-	public function getnomE()
+	public function getNomE()
 	{
 		return $this->nomE;
 	}
@@ -155,7 +158,7 @@ class Etablissement
 	}
 	public function getLesArticles()
 	{
-		if(!empty($this->numeroE))
+		if(!empty($this->IDE))
 		{
 			$this->lesArticles = $this->rechercheArticlesetab(); //Pour les articles d'un établissement
 		}
@@ -175,12 +178,13 @@ class Etablissement
 	}
 	public function rechercheArticlesetab()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		include "article.php";
 		
 		$articles = array();
 		
-		$req="SELECT * FROM article WHERE etaba = ".$this->numeroE;
+		$req="SELECT * FROM article WHERE etaba = ".$this->IDE;
 
 		$stmt = $connStr->query($req);
 
@@ -195,7 +199,8 @@ class Etablissement
 	}
 	public function rechercheArticlesetabACTU($tousEtab = false)
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		$articles = array();
 		if($tousEtab == false) //Pour les actus d'un établissement donné
 		{
@@ -207,7 +212,7 @@ class Etablissement
 			AND TYPE = :type;";
 
 			$stmt = $connStr->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-			$stmt->execute(array(':etablissement' => $this->numeroE, ':type' => 'actu'));
+			$stmt->execute(array(':etablissement' => $this->IDE, ':type' => 'actu'));
 		}
 		else //Pour les actus de tous les établissements
 		{
@@ -223,7 +228,7 @@ class Etablissement
 
 		foreach($stmt as $enr)
 		{
-			
+			include_once "article.php";
 			$nouvelArticle = new Article($enr["IDA"], $enr["ETABA"], $enr["UTILA"], $enr["TITREA"], $enr["VOIEA"], $enr["TYPEA"], $enr["COMMENTAIREA"], $enr["DATEDEBR"], $enr["DATEFINR"]);
 			array_push($articles, $nouvelArticle);
 
@@ -231,9 +236,9 @@ class Etablissement
 		return $articles;
 	}
 
-	public function setnumeroE($numeroe)
+	public function setIDE($IDE)
 	{
-		$this->numeroe=$numeroe;
+		$this->IDE=$IDE;
 	}
 	public function setnomE($nomE)
 	{

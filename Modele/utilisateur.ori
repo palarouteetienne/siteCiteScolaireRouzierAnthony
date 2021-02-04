@@ -86,7 +86,8 @@ class Utilisateur{
 
 	public function create()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req = "INSERT into UTILISATEUR values ('".$this->idUtil."','".$this->getLaCiteScolaire()."','".$this->nom."','".$this->prenom."','".$this->adresseMail."','".$this->mdp."');";
 
@@ -95,7 +96,8 @@ class Utilisateur{
 
 	public function delete($idUtil)
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		$req = "DELETE from UTILISATEUR where IDUTIL =".$idUtil;
 		$connStr->exec($req);
 
@@ -103,7 +105,8 @@ class Utilisateur{
 
 	public function retrieve($condition)
 	{		
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req = "SELECT * FROM UTILISATEUR WHERE ".$condition;
 
@@ -123,7 +126,8 @@ class Utilisateur{
 
 	public function findAll()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		$req="SELECT * FROM UTILISATEUR";
 		$lesUtilisateurs = array();
 
@@ -144,7 +148,8 @@ class Utilisateur{
 
 	public function numero()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req="SELECT MAX(IDUTIL) as MAX FROM UTILISATEUR";
 		$stmt = $connStr->query($req);
@@ -157,7 +162,8 @@ class Utilisateur{
 	}
 
 	public function nbFichier($Util){
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req="SELECT COUNT(*) as nbFichier FROM RESSOURCE WHERE UTILISATEUR=".$Util;
 		$stmt = $connStr->query($req);
@@ -170,7 +176,8 @@ class Utilisateur{
 	}
 
 	public function tailleTotalFichier($Util){
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req="SELECT SUM(POIDSRESSOURCE) as tailleTotalFichier FROM RESSOURCE WHERE UTILISATEUR=".$Util;
 		$stmt = $connStr->query($req);

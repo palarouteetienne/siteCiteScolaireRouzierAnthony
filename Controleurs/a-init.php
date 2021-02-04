@@ -1,4 +1,5 @@
 <?php
+	include "Modele/etablissement.php";
 
 	$unEtablissement = new Etablissement();
 	$unEtablissement->retrieve("NOME='cité scolaire'");

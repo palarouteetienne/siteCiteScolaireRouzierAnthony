@@ -156,7 +156,7 @@ INSERT INTO `article` (`IDA`, `ETABA`, `UTILA`, `TITREA`, `VOIEA`, `COMMENTAIREA
 
 DROP TABLE IF EXISTS `etablissement`;
 CREATE TABLE IF NOT EXISTS `etablissement` (
-  `NUMEROE` int(2) NOT NULL,
+  `IDE` int(2) NOT NULL,
   `NOME` char(100) NOT NULL,
   `RUEE` char(100) NOT NULL,
   `CODEPOSTALE` char(5) NOT NULL,
@@ -164,14 +164,14 @@ CREATE TABLE IF NOT EXISTS `etablissement` (
   `TELEPHONEE` int(10) NOT NULL,
   `EMAILE` char(150) NOT NULL,
   `MOTPROVISEUR` text NOT NULL,
-  PRIMARY KEY (`NUMEROE`)
+  PRIMARY KEY (`IDE`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `etablissement`
 --
 
-INSERT INTO `etablissement` (`NUMEROE`, `NOME`, `RUEE`, `CODEPOSTALE`, `VILLEE`, `TELEPHONEE`, `EMAILE`, `MOTPROVISEUR`) VALUES
+INSERT INTO `etablissement` (`IDE`, `NOME`, `RUEE`, `CODEPOSTALE`, `VILLEE`, `TELEPHONEE`, `EMAILE`, `MOTPROVISEUR`) VALUES
 (1, 'collège Eugène Jamot', '1 Rue Williams Dumazet', '23200', 'Aubusson', 555677280, 'ce.0230002c@ac-limoges.fr', 'Bienvenue au collège Eugène Jamot. Vous aller voir les formations de la 6ème à la 3ème ainsi que toutes les options pouvant être prisent dans cet établissement.'),
 (2, 'lycée Eugène Jamot', '1 Rue Williams Dumazet', '23200', 'Aubusson', 555677280, 'ce.0230002c@ac-limoges.fr', 'Bienvenue au lycée Eugène Jamot. Vous aller voir les formations de la 2nd au BTS SIO.'),
 (3, 'lycée Jean Jaurès', '38 rue Jean Jaurès', '23200', 'Aubusson', 555677360, 'ce.0230003d@ac-limoges.fr', 'Bienvenue au lycée Jean Jaurès. Vous aller voir les formations professionnel de cet établissement.'),
@@ -185,13 +185,13 @@ INSERT INTO `etablissement` (`NUMEROE`, `NOME`, `RUEE`, `CODEPOSTALE`, `VILLEE`,
 
 DROP TABLE IF EXISTS `ressource`;
 CREATE TABLE IF NOT EXISTS `ressource` (
-  `NUMEROR` int(3) NOT NULL,
+  `IDR` int(3) NOT NULL,
   `ARTICLER` int(2) NOT NULL,
   `NOMR` char(200) NOT NULL,
   `FORMATR` char(100) NOT NULL,
   `CHEMINR` char(200) NOT NULL,
   `POIDSR` int(7) NOT NULL,
-  PRIMARY KEY (`NUMEROR`),
+  PRIMARY KEY (`IDR`),
   KEY `FK_RESSOURCE_ARTICLE` (`ARTICLER`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -199,7 +199,7 @@ CREATE TABLE IF NOT EXISTS `ressource` (
 -- Dumping data for table `ressource`
 --
 
-INSERT INTO `ressource` (`NUMEROR`, `ARTICLER`, `NOMR`, `FORMATR`, `CHEMINR`, `POIDSR`) VALUES
+INSERT INTO `ressource` (`IDR`, `ARTICLER`, `NOMR`, `FORMATR`, `CHEMINR`, `POIDSR`) VALUES
 (1, 2, 'Seconde_Generale2019-02-11.pdf', 'pdf', 'fichier/Seconde_Generale2019-02-11.pdf', 313519),
 (2, 3, 'Arts_Plastiques_seconde2019-02-11.pdf', 'pdf', 'fichier/Arts_Plastiques_seconde2019-02-11.pdf', 249868),
 (3, 18, 'Langues_Cultures_Antiquite_seconde2019-02-11.pdf', 'pdf', 'fichier/Langues_Cultures_Antiquite_seconde2019-02-11.pdf', 369152),
@@ -298,7 +298,7 @@ INSERT INTO `utilisateur` (`IDU`, `ETABU`, `NOMU`, `PRENOMU`, `MAILU`, `MDPU`) V
 -- Constraints for table `article`
 --
 ALTER TABLE `article`
-  ADD CONSTRAINT `FK_ARTICLE_ETABLISSEMENT` FOREIGN KEY (`ETABA`) REFERENCES `etablissement` (`NUMEROE`),
+  ADD CONSTRAINT `FK_ARTICLE_ETABLISSEMENT` FOREIGN KEY (`ETABA`) REFERENCES `etablissement` (`IDE`),
   ADD CONSTRAINT `FK_ARTICLE_UTIL` FOREIGN KEY (`UTILA`) REFERENCES `utilisateur` (`IDU`),
   ADD CONSTRAINT `FK_ARTICLE_VOIE` FOREIGN KEY (`VOIEA`) REFERENCES `voie` (`IDV`),
   ADD CONSTRAINT `FK_ARTICLE_TYPE` FOREIGN KEY (`TYPEA`) REFERENCES `type` (`IDT`);
@@ -313,7 +313,7 @@ ALTER TABLE `ressource`
 -- Constraints for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  ADD CONSTRAINT `FK_ETAB_UTIL` FOREIGN KEY (`ETABU`) REFERENCES `etablissement` (`NUMEROE`);
+  ADD CONSTRAINT `FK_ETAB_UTIL` FOREIGN KEY (`ETABU`) REFERENCES `etablissement` (`IDE`);
 COMMIT;
 
 

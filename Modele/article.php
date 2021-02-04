@@ -35,7 +35,8 @@ class Article
 	}
 	public function create()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req = "INSERT into article values (NULL,'".$this->etaba."','".$this->utila."','".$this->titrea."','".$this->voiea."','".$this->commentairea."','".$this->typea."','".$this->datedebr."','".$this->datefinr."');";
 		$connStr->exec($req);
@@ -44,7 +45,8 @@ class Article
 	public function delete($ida)
 	{
 		
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req = "DELETE FROM article where IDA =".intval($ida).";";
 
@@ -54,7 +56,8 @@ class Article
 
 	public function retrieve($condition)
 	{		
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req = "SELECT * FROM article WHERE ".$condition;
 
@@ -69,12 +72,13 @@ class Article
 		$this->commentairea = $ligne["COMMENTAIREA"];
 		$this->datedebr = $ligne["DATEDEBR"];
 		$this->datefinr = $ligne["DATEFINR"];
-		$this->etaba = $monEtab->getnumeroE();
+		$this->etaba = $monEtab->getIDE();
 	}
 
 	public function findAll()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		$req="SELECT * FROM article";
 		$lesArticles = array();
 
@@ -99,7 +103,8 @@ class Article
 
 	public function update($ida)
 	{ 
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req = "UPDATE article set 
 		etaba = '".$this->etaba."',
@@ -117,7 +122,8 @@ class Article
 
 	public function numero()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 
 		$req="SELECT MAX(IDa) as MAX FROM article";
 		$stmt = $connStr->query($req);
@@ -131,7 +137,8 @@ class Article
 
 	public function findByEtab($etab) //Param : le num de l'établissement dont on veut les articles
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		$req="SELECT * FROM article WHERE etaba = '".$etab."';";
 		$articles = array();
 
@@ -150,7 +157,8 @@ class Article
 
 	public function findIns($etab)
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		$req=	"SELECT *
 				FROM article
 				WHERE ETABA = ".$etab."
@@ -171,7 +179,8 @@ class Article
 	public function findActu($etab)
 	{
 
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		$req=	"SELECT *
 				FROM article
 				WHERE ETABA = ".$etab." AND TYPEA = 'actu';";
@@ -201,7 +210,8 @@ class Article
 	
 	public function chercheLesRessources()
 	{
-		include "connexionBDD.php";
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
 		$ressources = array();
 
 		$req="SELECT * FROM `ressource` WHERE `ARTICLER` = ".$this->ida.";";
@@ -210,9 +220,10 @@ class Article
 		
 		while ($ligneR = $stmt->fetch())
 		{
+			include_once "ressource.php";
 
 			$newRessource = new Ressource(
-				$ligneR["NUMEROR"],
+				$ligneR["IDR"],
 				$ligneR["ARTICLER"],
 				$ligneR["NOMR"],
 				$ligneR["FORMATR"], 

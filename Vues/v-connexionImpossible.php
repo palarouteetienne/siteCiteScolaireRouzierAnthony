@@ -26,7 +26,7 @@
 
 		      		<h4 style="color: white">
 
-						<p> Le compte que vous avez sélectionné n'existe pas </p>
+						<p> Utilisateur ou mot de passe incorrect. </p>
 
 					</h4>
 
