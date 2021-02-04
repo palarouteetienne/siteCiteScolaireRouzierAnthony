@@ -105,26 +105,26 @@ else
             }
             else 
             {
-                $error = 'Utilisateur ou mot de passe incorrect.';
+                //$error = 'Utilisateur ou mot de passe incorrect.';
                 //header('location: index.php?action=connexion');
-                $etat = 'connexion';
+                $etat = 'connexionImpossible';
                 
             }
         }
         else 
         {
-            $error = 'Utilisateur ou mot de passe incorrect.';
+            //$error = 'Utilisateur ou mot de passe incorrect.';
             //header('location: index.php?action=connexion');
-            $etat = 'connexion';
+            $etat = 'connexionImpossible';
 
             
         }
     }
     else 
     {
-        $error = 'Il semble que la saisie des champs est incorrecte.';
+        //$error = 'Il semble que la saisie des champs est incorrecte.';
         //header('location: index.php?action=connexion');
-        $etat = 'connexion';
+        $etat = 'connexionImpossible';
     }
 }
 ?>

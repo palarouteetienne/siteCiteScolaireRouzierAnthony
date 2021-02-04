@@ -13,7 +13,7 @@
 
 <body>
 
-	<div id="form-main" style="padding-top: 25%; padding-bottom: 5%;">
+	<div id="form-main" style="padding-top: 0%; padding-bottom: 5%;">
 		<div id="form-div">
 	    	<form action="index.php?action=connexion" method ="post" class="form" id="form1">
 	      		

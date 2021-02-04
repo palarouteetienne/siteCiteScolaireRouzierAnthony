@@ -118,6 +118,7 @@
                     xmlhttp.send();
                 }
             }
+            
             function supprimerArticle(ida) 
             {
                 var xmlhttp = new XMLHttpRequest();
@@ -171,7 +172,11 @@
                             <span class="sr-only">Toggle Dropdown</span>
                         </button>
                         <div class="dropdown-menu">
-                            <button class="dropdown-item" type="button" name="1" onclick="montrerListeArt(this.name,`collège Eugène Jamot`)">1 collège Eugène Jamot </button><button class="dropdown-item" type="button" name="2" onclick="montrerListeArt(this.name,`lycée Eugène Jamot`)">2 lycée Eugène Jamot </button><button class="dropdown-item" type="button" name="3" onclick="montrerListeArt(this.name,`lycée Jean Jaurès`)">3 lycée Jean Jaurès </button><button class="dropdown-item" type="button" name="4" onclick="montrerListeArt(this.name,`cité Scolaire`)">4 cité Scolaire </button>                        </div>
+                            <button class="dropdown-item" type="button" name="1" onclick="montrerListeArt(this.name,`collège Eugène Jamot`)">1 collège Eugène Jamot </button>
+                            <button class="dropdown-item" type="button" name="2" onclick="montrerListeArt(this.name,`lycée Eugène Jamot`)">2 lycée Eugène Jamot </button>
+                            <button class="dropdown-item" type="button" name="3" onclick="montrerListeArt(this.name,`lycée Jean Jaurès`)">3 lycée Jean Jaurès </button>
+                            <button class="dropdown-item" type="button" name="4" onclick="montrerListeArt(this.name,`cité Scolaire`)">4 cité Scolaire </button>
+                        </div>
                     </div>
                         <!--<div class="dropdown-menu">
                              //?php
