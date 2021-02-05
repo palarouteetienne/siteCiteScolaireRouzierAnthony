@@ -209,7 +209,7 @@
 	      		</div>
 
 	      		<!-- Bouton de navigation vers la cité scolaire -->
-	      		<center>
+	      		<div class="text-center">
 			        <a href="index.php?action=actualites">
 			          	<button type="button" class="button button-a button-big button-rounded">Actualités</button>
 			        </a>
@@ -225,7 +225,7 @@
 			        <a href="index.php?action=citeScolaireBA">
 			        	<button type="button" class="button button-a button-big button-rounded">Bourses / Aides</button>
 			        </a>
-	      		</center>
+	      		</div>
 
 	      		<br>
 
@@ -302,14 +302,14 @@
 	      		<br>
 
       			<!-- Bouton de navigation vers le collège Eugène Jamot -->
-			    <center>
+			    <div class="text-center">
 			        <a href="index.php?action=collegeEJ">
 			          	<button type="button" class="button button-a button-big button-rounded">Informations Pratiques</button>
 			        </a>
 			        <a href="index.php?action=collegeEJf">
 			          	<button type="button" class="button button-a button-big button-rounded">Formations</button>
 			        </a>
-			    </center>
+			    </div>
       			
       			<br>
 
@@ -414,14 +414,14 @@
 	      		<br>
 
 	      		<!-- Bouton de navigation vers le lycée Eugène Jamot -->
-	      		<center>
+	      		<div class="text-center">
 			        <a href="index.php?action=lyceeEJ">
 			          	<button type="button" class="button button-a button-big button-rounded">Informations Pratiques</button>
 			        </a>
 			        <a href="index.php?action=lyceeEJf">
 			          	<button type="button" class="button button-a button-big button-rounded">Formations</button>
 			        </a>
-			    </center>
+			    </div>
 	      		
 	      		<br>
 
@@ -526,14 +526,14 @@
       			<br>
 
       			<!-- Bouton de navigation vers le lycée Jean Jaurès -->
-			    <center>
+			    <div class="text-center">
 			        <a href="index.php?action=lyceeJJ">
 			          	<button type="button" class="button button-a button-big button-rounded">Informations Pratiques</button>
 			        </a>
 			        <a href="index.php?action=lyceeJJf">
 			          	<button type="button" class="button button-a button-big button-rounded">Formations</button>
 			        </a>
-			    </center>
+			    </div>
       			
       			<br>
 

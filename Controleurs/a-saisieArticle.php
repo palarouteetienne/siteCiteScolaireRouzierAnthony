@@ -18,7 +18,7 @@
 	$laVoie = new Voie();
 	$lesVoies=$laVoie->findAll();
 
-
+$lesRessources = array();
 
 	$ressource = new Ressource();
 
@@ -57,7 +57,7 @@
 		
 	}
 	
-	$lesRessources = array();
+	
 
 	//$lesRessources = $ressource->findAll();
 	

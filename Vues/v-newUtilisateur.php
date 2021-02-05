@@ -40,9 +40,9 @@
 		<div id="form-div">
 	    	<form action="index.php?action=creerUtilisateur" method ="post" class="form" id="form1">
 	      		
-	      		<center>
+	      		<div class="text-center">
 	      		<h2 style="color: white"> Nouvel Utilisateur </h2>
-	      		</center>
+	      		</div>
 
 	      		<p class="nom">
 	        		<input name="nom" type="text" class="validate[required,custom[onlyLetter]] feedback-input" id="nom" placeholder="Nom" required/>
@@ -105,9 +105,9 @@
 	      		<br>
 	      		<br>
 
-	      		<center>
+	      		<div class="text-center">
 	      		<h2 style="color: white"> Administrateur </h2>
-	      		</center>
+	      		</div>
 
 	      		<p class="emailA">
 	        		<input name="emailA" type="email" class="validate[required,custom[email]] feedback-input" id="emailA" placeholder="Email" required/>
@@ -152,14 +152,14 @@
 
 <footer>
 
-	<center>
+	<div class="text-center">
 		<div style="color: white;">
 			<p>
 		       	&copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
 		    </p>
 
 	    </div>
-    </center>
+    </div>
 
 </footer>
 

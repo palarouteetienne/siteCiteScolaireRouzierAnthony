@@ -38,7 +38,7 @@
 					<h3><?php echo $monEtablissement->getnomE(); ?></h3>
 				</div>
 				<div class="col-md-6">
-					<center><span class="btn btn-info"><b>Saisie d'un nouvel article</b></span></center>
+					<div class="text-center"><span class="btn btn-info"><b>Saisie d'un nouvel article</b></span></div>
 				</div>
 			</div>
 
@@ -94,10 +94,10 @@
 			<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-8">
-					<center><textarea name="contenuArticle" cols="70" rows="25"></textarea></center>
+					<div class="text-center"><textarea name="contenuArticle" cols="70" rows="25"></textarea></div>
 				</div>
 				<div class="col-md-3">
-					<center><span class="btn btn-info">Pièce(s) jointe(s) :</span></center>
+					<div class="text-center"><span class="btn btn-info">Pièce(s) jointe(s) :</span></div>
 					<br><br>
 					<!-- ADD CHOICE FILE -->
 					<button type="button" class="croix" onclick="addChoiceFile()" formnovalidate>
@@ -118,12 +118,12 @@
 							listChoiceFile.appendChild(node);
 						}
 					</script>
-					<!--<form action="index.php?action=ressourceSupprimer" method ="post" class="form" id="form1">-->
+					<!--<form action="index.php?action=ressourceSupprimer" method ="post" class="form" id="form1">
 					<div class="submit-2">
 				      			<input type="button" value="Supprimer" id="supprimer"
 
 				      			<?php
-				      				echo "onclick=".chr(34)."myFunction('".$lesRessources[$i]->getIDR()."','".addslashes($lesRessources[$i]->getnomr())."','".addslashes($lesRessources[$i]->getformatr())."','".addslashes($lesRessources[$i]->getcheminr())."','".$lesRessources[$i]->getpoidsr()."','".$lesRessources[$i]->getdatedebr()."','".$lesRessources[$i]->getdatefinr()."')".chr(34);
+				      				//echo "onclick=".chr(34)."myFunction('".$lesRessources[$i]->getIDR()."','".addslashes($lesRessources[$i]->getnomr())."','".addslashes($lesRessources[$i]->getformatr())."','".addslashes($lesRessources[$i]->getcheminr())."','".$lesRessources[$i]->getpoidsr()."','".$lesRessources[$i]->getdatedebr()."','".$lesRessources[$i]->getdatefinr()."')".chr(34);
 				      			?>
 
 				      			data-toggle="modal" data-target="#exampleModal">
@@ -132,7 +132,7 @@
 						<div class="submit">
 							<input type="button" value="Supprimer" id="button-blue"/>
 							<div class="ease"></div>
-						</div>
+						</div>-->
 					</form>
 					</script>
 					
@@ -151,7 +151,7 @@
 
 			<div class="row">
 				<div class="col-md-12">
-					<center><input type="submit" class="btn btn-success" value="Valider"></input></center>
+					<div class="text-center"><input type="submit" class="btn btn-success" value="Valider"></input></div>
 				</div>
 			</div>
 

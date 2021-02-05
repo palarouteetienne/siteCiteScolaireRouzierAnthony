@@ -17,7 +17,7 @@
 		<div id="form-div">
 	    	<form action="index.php?action=connexion" method ="post" class="form" id="form1">
 	      		
-	      		<center>
+	      		<div class="text-center">
 	      			
 		      		<h2 style="color: white"> Connexion Impossible </h2>
 
@@ -30,7 +30,7 @@
 
 					</h4>
 
-	      		</center>
+	      		</div>
 
 	      		<br>
 				<br>
@@ -42,7 +42,7 @@
     		</form>
     		<br>
     		<br>
-    		<a href="index.php?action=newUtilisateur" style="color: white;">Nouvel utilisateur</a>
+    		<!--<a href="index.php?action=newUtilisateur" style="color: white;">Nouvel utilisateur</a>-->
     	</div>
   	</div>
 
@@ -50,13 +50,13 @@
 
 <footer>
 
-	<center>
+	<div class="text-center">
 		<div style="color: white;">
 			<p>
 		       	&copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
 		    </p>
 	    </div>
-    </center>
+    </div>
 
 </footer>
 

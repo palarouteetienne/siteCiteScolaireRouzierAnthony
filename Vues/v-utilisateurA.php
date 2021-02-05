@@ -30,9 +30,9 @@
 		<div id="form-div">
 	    	<form action="index.php?action=choixEtablissement" method="post" id="form1">
 	      		
-	      		<center>
+	      		<div class="text-center">
 	      			<h2 style="color: white"> Utilisateur </h2>
-	      		</center>
+	      		</div>
 
 	      		<p class="email">
 	        		<input name="emailu" type="email" class="validate[required,custom[email]] feedback-input"  id="emailu" placeholder="Email" value="<?php echo $_SESSION['email'];?>" required/>
@@ -77,13 +77,13 @@
 
 <footer>
 
-	<center>
+	<div class="text-center">
 		<div style="color: white;">
 			<p>
 		       	&copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
 		    </p>
 	    </div>
-    </center>
+    </div>
 
 </footer>
 

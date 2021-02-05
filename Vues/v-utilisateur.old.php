@@ -17,9 +17,9 @@
 		<div id="form-div">
 			<form action="index.php?action=consulterUtil" method ="post" class="form" id="form1">
 	      		
-	      		<center>
+	      		<div class="text-center">
 	      		<h2 style="color: white"> Utilisateur </h2>
-	      		</center>
+	      		</div>
 
 	      		<div class="submit">
 	        		<input type="submit" value="Consulter" id="button-blue"/>
@@ -31,9 +31,9 @@
     		
 	    	<form action="index.php?action=citeScolaireModifier" method ="post" class="form" id="form1">
 	      		
-	      		<center>
+	      		<div class="text-center">
 	      		<h2 style="color: white"> Cité Scolaire </h2>
-	      		</center>
+	      		</div>
 
 	      		<div class="submit">
 	        		<input type="submit" value="Modifier" id="button-blue"/>
@@ -61,9 +61,9 @@
 
     		<form action="index.php?action=etablissementModifier" method ="post" class="form" id="form1">
 	      		
-	      		<center>
+	      		<div class="text-center">
 	      		<h2 style="color: white"> Etablissement </h2>
-	      		</center>
+	      		</div>
 
 	      		<div class="submit">
 	        		<input type="submit" value="Modifier" id="button-blue"/>
@@ -91,9 +91,9 @@
 
     		<form action="index.php?action=formationModifier" method ="post" class="form" id="form1">
 	      		
-	      		<center>
+	      		<div class="text-center">
 	      		<h2 style="color: white"> Formation </h2>
-	      		</center>
+	      		</div>
 
 	      		<div class="submit">
 	        		<input type="submit" value="Modifier" id="button-blue"/>
@@ -121,9 +121,9 @@
 
     		<form action="index.php?action=ressourceAjouter" method ="post" class="form" id="form1">
 
-    			<center>
+    			<div class="text-center">
 	      		<h2 style="color: white"> Ressource </h2>
-	      		</center>
+	      		</div>
 
 	      		<div class="submit">
 	        		<input type="submit" value="Ajouter" id="button-blue"/>
@@ -149,14 +149,14 @@
 
 <footer>
 
-	<center>
+	<div class="text-center">
 		<div style="color: white;">
 			<p>
 		       	&copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
 		    </p>
 
 	    </div>
-    </center>
+    </div>
 
 </footer>
 

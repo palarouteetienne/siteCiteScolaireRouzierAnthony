@@ -14,7 +14,7 @@ if
     require_once 'Modele/associe.php';
 
     $unEtablissement = new Etablissement();
-	$lesEtablissements = array();
+	$lesAssocies = array();
 	
 	$unUtilisateur = new Utilisateur();
 	$unUtilisateur->retrieve("MAILU='".$_SESSION['emailu']."'");
@@ -22,7 +22,7 @@ if
     $associe = new Associe();
     
     // On appelle la méthode "findAllBy($condition) de la classe associe"
-    $lesEtablissements = $associe->findAllBy("IDU =".$unUtilisateur->getidu());
+    $lesAssocies = $associe->findAllBy("IDU =".$unUtilisateur->getidu());
 
     switch ($_SESSION['emailu']) 
     {
@@ -31,10 +31,10 @@ if
             $etat = 'choixEtablissement';
 			break;
 		case 'college.ej@citescolaire.com':
-            $etat = 'collegeEJ';
+            $etat = 'choixEtablissement2';
 			break;
 		case 'lycee.ej@citescolaire.com':
-            $etat = 'lyceeEJ';
+            $etat = 'choixEtablissement3';
 			break;
 		case 'lycee.jj@citescolaire.com':
             $etat = 'lyceeJJ';
@@ -78,10 +78,12 @@ else
                 $_SESSION['emailu'] = $emailu;
 
                 $unEtablissement = new Etablissement();
+                $lesEtablissements = new Etablissement();
+                $lesEtablissements = $lesAssocies->findAllBy("IDE ='".$lesEtablissements->getIDE()."'");
 
                 $associe = new Associe();
                 // On appelle la méthode "findAllBy($condition) de la classe associe"
-                $lesEtablissements = $associe->findAllBy("IDU ='".$unUtilisateur->getidu()."'");
+                $lesAssocies = $associe->findAllBy("IDU ='".$unUtilisateur->getidu()."'");
 
                 switch ($_SESSION['emailu']) 
                 {
@@ -90,10 +92,10 @@ else
                         $etat = 'choixEtablissement';
                         break;
                     case 'college.ej@citescolaire.com':
-                        $etat = 'collegeEJ';
+                        $etat = 'choixEtablissement2';
                         break;
                     case 'lycee.ej@citescolaire.com':
-                        $etat = 'lyceeEJ';
+                        $etat = 'choixEtablissement3';
                         break;
                     case 'lycee.jj@citescolaire.com':
                         $etat = 'lyceeJJ';

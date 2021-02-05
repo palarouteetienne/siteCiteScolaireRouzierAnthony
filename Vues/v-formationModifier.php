@@ -41,9 +41,9 @@
 	<div id="form-main" style="padding-top: 25%; padding-bottom: 5%;">
 		<div id="form-div">
 	      		
-	      	<center>
+	      	<div class="text-center">
 	      		<h2 style="color: white"> Formation Modification </h2>
-	      	</center>
+	      	</div>
 	      	<br>
 
 	      	<table rules=rows style="width: 100%; border: #0078ff solid 4px; cursor:pointer; background-color: white; color:#0078ff; font-size:18px;" cellpadding="10">
@@ -261,13 +261,13 @@
 
 <footer>
 
-	<center>
+	<div class="text-center">
 		<div style="color: white;">
 			<p>
 		       	&copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
 		    </p>
 	    </div>
-    </center>
+    </div>
 
 </footer>
 

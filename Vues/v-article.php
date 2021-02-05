@@ -13,9 +13,9 @@
 <body>
 	<div id="form-main">
         <div id="form-div">
-            <center>
+            <div class="text-center">
                 <h2> Articles </h2>
-            </center>
+            </div>
 
             <form action="index.php?action=articleAjouter" method ="post" class="form" id="form1">
 
@@ -44,9 +44,9 @@
     		<br>
     		<br>
 
-            <center>
+            <div class="text-center">
                 <a href="index.php?action=init" style="color: grey;">Se déconnecter</a>
-            </center>
+            </div>
     	</div>
   	</div>
 
@@ -54,14 +54,14 @@
 
 <footer>
 
-	<center>
+	<div class="text-center">
 		<div style="color: grey;">
 			<p>
 		       	&copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
 		    </p>
 
 	    </div>
-    </center>
+    </div>
 
 </footer>
 

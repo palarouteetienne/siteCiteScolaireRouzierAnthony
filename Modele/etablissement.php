@@ -92,6 +92,29 @@ class Etablissement
 		return $lesEtablissements;
 	}
 
+	public function findAllBy($condition)
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+        
+		$req="SELECT * FROM etablissement WHERE ".$condition;
+		
+		$lesEtablissements = array();
+
+		$stmt = $connStr->query($req);
+
+		while ($ligne = $stmt->fetch())
+		{
+
+			$newEtablissement = new Etablissement($ligne["IDE"],$ligne["NOME"], $ligne["RUEE"], $ligne["CODEPOSTALE"], $ligne["VILLEE"], $ligne["TELEPHONEE"], $ligne["EMAILE"], $ligne["MOTPROVISEUR"]);
+
+			array_push($lesEtablissements, $newEtablissement);
+		}
+
+		return $lesEtablissements;
+    }
+
+
 	public function update($IDE)
 	{ 
 		include_once "connexionBDD.php";

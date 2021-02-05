@@ -17,9 +17,9 @@
         <div id="form-div">		
     		<form action="index.php?action=formationModifier" method ="post" class="form" id="form1">
 	      		
-	      		<center>
+	      		<div class="text-center">
 	      			<h2> Formation </h2>
-	      		</center>
+	      		</div>
 
 	      		<div class="submit">
 	        		<input type="submit" value="Modifier" id="button-blue"/>
@@ -47,9 +47,9 @@
 
     		<form action="index.php?action=ressourceAjouter" method ="post" class="form" id="form1">
 
-    			<center>
+    			<div class="text-center">
 		      		<h2> Ressource </h2>
-	      		</center>
+	      		</div>
 
 	      		<div class="submit">
 	        		<input type="submit" value="Ajouter" id="button-blue"/>
@@ -66,9 +66,9 @@
     		</form>
     		<br>
     		<br>
-            <center>
+            <div class="text-center">
                 <a href="index.php?action=init" style="color: grey;">Se déconnecter</a>
-            </center>
+            </div>
     	</div>
   	</div>
 
@@ -76,14 +76,14 @@
 
 <footer>
 
-	<center>
+	<div class="text-center">
 		<div style="color: grey;">
 			<p>
 		       	&copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
 		    </p>
 
 	    </div>
-    </center>
+    </div>
 
 </footer>
 

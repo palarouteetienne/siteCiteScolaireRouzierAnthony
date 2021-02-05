@@ -36,9 +36,9 @@
 						echo $error;
 					} 
 				?>
-	      		<center>
+	      		<div class="text-center">
 	      			<h2 style="color: white"> Utilisateur </h2>
-	      		</center>
+	      		</div>
 
 	      		<p class="email">
 	        		<input name="emailu" type="email" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Email" required/>
@@ -83,13 +83,13 @@
 
 <footer>
 
-	<center>
+	<div class="text-center">
 		<div style="color: white;">
 			<p>
 		       	&copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
 		    </p>
 	    </div>
-    </center>
+    </div>
 
 </footer>
 

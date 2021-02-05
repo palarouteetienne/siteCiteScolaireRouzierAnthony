@@ -27,9 +27,9 @@
 	<div id="form-main" style="padding-top: 25%; padding-bottom: 5%;">
 		<div id="form-div">
 	      		
-	      	<center>
+	      	<div class="text-center">
 	      		<h2 style="color: white"> Formation Ajout </h2>
-	      	</center>
+	      	</div>
 	      	<br>
 
 	      	<div class="submit-2">
@@ -232,14 +232,14 @@
 
 <footer>
 
-	<center>
+	<div class="text-center">
 		<div style="color: white;">
 			<p>
 		       	&copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
 		    </p>
 
 	    </div>
-    </center>
+    </div>
 
 </footer>
 

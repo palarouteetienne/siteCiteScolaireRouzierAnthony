@@ -16,7 +16,7 @@
 		<div id="form-div">
 	    	<form action="index.php?action=newUtilisateur" method ="post" class="form" id="form1">
 	      		
-	      		<center>
+	      		<div class="text-center">
 	      			
 		      		<h2 style="color: white"> Création Impossible </h2>
 
@@ -29,7 +29,7 @@
 
 					</h4>
 
-	      		</center>
+	      		</div>
 
 	      		<br>
 				<br>
@@ -49,14 +49,14 @@
 
 <footer>
 
-	<center>
+	<div class="text-center">
 		<div style="color: white;">
 			<p>
 		       	&copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
 		    </p>
 
 	    </div>
-    </center>
+    </div>
 
 </footer>
 
