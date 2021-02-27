@@ -56,8 +56,6 @@ class Etablissement
 		$req = "SELECT * FROM etablissement WHERE ".$condition;
 
 		$stmt = $connStr->query($req);
-
-		//var_dump($stmt);
 		
 		while ($ligne = $stmt->fetch()) 
 		{
