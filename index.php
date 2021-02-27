@@ -19,10 +19,10 @@
 
 	// *** traitement de l'action ***
 	$scriptAction = 'Controleurs/a-'.$action.'.php';
-	include $scriptAction;
+	include_once $scriptAction;
 	
 	// *** génération de la vue ***
 	$scriptVue = 'Vues/v-'.$etat.'.php';
-	include $scriptVue;
+	include_once $scriptVue;
 ?>
 
