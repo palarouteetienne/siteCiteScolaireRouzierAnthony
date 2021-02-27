@@ -6,7 +6,6 @@ class Utilisateur
 		
 	 
 	private $idu; // type : int
-	private $etabu; // type : string
 	private $nomu; // type : string
 	private $prenomu; // type : string
 	private $mailu; // type : string
@@ -16,10 +15,9 @@ class Utilisateur
 
 	//Operations
 	//Constructeur
-	function __construct($idu=0, $etabu="",$nomu="", $prenomu="", $mailu="", $mdpu="")
+	function __construct($idu=0,$nomu="", $prenomu="", $mailu="", $mdpu="")
 	{
 		$this->idu = $idu;
-		$this->etabu = $etabu;
 		$this->nomu = $nomu;
 		$this->prenomu = $prenomu;
 		$this->mailu = $mailu;
@@ -34,7 +32,7 @@ class Utilisateur
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 
-		$req = "INSERT INTO UTILISATEUR values ('".$this->idu."','".$this->nomu."','".$this->prenomu."','".$this->mailu."','".$this->mdpu."','".$this->etabu."');";
+		$req = "INSERT INTO UTILISATEUR values ('".$this->idu."','".$this->nomu."','".$this->prenomu."','".$this->mailu."','".$this->mdpu."');";
 
 		$stmt = $connStr->query($req);
 
@@ -66,7 +64,6 @@ class Utilisateur
 			$this->prenomu = $ligne["PRENOMU"];
 			$this->mailu = $ligne["MAILU"];
 			$this->mdpu = $ligne["MDPU"];
-			$this->etabu = $ligne["ETABU"];
 		}
 	}
 
@@ -82,7 +79,7 @@ class Utilisateur
 		while ($ligne = $stmt->fetch())
 		{
 
-			$newUtilisateur = new Utilisateur($ligne["IDU"], $ligne["NOMU"], $ligne["PRENOMU"], $ligne["MAILU"], $ligne["MDPU"], $ligne["ETABU"]);
+			$newUtilisateur = new Utilisateur($ligne["IDU"], $ligne["NOMU"], $ligne["PRENOMU"], $ligne["MAILU"], $ligne["MDPU"]);
 
 			array_push($lesUtilisateurs, $newUtilisateur);
 		}
@@ -105,6 +102,20 @@ class Utilisateur
 
 	}
 
+	public function exist($condition){
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+		$req = "SELECT * FROM utilisateur WHERE ".$condition;
+
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		if($ligne) {
+			return new Utilisateur($ligne["IDU"], $ligne["NOMU"], $ligne["PRENOMU"], $ligne["MAILU"], $ligne["MDPU"]);
+		}
+		return false;
+	}
+
 	public function getidu()
 	{
 		return $this->idu;
@@ -124,10 +135,6 @@ class Utilisateur
 	public function getmdpu()
 	{
 		return $this->mdpu;
-	}
-	public function getetabu()
-	{
-		return $this->etabu;
 	}
 	public function getlesArticles()
 	{
@@ -154,10 +161,6 @@ class Utilisateur
 	{
 		$this->mdpu=$mdpu;
 	}
-	public function setetabu($etabu)
-	{
-		$this->etabu=$etabu;
-	}
 	public function setlesArticles($lesArticles)
 	{
 		$this->lesArticles=$lesArticles;
@@ -166,4 +169,3 @@ class Utilisateur
 } // End Class Utilisateur
 
 ?>
-

@@ -167,10 +167,7 @@
     <div id="form-main">
             <div id="form-div">
             <span id="message"> </span>
-                <form action="index.php?action=choixEtablissement" method ="post" class="form" id="form1">
-                   
-                    </div>
-                </form>
+           
 
                 <center>
                     <a 

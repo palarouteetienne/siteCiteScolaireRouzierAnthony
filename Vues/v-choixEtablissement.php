@@ -21,6 +21,55 @@
     </head>
 
     <body>
+    <script>
+            var IDEtabGlobal;
+
+            function montrerListeArt(IDE,NOME) 
+            {
+                IDEtabGlobal=IDE;
+                
+                document.getElementById("message").innerHTML = null;
+                document.getElementById("boutonEtab").innerHTML=NOME;
+                if (IDE.length == 0) 
+                {
+                    document.getElementById("listeArticlesEtab").innerHTML = "Aucun établissement sélectionné.";
+                    return;
+                }
+                else
+                {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() 
+                    {
+                        if (this.readyState == 4 && this.status == 200)
+                        {
+                            document.getElementById("listeArticlesEtab").innerHTML = this.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "./Vues/getArticleEtab.php?q="+IDE, true);
+                    xmlhttp.send();
+                }
+            }
+            
+            function supprimerArticle(ida) 
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() 
+                {
+                    if (this.readyState == 4 && this.status == 200)
+                    {
+                        document.getElementById("message").innerHTML = this.responseText;
+                    }
+                }
+                xmlhttp.open("GET", "Controleurs/a-supprimerArticle.php?q="+ida, true);
+                xmlhttp.send();
+            }
+            
+            function ajouterArticle() 
+            {
+				window.location.href="index.php?action=saisieArticle&IDEtab="+IDEtabGlobal;
+            }
+            
+        </script>
 
         <p id="message"></p>
         <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -49,24 +98,52 @@
                         <button id="boutonEtab" class="btn btn-secondary btn-lg" type="button">
                             Choisir un établissements
                         </button>
-                        <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
+
+                        <?php
+                            
+                            $nb = count($lesEtablissements);
+                            if ($nb != 1) {
+
+                        ?>
+
+                                <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <div class="dropdown-menu">
+
                             <?php
 
                                 $nb = count($lesEtablissements);
 
                                 for($i=0; $i<$nb; $i++)
                                 {
-                                    echo '<button class="dropdown-item" type="button" "'.$lesEtablissements[$i]->getIDE().'" onclick="montrerListeArt(this.name,`
-                                    '.$lesEtablissements[$i]->getNomE().'`)">'
-                                    .$lesEtablissements[$i]->getIDE()
-                                    .' '.$lesEtablissements[$i]->getNomE()
-                                    .' '.'</button>';
+
+                                    ?>
+                                    <button class="dropdown-item" type="button" onclick="montrerListeArt(<?= $lesEtablissements[$i]->getIDE() ?>, '<?= $lesEtablissements[$i]->getNomE() ?>')">
+                                    <?= $lesEtablissements[$i]->getNomE() ?>
+                                    </button>
+
+                            <?php
                                 }
                             ?>
-                        </div>
+
+                                </div>
+
+                            <?php  
+
+                            }
+                            
+                            else{
+
+                            ?>
+
+                                <script>
+                                montrerListeArt(<?= $lesEtablissements[0]->getIDE() ?>,'<?= $lesEtablissements[0]->getNomE() ?>');
+                                </script>
+
+                        <?php
+                            }
+                        ?>
                     </div>
                 </form>
 
@@ -179,15 +256,16 @@
         </script>
 
         <script>
-            var IDEtabGlobal;
+            /*var IDEtabGlobal;
 
-            function montrerListeArt(etab,nomEtab) 
+            function montrerListeArt(IDE,NOME) 
             {
-                IDEtabGlobal=etab;
+                IDEtabGlobal=IDE;
+                alert('Yo pétasse');
                 
                 document.getElementById("message").innerHTML = null;
-                //document.getElementById("boutonEtab").innerHTML=nomEtab;
-                if (etab.length == 0) 
+                //document.getElementById("boutonEtab").innerHTML=NOME;
+                if (IDE.length == 0) 
                 {
                     document.getElementById("listeArticlesEtab").innerHTML = "Aucun établissement sélectionné.";
                     return;
@@ -202,7 +280,7 @@
                             document.getElementById("listeArticlesEtab").innerHTML = this.responseText;
                         }
                     }
-                    xmlhttp.open("GET", "./Vues/getArticleEtab.php?q="+etab, true);
+                    xmlhttp.open("GET", "./Vues/getArticleEtab.php?q="+NOME, true);
                     xmlhttp.send();
                 }
             }
@@ -224,7 +302,7 @@
             function ajouterArticle() 
             {
 				window.location.href="index.php?action=saisieArticle&IDEtab="+IDEtabGlobal;
-            }
+            }*/
             
         </script>
     </body>
