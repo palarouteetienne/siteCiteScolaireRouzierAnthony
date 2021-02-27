@@ -119,22 +119,6 @@
 						}
 					</script>
 					<!--<form action="index.php?action=ressourceSupprimer" method ="post" class="form" id="form1">-->
-					<div class="submit-2">
-				      			<input type="button" value="Supprimer" id="supprimer"
-
-				      			<?php
-				      				echo "onclick=".chr(34)."myFunction('".$lesRessources[$i]->getIDR()."','".addslashes($lesRessources[$i]->getnomr())."','".addslashes($lesRessources[$i]->getformatr())."','".addslashes($lesRessources[$i]->getcheminr())."','".$lesRessources[$i]->getpoidsr()."','".$lesRessources[$i]->getdatedebr()."','".$lesRessources[$i]->getdatefinr()."')".chr(34);
-				      			?>
-
-				      			data-toggle="modal" data-target="#exampleModal">
-				      			<div class="ease-2"></div>
-				      		</div>
-						<div class="submit">
-							<input type="button" value="Supprimer" id="button-blue"/>
-							<div class="ease"></div>
-						</div>
-					</form>
-					</script>
 					
 				
 					<div id="listChoiceFile"></div>
