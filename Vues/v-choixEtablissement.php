@@ -18,6 +18,171 @@
         <title>Choix établissement</title>
 
         <link href="./css/styleFormulaire.css" rel="stylesheet">
+    </head>
+
+    <body>
+    <script>
+            var IDEtabGlobal;
+
+            function montrerListeArt(IDE,NOME) 
+            {
+                IDEtabGlobal=IDE;
+                
+                document.getElementById("message").innerHTML = null;
+                document.getElementById("boutonEtab").innerHTML=NOME;
+                if (IDE.length == 0) 
+                {
+                    document.getElementById("listeArticlesEtab").innerHTML = "Aucun établissement sélectionné.";
+                    return;
+                }
+                else
+                {
+                    var xmlhttp = new XMLHttpRequest();
+                    xmlhttp.onreadystatechange = function() 
+                    {
+                        if (this.readyState == 4 && this.status == 200)
+                        {
+                            document.getElementById("listeArticlesEtab").innerHTML = this.responseText;
+                        }
+                    }
+                    xmlhttp.open("GET", "./Vues/getArticleEtab.php?q="+IDE, true);
+                    xmlhttp.send();
+                }
+            }
+            
+            function supprimerArticle(ida) 
+            {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() 
+                {
+                    if (this.readyState == 4 && this.status == 200)
+                    {
+                        document.getElementById("message").innerHTML = this.responseText;
+                    }
+                }
+                xmlhttp.open("GET", "Controleurs/a-supprimerArticle.php?q="+ida, true);
+                xmlhttp.send();
+            }
+            
+            function ajouterArticle() 
+            {
+				window.location.href="index.php?action=saisieArticle&IDEtab="+IDEtabGlobal;
+            }
+            
+        </script>
+
+        <p id="message"></p>
+        <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <p>Voulez-vous supprimer l'article</p>
+                    </div>
+                    <div id="maModale" class="modal-body">
+                    </div>
+                    <div class="modal-footer">
+                        <div>ainsi que tous les documents liés ?</div>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
+                        <a id="confirmer" class="btn btn-danger btn-ok">Supprimer</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    
+        <div id="form-main">
+            <div id="form-div">
+            <span id="message"> </span>
+                <form action="index.php?action=choixEtablissement" method ="post" class="form" id="form1">
+                    <div class="dropdown">
+                        <button id="boutonEtab" class="btn btn-secondary btn-lg" type="button">
+                            Choisir un établissements
+                        </button>
+
+                        <?php
+                            
+                            $nb = count($lesEtablissements);
+                            if ($nb != 1) {
+
+                        ?>
+
+                                <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <div class="dropdown-menu">
+
+                            <?php
+
+                                $nb = count($lesEtablissements);
+
+                                for($i=0; $i<$nb; $i++)
+                                {
+
+                                    ?>
+                                    <button class="dropdown-item" type="button" onclick="montrerListeArt(<?= $lesEtablissements[$i]->getIDE() ?>, '<?= $lesEtablissements[$i]->getNomE() ?>')">
+                                    <?= $lesEtablissements[$i]->getNomE() ?>
+                                    </button>
+
+                            <?php
+                                }
+                            ?>
+
+                                </div>
+
+                            <?php  
+
+                            }
+                            
+                            else{
+
+                            ?>
+
+                                <script>
+                                montrerListeArt(<?= $lesEtablissements[0]->getIDE() ?>,'<?= $lesEtablissements[0]->getNomE() ?>');
+                                </script>
+
+                        <?php
+                            }
+                        ?>
+                    </div>
+                </form>
+
+                <div class="text-center">
+                    <a 
+                        href="index.php?action=deconnexion" 
+                        style="color: grey;">
+                        Se déconnecter
+                    </a>
+                </div>
+            </div>
+            <!--Lister tous les articles de l'établissement choisi dans le dropdown-->
+            <span id="listeArticlesEtab"> </span>
+
+
+        </div>
+
+        <footer>
+
+            <div class="text-center">
+                <div style="color: grey;">
+                    <p>
+                        &copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
+                    </p>
+
+                </div>
+            </div>
+
+        </footer>
+
+
+    <script type="text/javascript">
+    $("#confirmer").on("click",function()
+    {
+        supprimerArticle($('#maModale').html());
+        $('#confirm-delete').modal("hide");
+    });
+    </script>
+
         <script type="text/javascript">
             $(document).ready(function(){
 
@@ -89,17 +254,18 @@
                 });
             });
         </script>
+
         <script>
+            /*var IDEtabGlobal;
 
-            var IDEtabGlobal;
-
-            function montrerListeArt(etab,nomEtab) 
+            function montrerListeArt(IDE,NOME) 
             {
-                IDEtabGlobal=etab;
+                IDEtabGlobal=IDE;
+                alert('Yo pétasse');
                 
                 document.getElementById("message").innerHTML = null;
-                document.getElementById("boutonEtab").innerHTML=nomEtab;
-                if (etab.length == 0) 
+                //document.getElementById("boutonEtab").innerHTML=NOME;
+                if (IDE.length == 0) 
                 {
                     document.getElementById("listeArticlesEtab").innerHTML = "Aucun établissement sélectionné.";
                     return;
@@ -114,10 +280,11 @@
                             document.getElementById("listeArticlesEtab").innerHTML = this.responseText;
                         }
                     }
-                    xmlhttp.open("GET", "./Vues/getArticleEtab.php?q="+etab, true);
+                    xmlhttp.open("GET", "./Vues/getArticleEtab.php?q="+NOME, true);
                     xmlhttp.send();
                 }
             }
+            
             function supprimerArticle(ida) 
             {
                 var xmlhttp = new XMLHttpRequest();
@@ -135,94 +302,8 @@
             function ajouterArticle() 
             {
 				window.location.href="index.php?action=saisieArticle&IDEtab="+IDEtabGlobal;
-            }
+            }*/
             
         </script>
-
-    </head>
-
-    <body>
-    <div id="message"></div>
-    <div class="modal fade" id="confirm-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div>Voulez-vous supprimer l'article</div>
-                </div>
-                <div id="maModale" class="modal-body">
-                </div>
-                <div class="modal-footer">
-                    <div>ainsi que tous les documents liés ?</div>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Annuler</button>
-                    <a id="confirmer" class="btn btn-danger btn-ok">Supprimer</a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="form-main">
-            <div id="form-div">
-            <span> </span>
-                <form action="index.php?action=choixEtablissement" method ="post" class="form" id="form1">
-                    <div class="dropdown">
-                        <button id="boutonEtab" class="btn btn-secondary btn-lg" type="button">
-                            Choisir un établissements
-                        </button>
-                        <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                            <button class="dropdown-item" type="button" name="1" onclick="montrerListeArt(this.name,`collège Eugène Jamot`)">1 collège Eugène Jamot </button><button class="dropdown-item" type="button" name="2" onclick="montrerListeArt(this.name,`lycée Eugène Jamot`)">2 lycée Eugène Jamot </button><button class="dropdown-item" type="button" name="3" onclick="montrerListeArt(this.name,`lycée Jean Jaurès`)">3 lycée Jean Jaurès </button><button class="dropdown-item" type="button" name="4" onclick="montrerListeArt(this.name,`cité Scolaire`)">4 cité Scolaire </button>                        </div>
-                    </div>
-                        <!--<div class="dropdown-menu">
-                             //?php
-
-                               /* $nb = count($lesEtablissements);
-                                var_dump($lesEtablissements);
-                                for($i=0; $i<$nb; $i++)
-                                {
-                                    echo '<button class="dropdown-item" type="button" name="'.$lesEtablissements[$i]->getIDE()->getNomE().'" onclick="montrerListeArt(this.name,`'.$lesEtablissements[$i]->getIDE()->getNomE().'`)">'
-                                    .$lesEtablissements[$i]->getIDE()->getNomE()
-                                    .' '.'</button>';
-                                }*/
-                            ?>
-                        </div>
-                    </div>-->
-                </form>
-
-                <center>
-                    <a 
-                        href="index.php?action=deconnexion" 
-                        style="color: grey;">
-                        Se déconnecter
-                    </a>
-                </center>
-            </div>
-            <!--Lister tous les articles de l'établissement choisi dans le dropdown-->
-            <span id="listeArticlesEtab"> </span>
-
-
-        </div>
-
-        <footer>
-
-            <center>
-                <div style="color: grey;">
-                    <p>
-                        &copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
-                    </p>
-
-                </div>
-            </center>
-
-        </footer>
-
-
-    <script type="text/javascript">
-    $("#confirmer").on("click",function()
-    {
-        supprimerArticle($('#maModale').html());
-        $('#confirm-delete').modal("hide");
-    });
-    </script>
     </body>
 </html>
