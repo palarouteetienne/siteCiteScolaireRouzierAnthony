@@ -51,12 +51,13 @@ class Associe
 
 		$stmt = $connStr->query($req);
 
-		$newUtilisateur = new Utilisateur();
-		$newEtablissement = new Etablissement();
 
         while ($ligne = $stmt->fetch())
 		{
+			$newUtilisateur = new Utilisateur();
 			$newUtilisateur->retrieve("IDU=".$ligne['IDU']);
+
+			$newEtablissement = new Etablissement();
 			$newEtablissement->retrieve("IDE=".$ligne['IDE']);
 
             $newAssocie = new Associe($newUtilisateur, $newEtablissement);
@@ -88,4 +89,3 @@ class Associe
 } // End Class Associe
 
 ?>
-
