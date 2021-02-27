@@ -1,10 +1,14 @@
 <?php
 
-include ('../Modele/etablissement.php');
+include '../Modele/etablissement.php';
+include_once "../Modele/article.php";
+
 
 $etablissementChoisi=new Etablissement();
 $etablissementChoisi->retrieve("IDE=".$_REQUEST['q']);
-$lesArticlesEtab = $etablissementChoisi->getLesArticles();
+//$lesArticlesEtab = $etablissementChoisi->getLesArticles();
+$article = new Article();
+$lesArticlesEtab = $article->findByEtab($_REQUEST['q']);
 
 echo "<H3>".$etablissementChoisi->getNomE()."</H3>";
 
