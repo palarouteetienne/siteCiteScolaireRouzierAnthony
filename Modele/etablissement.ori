@@ -138,7 +138,7 @@ class Etablissement{
 	public function create()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "INSERT into ETABLISSEMENT values ('".$this->IDE."','".$this->nomE."','".$this->rueE."','".$this->codePostalE."','".$this->villeE."','".$this->paysE."','".$this->telephoneE."','".$this->mailE."','".$this->motProviseur."');";
 
@@ -148,7 +148,7 @@ class Etablissement{
 	public function delete($IDE)
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$req = "DELETE from ETABLISSEMENT where IDE =".$IDE;
 		$connStr->exec($req);
 
@@ -157,7 +157,7 @@ class Etablissement{
 	public function retrieve($condition)
 	{		
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "SELECT * FROM ETABLISSEMENT WHERE ".$condition;
 
@@ -179,7 +179,7 @@ class Etablissement{
 	public function findAll()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$req="SELECT * FROM ETABLISSEMENT";
 		$lesEtablissements = array();
 
@@ -199,7 +199,7 @@ class Etablissement{
 	public function update($IDE)
 	{ 
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "UPDATE ETABLISSEMENT set
 		NOME = '".$this->nomE."',
@@ -218,7 +218,7 @@ class Etablissement{
 	public function numero()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req="SELECT MAX(IDE) as MAX FROM ETABLISSEMENT";
 		$stmt = $connStr->query($req);

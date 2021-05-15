@@ -1,5 +1,4 @@
 <?php
-
 class Associe 			
 {
 	
@@ -7,7 +6,6 @@ class Associe
 	private $IDU;
 	private $IDE;
 
-	
 	//Constructeur
 	function __construct($IDU=null,$IDE=null)
 	{
@@ -15,27 +13,35 @@ class Associe
 		$this->IDE = $IDE;
 	}
 
-    //Méthodes
+	//Méthodes
+
+	public function create()
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+
+		$req = "INSERT into associe values ('".$this->IDU = $IDU."';'".$this->IDE."');";
+		$stmt = $connStr->query($req);
+		return true;
+
+	}
+	
     public function findAll()
 	{
         include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
         
 		$req="SELECT * FROM associe";
-		$associe = array();
+		$lesAssocies = array();
 
         $stmt = $connStr->query($req);
         
         while ($ligne = $stmt->fetch())
 		{
-            $newAssocie = new Associe
-            (
-                    $ligne["IDU"],
-                    $ligne["IDE"]
-            );
-			array_push($associe, $newAssocie);
+            $newAssocie = new Associe($ligne["IDU"],$ligne["IDE"]);
+			array_push($lesAssocies, $newAssocie);
         }
-        return $associe;
+        return $lesAssocies;
     }
     
     public function findAllBy($condition)
@@ -47,7 +53,7 @@ class Associe
         
 		$req="SELECT * FROM associe WHERE ".$condition;
 		
-		$associe = array();
+		$lesAssocies = array();
 
 		$stmt = $connStr->query($req);
 
@@ -61,9 +67,9 @@ class Associe
 			$newEtablissement->retrieve("IDE=".$ligne['IDE']);
 
             $newAssocie = new Associe($newUtilisateur, $newEtablissement);
-			array_push($associe, $newAssocie);
+			array_push($lesAssocies, $newAssocie);
         }
-        return $associe;
+        return $lesAssocies;
     }
 
 	public function getIDE()

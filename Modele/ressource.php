@@ -28,7 +28,7 @@ class Ressource
 	public function create()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$req = "INSERT into ressource values (NULL,'"
 
 			.$this->articler."',
@@ -40,7 +40,7 @@ class Ressource
 	public function delete($IDR)
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$req = "DELETE from ressource where IDR =".$IDR;
 		$connStr->exec($req);
 
@@ -49,7 +49,7 @@ class Ressource
 	public function deleteParArticle($ida)
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$req = "DELETE from ressource where ARTICLER =".$ida;
 		$connStr->exec($req);
 
@@ -58,7 +58,7 @@ class Ressource
 	public function retrieve($condition)
 	{		
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "SELECT * FROM ressource WHERE ".$condition;
 
@@ -79,7 +79,7 @@ class Ressource
 	public function numero()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req="SELECT MAX(IDR) as MAX FROM ressource";
 		$stmt = $connStr->query($req);
@@ -94,7 +94,7 @@ class Ressource
 
 	public function tailleTotale(){
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req="SELECT SUM(poidsr) as tailleTotale FROM ressource";
 		$stmt = $connStr->query($req);

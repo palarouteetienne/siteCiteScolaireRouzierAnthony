@@ -31,9 +31,9 @@ class Etablissement
 
 	public function create()
 	{
-		
+		echo "create Etablissement";
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "INSERT into etablissement values ('".$this->IDE."','".$this->nomE."','".$this->rueE."','".$this->codePostalE."','".$this->villeE."','".$this->telephoneE."','".$this->emailE."','".$this->motProviseur."', '".$this->$lesArticles."');";
 
@@ -43,7 +43,7 @@ class Etablissement
 	public function delete($IDE)
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$req = "DELETE from etablissement where IDE =".$IDE;
 		$connStr->exec($req);
 	}
@@ -73,7 +73,7 @@ class Etablissement
 	public function findAll()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$req="SELECT * FROM etablissement";
 		$lesEtablissements = array();
 
@@ -93,7 +93,7 @@ class Etablissement
 	public function update($IDE)
 	{ 
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "UPDATE etablissement set
 		NOME = '".$this->nomE."',
@@ -110,8 +110,9 @@ class Etablissement
 
 	public function numero()
 	{
+		echo "numero";
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req="SELECT MAX(IDE) as MAX FROM etablissement";
 		$stmt = $connStr->query($req);
@@ -177,7 +178,7 @@ class Etablissement
 	public function rechercheArticlesetab()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		include "article.php";
 		
 		$articles = array();
@@ -198,7 +199,7 @@ class Etablissement
 	public function rechercheArticlesetabACTU($tousEtab = false)
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$articles = array();
 		if($tousEtab == false) //Pour les actus d'un établissement donné
 		{

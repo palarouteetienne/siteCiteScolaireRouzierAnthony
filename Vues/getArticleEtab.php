@@ -3,6 +3,7 @@
 include '../Modele/etablissement.php';
 include_once "../Modele/article.php";
 
+$_SESSION['ide'] = $_REQUEST['q'];
 
 $etablissementChoisi=new Etablissement();
 $etablissementChoisi->retrieve("IDE=".$_REQUEST['q']);

@@ -86,7 +86,7 @@ class Formation{
 	public function create()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "INSERT into FORMATION values ('".$this->idFormation."','".$this->getUnEtablissement()."','".$this->nomFormation."','".$this->voieFormation."','".$this->commentaire."');";
 
@@ -96,7 +96,7 @@ class Formation{
 	public function delete($idFormation)
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$req = "DELETE from FORMATION where IDFORMATION =".$idFormation;
 		$connStr->exec($req);
 
@@ -105,7 +105,7 @@ class Formation{
 	public function retrieve($condition)
 	{		
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "SELECT * FROM FORMATION WHERE ".$condition;
 
@@ -125,7 +125,7 @@ class Formation{
 	public function findAll()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$req="SELECT * FROM FORMATION";
 		$lesFormations = array();
 
@@ -147,7 +147,7 @@ class Formation{
 	public function update($idFormation)
 	{ 
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "UPDATE FORMATION set ETABLISSEMENT = '".$this->unEtablissement."',
 		NOMFORMATION = '".$this->nomFormation."',
@@ -161,7 +161,7 @@ class Formation{
 	public function numero()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req="SELECT MAX(IDFORMATION) as MAX FROM FORMATION";
 		$stmt = $connStr->query($req);
@@ -176,7 +176,7 @@ class Formation{
 	public function findAllLyceeEJ()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$req="SELECT * FROM FORMATION WHERE ETABLISSEMENT = 2 AND IDFORMATION != 36";
 		$lesFormations = array();
 
@@ -198,7 +198,7 @@ class Formation{
 	public function findAllCollegeEJ()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$req="SELECT * FROM FORMATION WHERE ETABLISSEMENT = 1 AND IDFORMATION != 37";
 		$lesFormations = array();
 
@@ -220,7 +220,7 @@ class Formation{
 	public function findAllLyceeJJ()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$req="SELECT * FROM FORMATION WHERE ETABLISSEMENT = 3 AND IDFORMATION != 38";
 		$lesFormations = array();
 
@@ -242,7 +242,7 @@ class Formation{
 	public function findAllCiteScolaire()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$req="SELECT * FROM FORMATION WHERE ETABLISSEMENT = 4 AND VOIEFORMATION='portes_ouvertes_collegeEJ' OR VOIEFORMATION='portes_ouvertes_lyceeEJ' OR VOIEFORMATION='portes_ouvertes_BTS' OR VOIEFORMATION='portes_ouvertes_lyceeJJ'";
 		$lesFormations = array();
 
@@ -264,7 +264,7 @@ class Formation{
 	public function findAllCiteScolaireIns()
 	{
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 		$req="SELECT * FROM FORMATION WHERE ETABLISSEMENT = 4 AND VOIEFORMATION='inscription_collegeEJ' OR VOIEFORMATION='inscription_lyceeEJ' OR VOIEFORMATION='inscription_BTS' OR VOIEFORMATION='inscription_lyceeJJ'";
 		$lesFormationsIns = array();
 
@@ -286,7 +286,7 @@ class Formation{
 	public function cheminPDF($condition)
 	{		
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "SELECT CHEMINRESSOURCE FROM RESSOURCE, FORMATION WHERE  FORMATION = IDFORMATION AND FORMATRESSOURCE = 'pdf' AND IDFORMATION =".$condition;
 
@@ -301,7 +301,7 @@ class Formation{
 	public function cheminPDFActu($condition)
 	{		
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "SELECT CHEMINRESSOURCE FROM RESSOURCE, FORMATION WHERE  FORMATION = IDFORMATION AND FORMATRESSOURCE = 'pdf' AND DATEDIFF(DATEFIN, DATEDEBUT)>=0 AND NOW()>=DATEDEBUT AND IDFORMATION =".$condition;
 
@@ -316,7 +316,7 @@ class Formation{
 	public function cheminImg($condition)
 	{		
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "SELECT CHEMINRESSOURCE FROM RESSOURCE, FORMATION WHERE  FORMATION = IDFORMATION AND FORMATRESSOURCE = 'jpg' AND IDFORMATION =".$condition;
 
@@ -331,7 +331,7 @@ class Formation{
 	public function cheminImgActu($condition)
 	{		
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "SELECT CHEMINRESSOURCE FROM RESSOURCE, FORMATION WHERE  FORMATION = IDFORMATION AND FORMATRESSOURCE = 'jpg' AND DATEDIFF(DATEFIN, DATEDEBUT)>=0 AND NOW()>=DATEDEBUT AND IDFORMATION =".$condition;
 
@@ -346,7 +346,7 @@ class Formation{
 	public function nomPDF($condition)
 	{		
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "SELECT NOMRESSOURCE FROM RESSOURCE, FORMATION WHERE  FORMATION = IDFORMATION AND IDFORMATION =".$condition;
 
@@ -361,7 +361,7 @@ class Formation{
 	public function nomPDFActu($condition)
 	{		
 		include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
 
 		$req = "SELECT NOMRESSOURCE FROM RESSOURCE, FORMATION WHERE  FORMATION = IDFORMATION AND DATEDIFF(DATEFIN, DATEDEBUT)>=0 AND NOW()>=DATEDEBUT AND IDFORMATION =".$condition;
 

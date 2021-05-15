@@ -19,7 +19,7 @@ class Possede
     public function findAll()
 	{
         include_once "connexionBDD.php";
-		$connStr = getBDD();;
+		$connStr = getBDD();
         
 		$req="SELECT * FROM possede";
 		$possede = array();

@@ -34,7 +34,7 @@
 					if (isset($error)) 
 					{
 						echo $error;
-					} 
+					}
 				?>
 	      		<div class="text-center">
 	      			<h2 style="color: white"> Utilisateur </h2>
@@ -75,7 +75,7 @@
 	      	</form>
 	      	<br>
 	      	<br>
-    		<a href="index.php?action=newUtilisateur" style="color: white;">Nouvel utilisateur</a>
+    		<a href="index.php?action=creautil" style="color: white;">Nouvel utilisateur</a>
     	</div>
   	</div>
 

@@ -3,8 +3,10 @@
 class Utilisateur 			
 {
 	//Attributes
-
+		
+	 
 	private $idu; // type : int
+	private $etabu; // type : string
 	private $nomu; // type : string
 	private $prenomu; // type : string
 	private $mailu; // type : string
@@ -14,13 +16,15 @@ class Utilisateur
 
 	//Operations
 	//Constructeur
-	function __construct($idu=0,$nomu="", $prenomu="", $mailu="", $mdpu="")
+	function __construct($idu=0, $etabu="",$nomu="", $prenomu="", $mailu="", $mdpu="")
 	{
-		$this->idu = $this->numero();
+		$this->idu = $idu;
+		$this->etabu = $etabu;
 		$this->nomu = $nomu;
 		$this->prenomu = $prenomu;
 		$this->mailu = $mailu;
 		$this->mdpu = $mdpu;
+		
 	
 		$this->lesArticles = array();
 	}
@@ -30,7 +34,7 @@ class Utilisateur
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 
-		$req = "INSERT INTO UTILISATEUR values ('".$this->idu."','".$this->nomu."','".$this->prenomu."','".$this->mailu."','".$this->mdpu."');";
+		$req = "INSERT INTO UTILISATEUR values ('".$this->idu."','".$this->nomu."','".$this->prenomu."','".$this->mailu."','".$this->mdpu."','".$this->etabu."');";
 
 		$stmt = $connStr->query($req);
 
@@ -51,20 +55,39 @@ class Utilisateur
 		$connStr = getBDD();
 
 		$req = "SELECT * FROM utilisateur WHERE ".$condition;
-		//var_dump($req);
+
 
 		$stmt = $connStr->query($req);
-		// var_dump($stmt);
+
 		while ($ligne = $stmt->fetch())
 		{
-			$this->idu= $ligne["IDU"];
+			$this->idu = $ligne["IDU"];
 			$this->nomu = $ligne["NOMU"];
 			$this->prenomu = $ligne["PRENOMU"];
 			$this->mailu = $ligne["MAILU"];
 			$this->mdpu = $ligne["MDPU"];
+			$this->etabu = $ligne["ETABU"];
 		}
 	}
+public function retrieveByMail($mail)
+	{		
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
 
+		$req = "SELECT * FROM utilisateur WHERE MAILU = :mailu";
+		$stmt = $dbh->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+		$stmt->execute(array(':mailu' => $mail));
+
+		while ($ligne = $stmt->fetch())
+		{
+			$this->idu = $ligne["IDU"];
+			$this->nomu = $ligne["NOMU"];
+			$this->prenomu = $ligne["PRENOMU"];
+			$this->mailu = $ligne["MAILU"];
+			$this->mdpu = $ligne["MDPU"];
+			$this->etabu = $ligne["ETABU"];
+		}
+	}
 	public function findAll()
 	{
 		include_once "connexionBDD.php";
@@ -77,7 +100,7 @@ class Utilisateur
 		while ($ligne = $stmt->fetch())
 		{
 
-			$newUtilisateur = new Utilisateur($ligne["IDU"], $ligne["NOMU"], $ligne["PRENOMU"], $ligne["MAILU"], $ligne["MDPU"]);
+			$newUtilisateur = new Utilisateur($ligne["IDU"], $ligne["NOMU"], $ligne["PRENOMU"], $ligne["MAILU"], $ligne["MDPU"], $ligne["ETABU"]);
 
 			array_push($lesUtilisateurs, $newUtilisateur);
 		}
@@ -100,20 +123,6 @@ class Utilisateur
 
 	}
 
-	public function exist($condition){
-		include_once "connexionBDD.php";
-		$connStr = getBDD();
-		$req = "SELECT * FROM utilisateur WHERE ".$condition;
-
-		$stmt = $connStr->query($req);
-		$ligne = $stmt->fetch();
-
-		if($ligne) {
-			return new Utilisateur($ligne["IDU"], $ligne["NOMU"], $ligne["PRENOMU"], $ligne["MAILU"], $ligne["MDPU"]);
-		}
-		return false;
-	}
-
 	public function getidu()
 	{
 		return $this->idu;
@@ -133,6 +142,10 @@ class Utilisateur
 	public function getmdpu()
 	{
 		return $this->mdpu;
+	}
+	public function getetabu()
+	{
+		return $this->etabu;
 	}
 	public function getlesArticles()
 	{
@@ -159,6 +172,10 @@ class Utilisateur
 	{
 		$this->mdpu=$mdpu;
 	}
+	public function setetabu($etabu)
+	{
+		$this->etabu=$etabu;
+	}
 	public function setlesArticles($lesArticles)
 	{
 		$this->lesArticles=$lesArticles;
@@ -167,3 +184,4 @@ class Utilisateur
 } // End Class Utilisateur
 
 ?>
+

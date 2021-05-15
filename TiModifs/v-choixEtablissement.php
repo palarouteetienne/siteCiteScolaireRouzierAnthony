@@ -91,14 +91,12 @@
         </script>
         <script>
 
-            var IDEtabGlobal;
+            var IDEtab;
 
             function montrerListeArt(etab,nomEtab) 
-            {
-                IDEtabGlobal=etab;
-                
+            {                
                 document.getElementById("message").innerHTML = null;
-                //document.getElementById("boutonEtab").innerHTML=nomEtab;
+                document.getElementById("boutonEtab").innerHTML=nomEtab;
                 if (etab.length == 0) 
                 {
                     document.getElementById("listeArticlesEtab").innerHTML = "Aucun établissement sélectionné.";
@@ -118,7 +116,6 @@
                     xmlhttp.send();
                 }
             }
-            
             function supprimerArticle(ida) 
             {
                 var xmlhttp = new XMLHttpRequest();
@@ -135,7 +132,7 @@
             
             function ajouterArticle() 
             {
-				window.location.href="index.php?action=saisieArticle&IDEtab="+IDEtabGlobal;
+				window.location.href="index.php?action=saisieArticle&IDEtab=<?php echo $_SESSION["ide"];?>";
             }
             
         </script>
@@ -161,65 +158,42 @@
         </div>
     </div>
     <div id="form-main">
-            <div id="form-div">
-            <span> </span>
-            
-                <form action="index.php?action=choixEtablissement" method ="post" class="form" id="form1">
-                    <!--<div class="dropdown">
-                        <button id="boutonEtab" class="btn btn-secondary btn-lg" type="button">
-                            Choisir un établissements
-                        </button>
-                        <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="sr-only">Toggle Dropdown</span>
-                        </button>
-                        <div class="dropdown-menu">
-                            <button class="dropdown-item" type="button" name="1" onclick="montrerListeArt(this.name,`collège Eugène Jamot`)">1 collège Eugène Jamot </button>
-                            <button class="dropdown-item" type="button" name="2" onclick="montrerListeArt(this.name,`lycée Eugène Jamot`)">2 lycée Eugène Jamot </button>
-                            <button class="dropdown-item" type="button" name="3" onclick="montrerListeArt(this.name,`lycée Jean Jaurès`)">3 lycée Jean Jaurès </button>
-                            <button class="dropdown-item" type="button" name="4" onclick="montrerListeArt(this.name,`cité Scolaire`)">4 cité Scolaire </button>
-                        </div>
-                    </div>-->
-                    <button class="dropdown-item" type="button" name="2" onclick="montrerListeArt(this.name,`lycée Eugène Jamot`)">2 lycée Eugène Jamot </button>
-                        <!--<div class="dropdown-menu">
-                             //?php
+        <div id="form-div">
 
-                               /* $nb = count($lesEtablissements);
-                                var_dump($lesEtablissements);
-                                for($i=0; $i<$nb; $i++)
-                                {
-                                    echo '<button class="dropdown-item" type="button" name="'.$lesEtablissements[$i]->getIDE()->getNomE().'" onclick="montrerListeArt(this.name,`'.$lesEtablissements[$i]->getIDE()->getNomE().'`)">'
-                                    .$lesEtablissements[$i]->getIDE()->getNomE()
-                                    .' '.'</button>';
-                                }*/
-                            ?>
-                        </div>
-                    </div>-->
-                </form>
-
-                <div class="text-center">
-                    <a 
-                        href="index.php?action=deconnexion" 
-                        style="color: grey;">
-                        Se déconnecter
-                    </a>
+            <form action="index.php?action=choixEtablissement" method ="post" class="form" id="form1">
+                <div class="dropdown">
+                    <button id="boutonEtab" class="btn btn-secondary btn-lg" type="button">
+                        Choisir un établissements
+                    </button>
+                    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">Toggle Dropdown</span>
+                    </button>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item" type="button" name="1" onclick="montrerListeArt(this.name,`collège Eugène Jamot`)">1 collège Eugène Jamot </button><button class="dropdown-item" type="button" name="2" onclick="montrerListeArt(this.name,`lycée Eugène Jamot`)">2 lycée Eugène Jamot </button><button class="dropdown-item" type="button" name="3" onclick="montrerListeArt(this.name,`lycée Jean Jaurès`)">3 lycée Jean Jaurès </button><button class="dropdown-item" type="button" name="4" onclick="montrerListeArt(this.name,`cité Scolaire`)">4 cité Scolaire </button>                        </div>
                 </div>
-            </div>
-            <!--Lister tous les articles de l'établissement choisi dans le dropdown-->
-            <span id="listeArticlesEtab"> </span>
+            </form>
 
-
+            <center>
+                <a href="index.php?action=deconnexion" style="color: grey;">
+                    Se déconnecter
+                </a>
+            </center>
         </div>
+        <!--Lister tous les articles de l'établissement choisi dans le dropdown-->
+        <span id="listeArticlesEtab"> </span>
+
+    </div>
 
         <footer>
 
-            <div class="text-center">
+            <center>
                 <div style="color: grey;">
                     <p>
                         &copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
                     </p>
 
                 </div>
-            </div>
+            </center>
 
         </footer>
 

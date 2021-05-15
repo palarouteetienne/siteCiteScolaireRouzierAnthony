@@ -43,28 +43,12 @@
 /*======================================
 //--//-->   STYLES BOUTONS
 ======================================*/
-.svg-path {
-  stroke: gray;
-  stroke-width: 4;
-  fill: none;
-}
 
 #pointless{
   cursor:auto;
 }
-
-#cartes{
-  text-align: center;
-  align-content: center;
-}
-
 #cartes h5{
   color: #ffa538;
-}
-
-.carte{
-  height: 400px;
-  width: 270px;
 }
 
 #myBtn {

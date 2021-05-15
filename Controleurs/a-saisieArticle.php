@@ -7,7 +7,7 @@
 	include_once "Modele/ressource.php";
 
 	$IDEtab=$_REQUEST["IDEtab"];
-	$_SESSION["IDEtab"] = $IDEtab;
+	
 	$monEtablissement = new Etablissement();
 	$condition="IDE=".$IDEtab;
 	$monEtablissement->retrieve($condition);

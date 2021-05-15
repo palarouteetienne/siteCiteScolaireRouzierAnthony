@@ -57,70 +57,10 @@
 
 <body onload="ancrer1()" data-spy="scroll" data-target="#navbar-example">
 
-  <header>
-    <!-- header-area start -->
-    <div id="sticker" class="header-area">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12">
-
-            <!-- Navigation -->
-
-                <!-- Logo Cité Scolaire 
-                <a class="navbar-brand page-scroll sticky-logo" href="index.php?action=init">
-                  <h1><span>Cité</span>Scolaire</h1>
-								</a>
-              </div>
-              <!-- Les onglets de la NAV BAR -->
-              <!-- Nav tabs 
-              <ul class="nav nav-tabs">
-                <li class="nav-item">
-                <a class="nav-link" data-toggle="tab" href="index.php?action=init#init">Accueil</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="index.php?action=init#college_EJ">Collège Jamot</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="index.php?action=init#lycee_EJ">Lycée Jamot</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="index.php?action=init#lycee_JJ">Lycée Jaurès</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="index.php?action=init#cite_Scolaire">Cité Scolaire</a>
-                </li>
-              
-              
-                <li class="nav-item">
-                  <a class="nav-link active" data-toggle="tab" href="index.php?action=actualites#actualites">Actualités</a>
-                </li>
-                <li>
-                    <a class="nav-link" data-toggle="tab" href="index.php?action=citeScolaireInt#internat">Internat</a>
-                  </li>
-                  <li>
-                    <a class="nav-link" data-toggle="tab" href="index.php?action=citeScolaireS#self">Restauration</a>
-                  </li>
-                  <li>
-                    <a class="nav-link" data-toggle="tab" href="index.php?action=citeScolaireIns#inscription">Inscription</a>
-                  </li>
-                  <li>
-                    <a class="nav-link" data-toggle="tab" href="index.php?action=citeScolaireBA#bourses_aides">Bourses & Aides</a>
-                  </li>
-              </ul>
-              </div>
-            </nav>-->
-            <!-- END: Navigation -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- header-area end -->
-  </header>
-  <!-- header end -->
 
   <!-- Zone actualité -->
   <div id="actualite" class="portfolio-area area-padding fix">
-    <div class="container">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
@@ -165,81 +105,90 @@
       
       <div class="card-group" id="cartes">
 
-         <?php
+      <?php
 
-            //Créer un etab pour recup du libellé etab dans les cartes
-            $nouvEtab = new Etablissement();
+        //Créer un etab pour recup du libellé etab dans les cartes
+        $nouvEtab = new Etablissement();
 
-            $nb = count($lesActusCiteScolaire);
+        $nb = count($lesActusCiteScolaire);
+        $nbcol = 0; //Pour saut de ligne toutes les 4 actus;
+        
+        for($i=0; $i<$nb; $i++) //Pour chaque ACTU
+        {
 
-            for($i=0; $i<$nb; $i++) //Pour chaque ACTU
+            $lesRessourcesDeArt = array();
+            
+            $lesRessourcesDeArt = $lesActusCiteScolaire[$i]->getLesRessources();
+            
+            $nbRes = count($lesRessourcesDeArt);
+
+            $HTMLliens="";  
+            $HTMLimages="";
+
+            if(empty($lesRessourcesDeArt))
             {
-                
-                $lesRessourcesDeArt = array();
-                
-                $lesRessourcesDeArt = $lesActusCiteScolaire[$i]->getLesRessources();
-                
-                $nbRes = count($lesRessourcesDeArt);
+              $HTMLliens = "Aucun document sur cette actu";
+            }
+            else
+            {
+              $nbRes = count($lesRessourcesDeArt);
 
-              $HTMLliens="";  
-              $HTMLimages="";
-
-                if(empty($lesRessourcesDeArt))
-                {
-                  $HTMLliens = "Aucun document sur cette actu";
+              for($j=0; $j<$nbRes; $j++)
+              { 
+                if($lesRessourcesDeArt[$j]->getformatr()=="pdf")
+                {//Préparation du code HTML d affichage des liens des ressources de l'actu
+                  $HTMLliens = $HTMLliens.'
+                  <a href="'.$lesRessourcesDeArt[$j]->getcheminr().'">
+                  '.$lesRessourcesDeArt[$j]->getnomr().'
+                  </a>';
                 }
-                else
-                {
-                  $nbRes = count($lesRessourcesDeArt);
-                  //echo "test";
-                  for($j=0; $j<$nbRes; $j++)
-                  { 
-                    if($lesRessourcesDeArt[$j]->getformatr()=="pdf")
-                    {//Préparation du code HTML d affichage des liens des ressources de l'actu
-                      $HTMLliens = $HTMLliens.'
-                      <a href="'.$lesRessourcesDeArt[$j]->getcheminr().'">
-                      '.$lesRessourcesDeArt[$j]->getnomr().'
-                        </a>';
-                  }//Fin du for RESSOURCES
                 else 
                 {
                   $HTMLimages = $HTMLimages.
                   ' <img src="'.$lesRessourcesDeArt[$j]->getcheminr().'"/>
                       ';
-                  //<figure class="slider__item">
-                  //<img class="slider__image" src="'.$lesRessourcesDeArt[$j]->getcheminr().'"/>
-                  //<figcaption class="slider__caption">
-                  //  '.substr($lesRessourcesDeArt[$j]->getnomr(),0,strpos($lesRessourcesDeArt[$j]->getnomr(),".")).'
-                 // </figcaption>
-                //</figure>';
+                }//Fin du si
+              }//Fin du for RESSOURCES
+            }//Fin du si  
+            //DEBUT CARTE : Une CARTE par ACTU -------------------------------------------------------------------
+            $nouvEtab->retrieve("IDE=".$lesActusCiteScolaire[$i]->getetaba());
+            if($nbcol==0)
+            {
+              echo '<row>';
+            }
+            echo 
+            //<div class="card-deck-group">
+            '<div class="col-lg-4">
+              <div class="card carte">
+                <div class="card-header">'.$nouvEtab->getNomE().'</div>
+                <div class="card-body">
+                  <h5 class="card-title">'.$lesActusCiteScolaire[$i]->gettitrea().'</h5> 
+                  <p class="card-text">'.$lesActusCiteScolaire[$i]->getcommentairea().'</p>
+                  <p class="card-text">'.$HTMLliens.'</p>
+                  <p class="card-text">'.$HTMLimages.'</p>
+                </div>
 
-              }//Fin du si
-            }//Fin du for
-          }//Fin du si
-                //DEBUT CARTE : Une CARTE par ACTU -------------------------------------------------------------------
-                $nouvEtab->retrieve("IDE=".$lesActusCiteScolaire[$i]->getetaba());
-                echo 
-                //<div class="card-deck-group">
-                  '<div class="card" style="max-width: "18rem">
-                    <div class="card-header">'.$nouvEtab->getNomE().'</div>
-                    <div class="card-body">
-                      <h5 class="card-title">'.$lesActusCiteScolaire[$i]->gettitrea().'</h5> 
-                      <p class="card-text">'.$lesActusCiteScolaire[$i]->getcommentairea().'</p>
-                      <p class="card-text">'.$HTMLliens.'</p>
-                      <p class="card-text">'.$HTMLimages.'</p>
-                    </div>
+                <div class="card-footer">
+                  <small class="text-muted">du '.$lesActusCiteScolaire[$i]->getdatedebr().' au '.$lesActusCiteScolaire[$i]->getdatefinr().'</small>
+                </div>
+              </div>
+            </div>            
+            ';
+            if($nbcol==3)
+            {
+              echo '</row>';
+              $nbcol = 0;
+            }
+            else
+            {
+              $nbcol ++;
+            }
+        }//Fin du For ACTUS
 
-                    <div class="card-footer">
-                      <small class="text-muted">du '.$lesActusCiteScolaire[$i]->getdatedebr().' au '.$lesActusCiteScolaire[$i]->getdatefinr().'</small>
-                    </div>
-                  </div>            
-                ';
-            }//Fin du For ACTUS
-
-          ?>
+      ?>
         
         </div>
-      </div><!-- container fin -->
+      </div><!-- container principal fin -->
     </div> <!-- actualité fin -->
 
 

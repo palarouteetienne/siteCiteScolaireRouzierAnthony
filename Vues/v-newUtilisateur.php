@@ -41,7 +41,7 @@
 	    	<form action="index.php?action=creerUtilisateur" method ="post" class="form" id="form1">
 	      		
 	      		<div class="text-center">
-	      		<h2 style="color: white"> Nouvel Utilisateur </h2>
+	      		<h2 style="color: white">Nouvel Utilisateur</h2>
 	      		</div>
 
 	      		<p class="nom">
