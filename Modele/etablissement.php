@@ -13,7 +13,7 @@ class Etablissement
 	private $telephoneE; // type : int
 	private $emailE;
 	private $motProviseur; // type : string
-	private $lesArticles = array(); //Pour les articles d'un établissement
+	private $lesarticles = array(); //Pour les articles d'un établissement
 
 	//Operations
 	//Constructeur
@@ -35,7 +35,7 @@ class Etablissement
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 
-		$req = "INSERT into etablissement values ('".$this->IDE."','".$this->nomE."','".$this->rueE."','".$this->codePostalE."','".$this->villeE."','".$this->telephoneE."','".$this->emailE."','".$this->motProviseur."', '".$this->$lesArticles."');";
+		$req = "INSERT into etablissement values ('".$this->IDE."','".$this->nomE."','".$this->rueE."','".$this->codePostalE."','".$this->villeE."','".$this->telephoneE."','".$this->emailE."','".$this->motProviseur."', '".$this->$lesarticles."');";
 
 		$stmt = $connStr->query($req);
 	}
@@ -69,7 +69,27 @@ class Etablissement
 			$this->motProviseur = $ligne["MOTPROVISEUR"];
 		}
 	}
+	public function retrieveById($ide)
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+		
+		$req = "SELECT * FROM etablissement WHERE IDE = ".$ide;
+		
+		$stmt = $connStr->query($req);
+		
+		$ligne = $stmt->fetch();
+		
+		$this->IDE= $ligne["IDE"];
+		$this->nomE = $ligne["NOME"];
+		$this->rueE = $ligne["RUEE"];
+		$this->codePostalE = $ligne["CODEPOSTALE"];
+		$this->villeE = $ligne["VILLEE"];
+		$this->telephoneE = $ligne["TELEPHONEE"];
+		$this->emailE = $ligne["EMAILE"];
+		$this->motProviseur = $ligne["MOTPROVISEUR"];
 
+	}
 	public function findAll()
 	{
 		include_once "connexionBDD.php";
@@ -159,21 +179,21 @@ class Etablissement
 	{
 		if(!empty($this->IDE))
 		{
-			$this->lesArticles = $this->rechercheArticlesetab(); //Pour les articles d'un établissement
+			$this->lesarticles = $this->rechercheArticlesetab(); //Pour les articles d'un établissement
 		}
 		else
 		{
-			$this->lesArticles = NULL;
+			$this->lesarticles = NULL;
 		}
-		return $this->lesArticles;
+		return $this->lesarticles;
 	}
 
 	public function getLesArticlesACTU($tousEtab = false)
 	{
 	
-		$this->lesArticles = $this->rechercheArticlesetabACTU($tousEtab); 
+		$this->lesarticles = $this->rechercheArticlesetabACTU($tousEtab); 
 	
-		return $this->lesArticles;
+		return $this->lesarticles;
 	}
 	public function rechercheArticlesetab()
 	{

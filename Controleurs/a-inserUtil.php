@@ -1,19 +1,28 @@
 <?php
-
+	include "Modele/utilisateur.php";
+	include "Modele/etablissement.php";
+	include "Modele/associe.php";
+	
+	$ide = $_POST["etabu"];
 	$nomu = $_POST["nomu"];
 	$prenomu = $_POST["prenomu"];
 	$emailu = $_POST["emailu"];
-	$mdpu = $_POST["mdpu"];
-	$ide = $_POST["etabu"];
-
-	echo $ide." ".$nomu." ".$prenomu." ".$emailu." ".$mdpu;
-
-	$unUtilisateur = new Utilisateur($nomu, $prenomu, $emailu, $mdpu);
+	$mdpu = password_hash($_POST["mdpu"], PASSWORD_DEFAULT);
+	$adminu = $_POST["adminu"];
 	
-	$unUtilisateur->create();
+	$unUtilisateur = new Utilisateur("null", $ide, $nomu, $prenomu, $emailu, $mdpu, $adminu);
 	
-	$uneAsso = new Associe($unUtilisateur->getIdu(),$ide);
-
-	$etat = "inserUtil";
+	$reussi = $unUtilisateur->create();
+	
+	if($reussi == true)
+	{
+		$unUtilisateur->createAsso();
+		$etat = "inserUtil";
+	}
+	else
+	{
+		$etat = "creautilimposs";
+	}
+	
 
 ?>

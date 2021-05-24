@@ -42,9 +42,9 @@
 	$lesRessources = $ressource->findAll();
 
 	$article = new Article();
-	$lesArticles = array();
+	$lesarticles = array();
 
-	$lesArticles = $article->findAll();
+	$lesarticles = $article->findAll();
 
 	$etat = "ressourceAjouter";
 

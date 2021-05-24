@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html>
 
-
 <head>
-
 	<meta charset="utf-8">
   	<meta content="width=device-width, initial-scale=1.0" name="viewport">
 	<link href="./css/styleFormulaire.css" rel="stylesheet">
-	<title>Connexion Impossible</title>
 
+	<title>Connexion Impossible</title>
 </head>
 
 <body>
@@ -42,7 +40,6 @@
     		</form>
     		<br>
     		<br>
-    		<!--<a href="index.php?action=newUtilisateur" style="color: white;">Nouvel utilisateur</a>-->
     	</div>
   	</div>
 

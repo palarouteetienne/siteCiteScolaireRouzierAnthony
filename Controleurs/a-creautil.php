@@ -1,5 +1,4 @@
 <?php 
-    echo "creautil";
     
     include_once("Modele/etablissement.php");
     

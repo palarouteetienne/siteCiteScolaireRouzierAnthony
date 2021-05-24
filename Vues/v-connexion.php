@@ -73,9 +73,7 @@
 	        		<div class="ease"></div>
 	      		</div>
 	      	</form>
-	      	<br>
-	      	<br>
-    		<a href="index.php?action=creautil" style="color: white;">Nouvel utilisateur</a>
+    	
     	</div>
   	</div>
 

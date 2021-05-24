@@ -12,7 +12,7 @@ class Utilisateur
 	private $mailu; // type : string
 	private $mdpu; // type : string
 	
-	private $lesArticles;
+	private $lesarticles;
 
 	//Operations
 	//Constructeur
@@ -26,7 +26,7 @@ class Utilisateur
 		$this->mdpu = $mdpu;
 		
 	
-		$this->lesArticles = array();
+		$this->lesarticles = array();
 	}
 	
 	public function create()
@@ -100,7 +100,7 @@ public function retrieveByMail($mail)
 		while ($ligne = $stmt->fetch())
 		{
 
-			$newUtilisateur = new Utilisateur($ligne["IDU"], $ligne["NOMU"], $ligne["PRENOMU"], $ligne["MAILU"], $ligne["MDPU"], $ligne["ETABU"]);
+			$newUtilisateur = new Utilisateur($ligne["IDU"], $ligne["NOMU"], $ligne["PRENOMU"], $ligne["MAILU"], $ligne["MDPU"], $ligne["ADMIN"]);
 
 			array_push($lesUtilisateurs, $newUtilisateur);
 		}
@@ -147,9 +147,9 @@ public function retrieveByMail($mail)
 	{
 		return $this->etabu;
 	}
-	public function getlesArticles()
+	public function getlesarticles()
 	{
-		return $this->lesArticles;
+		return $this->lesarticles;
 	}
 
 	public function setidu($idu)
@@ -176,9 +176,9 @@ public function retrieveByMail($mail)
 	{
 		$this->etabu=$etabu;
 	}
-	public function setlesArticles($lesArticles)
+	public function setlesarticles($lesarticles)
 	{
-		$this->lesArticles=$lesArticles;
+		$this->lesarticles=$lesarticles;
 	}
 
 } // End Class Utilisateur

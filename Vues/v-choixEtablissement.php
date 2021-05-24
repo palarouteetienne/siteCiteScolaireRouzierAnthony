@@ -100,7 +100,7 @@
                         </button>
 
                         <?php
-                            
+
                             $nb = count($lesEtablissements);
                             if ($nb != 1) {
 
@@ -138,7 +138,7 @@
                             ?>
 
                                 <script>
-                                montrerListeArt(<?= $lesEtablissements[0]->getIDE() ?>,'<?= $lesEtablissements[0]->getNomE() ?>');
+                                    montrerListeArt(<?= $lesEtablissements[0]->getIDE() ?>,'<?= $lesEtablissements[0]->getNomE() ?>');
                                 </script>
 
                         <?php
@@ -147,17 +147,29 @@
                     </div>
                 </form>
 
+                <?php
+                include_once "Modele/utilisateur.php";
+                $util = new Utilisateur();
+                $util->retrieve("MAILU='".$_SESSION['emailu']."'");
+
+                if($util->getadminu() == true)
+                {
+                    echo 
+                    '<div class="text-center">
+                        <a href="index.php?action=creautil" style="color: white;">
+                            Nouvel utilisateur
+                        </a>
+                    </div>';
+                }
+                ?>
                 <div class="text-center">
-                    <a 
-                        href="index.php?action=deconnexion" 
-                        style="color: grey;">
+                    <a href="index.php?action=deconnexion" style="color: grey;">
                         Se déconnecter
                     </a>
                 </div>
             </div>
             <!--Lister tous les articles de l'établissement choisi dans le dropdown-->
             <span id="listeArticlesEtab"> </span>
-
 
         </div>
 
@@ -255,55 +267,5 @@
             });
         </script>
 
-        <script>
-            /*var IDEtabGlobal;
-
-            function montrerListeArt(IDE,NOME) 
-            {
-                IDEtabGlobal=IDE;
-                alert('Yo pétasse');
-                
-                document.getElementById("message").innerHTML = null;
-                //document.getElementById("boutonEtab").innerHTML=NOME;
-                if (IDE.length == 0) 
-                {
-                    document.getElementById("listeArticlesEtab").innerHTML = "Aucun établissement sélectionné.";
-                    return;
-                }
-                else
-                {
-                    var xmlhttp = new XMLHttpRequest();
-                    xmlhttp.onreadystatechange = function() 
-                    {
-                        if (this.readyState == 4 && this.status == 200)
-                        {
-                            document.getElementById("listeArticlesEtab").innerHTML = this.responseText;
-                        }
-                    }
-                    xmlhttp.open("GET", "./Vues/getArticleEtab.php?q="+NOME, true);
-                    xmlhttp.send();
-                }
-            }
-            
-            function supprimerArticle(ida) 
-            {
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function() 
-                {
-                    if (this.readyState == 4 && this.status == 200)
-                    {
-                        document.getElementById("message").innerHTML = this.responseText;
-                    }
-                }
-                xmlhttp.open("GET", "Controleurs/a-supprimerArticle.php?q="+ida, true);
-                xmlhttp.send();
-            }
-            
-            function ajouterArticle() 
-            {
-				window.location.href="index.php?action=saisieArticle&IDEtab="+IDEtabGlobal;
-            }*/
-            
-        </script>
     </body>
 </html>

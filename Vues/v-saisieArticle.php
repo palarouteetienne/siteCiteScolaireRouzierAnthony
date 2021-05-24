@@ -49,7 +49,9 @@
 						<option value="">Choisir un type d'article</option>
 						<?php
 							for ($i=0; $i<count($lesTypes); $i++) { ?>
-								<option value='<?php echo $lesTypes[$i]->getidt(); ?>'><?php echo $lesTypes[$i]->gettype(); ?></option>
+								<option value='<?php echo $lesTypes[$i]->getidt(); ?>'><?php echo $lesTypes[$i]->gettype(); 
+						?>
+						</option>
 						<?php	
 							}
 						?>
@@ -62,14 +64,19 @@
 						<option value="">Choisir une voie</option>
 						<?php
 							for ($i=0; $i<count($lesVoies); $i++) { ?>
-								<option value='<?php echo $lesVoies[$i]->getidv(); ?>'><?php echo $lesVoies[$i]->getvoie(); ?></option>
+								<option value='<?php echo $lesVoies[$i]->getidv(); ?>'><?php echo $lesVoies[$i]->getvoie(); 
+						?>
+						</option>
 						<?php	
 							}
 						?>
 					</select>
 				</div>
-
 			</div>
+
+			<?php	
+				echo "<input value='".$_GET["IDEtab"]."' type='hidden' name='IDEtab' id='IDEtab'></input>";
+			?>
 
 			<div class="row">
 				<div class="col-md-12">

@@ -3,29 +3,32 @@ class Associe
 {
 	
 	//Attributs
-	private $IDU;
-	private $IDE;
+	private $idu;
+	private $ide;
 
 	//Constructeur
-	function __construct($IDU=null,$IDE=null)
+	function __construct($idu=null,$ide=null)
 	{
-		$this->IDU = $IDU;
-		$this->IDE = $IDE;
+		$this->idu = $idu;
+		$this->ide = $ide;
 	}
 
 	//Méthodes
 
 	public function create()
 	{
+
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 
-		$req = "INSERT into associe values ('".$this->IDU = $IDU."';'".$this->IDE."');";
+		$req = "INSERT into associe values ('".$this->idu."','".$this->ide."');";
+
 		$stmt = $connStr->query($req);
+
 		return true;
 
 	}
-	
+
     public function findAll()
 	{
         include_once "connexionBDD.php";
@@ -38,7 +41,7 @@ class Associe
         
         while ($ligne = $stmt->fetch())
 		{
-            $newAssocie = new Associe($ligne["IDU"],$ligne["IDE"]);
+            $newAssocie = new Associe($ligne["idu"],$ligne["ide"]);
 			array_push($lesAssocies, $newAssocie);
         }
         return $lesAssocies;
@@ -54,10 +57,32 @@ class Associe
 		$req="SELECT * FROM associe WHERE ".$condition;
 		
 		$lesAssocies = array();
-
+		
 		$stmt = $connStr->query($req);
+		
+		
+        while ($ligne = $stmt->fetch())
+		{
+            $newAssocie = new Associe($ligne['IDU'], $ligne['IDE']);
+			array_push($lesAssocies, $newAssocie);
+        }
+        return $lesAssocies;
+    }
 
-
+	public function findAllObjBy($condition)
+	{
+		include_once "connexionBDD.php";
+		include_once "etablissement.php";
+		include_once "utilisateur.php";
+		$connStr = getBDD();
+        
+		$req="SELECT * FROM associe WHERE ".$condition;
+		
+		$lesAssocies = array();
+		
+		$stmt = $connStr->query($req);
+		
+		
         while ($ligne = $stmt->fetch())
 		{
 			$newUtilisateur = new Utilisateur();
@@ -72,24 +97,24 @@ class Associe
         return $lesAssocies;
     }
 
-	public function getIDE()
+	public function getide()
 	{
-		return $this->IDE;
+		return $this->ide;
     }
     
-	public function getIDU()
+	public function getidu()
 	{
-		return $this->IDU;
+		return $this->idu;
 	}
 	
-	public function setIDE($IDE)
+	public function setide($ide)
 	{
-		$this->IDE=$IDE;
+		$this->ide=$ide;
 	}
     
-    public function setIDU($IDU)
+    public function setidu($idu)
 	{
-		$this->IDU=$IDU;
+		$this->idu=$idu;
 	}
 
 } // End Class Associe

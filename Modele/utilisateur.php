@@ -9,30 +9,77 @@ class Utilisateur
 	private $prenomu; // type : string
 	private $mailu; // type : string
 	private $mdpu; // type : string
+	private $adminu; //Est-il admin ou pas ?
 	
-	private $lesArticles;
+	private $lesetab = array();
+	private $lesarticles = array();
 
 	//Operations
 	//Constructeur
-	function __construct($idu=0,$nomu="", $prenomu="", $mailu="", $mdpu="")
+	function __construct($idu="", $lesetab="", $nomu="", $prenomu="", $mailu="", $mdpu="",$adminu=false)
 	{
-		$this->idu = $this->numero();
+		if($idu == "null")
+		{
+			$this->idu = $this->numero();
+		}
+		else
+		{
+			$this->idu = $idu;
+		}
 		$this->nomu = $nomu;
 		$this->prenomu = $prenomu;
 		$this->mailu = $mailu;
 		$this->mdpu = $mdpu;
-	
-		$this->lesArticles = array();
+		$this->adminu = $adminu;
+		if($lesetab!="")
+		{
+			$i = 0;
+			foreach($lesetab as $et)
+			{
+
+				$this->lesetab[$i] = $et;
+				$i++;
+			}
+		}
 	}
-	
+
 	public function create()
 	{
-		include_once "connexionBDD.php";
+
+		$mailExiste = $this->verifmailexiste($this->mailu);
+
+		if($mailExiste == true)
+		{
+			return false;
+		}
+		else
+		{
+			include_once "connexionBDD.php";
+			$connStr = getBDD();
+		
+			$req = "INSERT INTO UTILISATEUR values ('".$this->idu."','".$this->nomu."','".$this->prenomu."','".$this->mailu."','".$this->mdpu."','".$this->adminu."');";
+		
+			$stmt = $connStr->query($req);
+			return true;
+		}
+	}
+
+	public function createAsso()
+	{
+		include_once "Modele/connexionBDD.php";
+		include_once "Modele/associe.php";
+		
 		$connStr = getBDD();
+		
+		$i = 0;
+		foreach($this->lesetab as $et)
+		{		
+			$uneAsso = new Associe($this->getidu(),$et);
+			$uneAsso->create();
+			$i++;
+		}
 
-		$req = "INSERT INTO UTILISATEUR values ('".$this->idu."','".$this->nomu."','".$this->prenomu."','".$this->mailu."','".$this->mdpu."');";
-
-		$stmt = $connStr->query($req);
+		return true;
 
 	}
 
@@ -46,15 +93,18 @@ class Utilisateur
 	}
 
 	public function retrieve($condition)
-	{		
+	{
+		//****************************************************************************/
+		//Parfaitement Débile dans le cas où on a plusieurs enregistrements en réponse
+		//Car seul le dernier enregistrement valorise les attributs ...
+		//****************************************************************************/
+
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 
 		$req = "SELECT * FROM utilisateur WHERE ".$condition;
-		//var_dump($req);
-
 		$stmt = $connStr->query($req);
-		// var_dump($stmt);
+
 		while ($ligne = $stmt->fetch())
 		{
 			$this->idu= $ligne["IDU"];
@@ -62,7 +112,27 @@ class Utilisateur
 			$this->prenomu = $ligne["PRENOMU"];
 			$this->mailu = $ligne["MAILU"];
 			$this->mdpu = $ligne["MDPU"];
+			$this->adminu = $ligne["ADMINU"];
 		}
+
+	}
+	public function retrieveById($ide)
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+		
+		$req = "SELECT * FROM utilisateur WHERE IDE = ".$ide;
+		
+		$stmt = $connStr->query($req);
+		
+		$ligne = $stmt->fetch();
+	
+		$this->idu= $ligne["IDU"];
+		$this->nomu = $ligne["NOMU"];
+		$this->prenomu = $ligne["PRENOMU"];
+		$this->mailu = $ligne["MAILU"];
+		$this->mdpu = $ligne["MDPU"];
+		$this->adminu = $ligne["ADMINU"];
 	}
 
 	public function findAll()
@@ -77,7 +147,7 @@ class Utilisateur
 		while ($ligne = $stmt->fetch())
 		{
 
-			$newUtilisateur = new Utilisateur($ligne["IDU"], $ligne["NOMU"], $ligne["PRENOMU"], $ligne["MAILU"], $ligne["MDPU"]);
+			$newUtilisateur = new Utilisateur($ligne["IDU"], $ligne["NOMU"], $ligne["PRENOMU"], $ligne["MAILU"], $ligne["MDPU"], $ligne["ADMINU"]);
 
 			array_push($lesUtilisateurs, $newUtilisateur);
 		}
@@ -85,7 +155,7 @@ class Utilisateur
 		return $lesUtilisateurs;
 	}
 
-	public function numero()
+	private function numero()
 	{
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
@@ -94,9 +164,9 @@ class Utilisateur
 		$stmt = $connStr->query($req);
 		$ligne = $stmt->fetch();
 
-		$nomubre = $ligne["MAX"];
+		$numero = $ligne["MAX"];
 
-		return $nomubre + 1;
+		return $numero + 1;
 
 	}
 
@@ -108,10 +178,35 @@ class Utilisateur
 		$stmt = $connStr->query($req);
 		$ligne = $stmt->fetch();
 
-		if($ligne) {
-			return new Utilisateur($ligne["IDU"], $ligne["NOMU"], $ligne["PRENOMU"], $ligne["MAILU"], $ligne["MDPU"]);
+		$utilRecup = new Utilisateur();
+		if($ligne) 
+		{
+			$utilRecup->retrieve($condition);
+			return $utilRecup;
 		}
-		return false;
+		else
+		{
+			return false;
+		}
+	}
+
+	public function verifmailexiste($mail)
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+		$req = "SELECT * FROM utilisateur WHERE MAILU = '".$mail."'";
+
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		if($ligne)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	public function getidu()
@@ -134,11 +229,18 @@ class Utilisateur
 	{
 		return $this->mdpu;
 	}
-	public function getlesArticles()
+	public function getlesarticles()
 	{
-		return $this->lesArticles;
+		return $this->lesarticles;
 	}
-
+	public function getlesetab()
+	{
+		return $this->lesetab;
+	}
+	public function getadminu()
+	{
+		return $this->adminu;
+	}
 	public function setidu($idu)
 	{
 		$this->idu=$idu;
@@ -159,11 +261,43 @@ class Utilisateur
 	{
 		$this->mdpu=$mdpu;
 	}
-	public function setlesArticles($lesArticles)
+	public function setlesarticles()
 	{
-		$this->lesArticles=$lesArticles;
-	}
+		//On place les articles de l'util de la BDD dans l'attribut lesart
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+		$req = "SELECT IDE FROM article WHERE idu = ".$this->idu;
 
+		$stmt = $connStr->query($req);
+		$lesart = array();
+		
+		while ($ligne = $stmt->fetch())
+		{
+			$nouvart = new Etablissement();
+			$nouvart->retrieveById($ligne[0]);
+			array_push($lesart, $nouvart);
+			var_dump($lesart);
+		}
+		$this->lesarticles=$lesarticles;
+	}
+	public function setlesetab()
+	{
+		//On place les etab de l'util de la BDD dans l'attribut lesetab
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+		$req = "SELECT IDE FROM associe WHERE idu = ".$this->idu;
+		
+		$stmt = $connStr->query($req);
+		$lesetab = array();
+		
+		while ($ligne = $stmt->fetch())
+		{
+			$nouvetab = new Etablissement();
+			$nouvetab->retrieveById($ligne[0]);
+			array_push($lesetab, $nouvetab);
+		}
+		$this->lesetab=$lesetab;
+	}
 } // End Class Utilisateur
 
 ?>

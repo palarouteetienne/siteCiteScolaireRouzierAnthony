@@ -18,9 +18,16 @@ class Article
 
 	//Operations
 
-	function __construct($ida="", $etaba="", $utila="", 
-	$titrea="", $voiea="", $typea="", 
-	$commentairea="", $datedebr="", $datefinr="")
+	function __construct(
+		$ida="", 
+		$etaba="", 
+		$utila="", 
+		$titrea="", 
+		$voiea="", 
+		$typea="", 
+		$commentairea="", 
+		$datedebr="", 
+		$datefinr="")
 	{
 		$this->ida = $ida;
 		$this->etaba = $etaba;
@@ -31,14 +38,15 @@ class Article
 		$this->typea=$typea;
 		$this->datedebr=$datedebr;
 		$this->datefinr=$datefinr;
-
 	}
+	
 	public function create()
 	{
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 
 		$req = "INSERT into article values (NULL,'".$this->etaba."','".$this->utila."','".$this->titrea."','".$this->voiea."','".$this->commentairea."','".$this->typea."','".$this->datedebr."','".$this->datefinr."');";
+
 		$connStr->exec($req);
 	}
 
@@ -80,7 +88,7 @@ class Article
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 		$req="SELECT * FROM article";
-		$lesArticles = array();
+		$lesarticles = array();
 
 		$stmt = $connStr->query($req);
 
@@ -95,10 +103,10 @@ class Article
 										$ligne["COMMENTAIREA"], 
 										$ligne["DATEDEBR"], 
 										$ligne["DATEFINR"]);
-			array_push($lesArticles, $nouvelArticle);
+			array_push($lesarticles, $nouvelArticle);
 		}
 
-		return $lesArticles;
+		return $lesarticles;
 	}
 
 	public function update($ida)
@@ -163,17 +171,17 @@ class Article
 				FROM article
 				WHERE ETABA = ".$etab."
 				AND TYPEA = 'inscriptions';";
-		$lesArticlesIns = array();
+		$lesarticlesIns = array();
 
 		$stmt = $connStr->query($req);
 
 		while ($ligne = $stmt->fetch())
 		{
 			$nouvelArticle = new Article($ligne['IDA'], $this->etaba, $ligne["UTILA"], $ligne["TITREA"], $ligne["VOIEA"], $ligne["TYPEA"], $ligne["COMMENTAIREA"], $ligne["DATEDEBR"], $ligne["DATEFINR"]);
-			array_push($lesArticlesIns, $nouvelArticle);
+			array_push($lesarticlesIns, $nouvelArticle);
 		}
 
-		return $lesArticlesIns;
+		return $lesarticlesIns;
 	}
 
 	public function findActu($etab)
@@ -184,16 +192,16 @@ class Article
 		$req=	"SELECT *
 				FROM article
 				WHERE ETABA = ".$etab." AND TYPEA = 'actu';";
-		$lesArticlesActu = array();
+		$lesarticlesActu = array();
 		$stmt = $connStr->query($req);
 
 		while ($ligne = $stmt->fetch())
 		{
 			$nouvelArticle = new Article($ligne['IDA'], $this->etaba, $ligne["UTILA"], $ligne["TITREA"], $ligne["VOIEA"], $ligne["TYPEA"], $ligne["COMMENTAIREA"], $ligne["DATEDEBR"], $ligne["DATEFINR"]);
-			array_push($lesArticlesActu, $nouvelArticle);
+			array_push($lesarticlesActu, $nouvelArticle);
 		}
 		
-		return $lesArticlesActu;
+		return $lesarticlesActu;
 	}
 	public function getLesRessources()
 	{

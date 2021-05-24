@@ -4,15 +4,15 @@ class Possede
 {
 	
 	//Attributs
-	private $IDU;
-	private $IDE;
+	private $idu;
+	private $ide;
 
 	
 	//Constructeur
-	function __construct($IDU="",$IDE="")
+	function __construct($idu="",$ide="")
 	{
-		$this->IDU = $IDU;
-		$this->IDE = $IDE;
+		$this->idu = $idu;
+		$this->ide = $ide;
 	}
 
     //Méthodes
@@ -30,8 +30,8 @@ class Possede
 		{
             $newPossede = new Possede
             (
-                    $ligne["IDU"],
-                    $ligne["IDE"]
+                    $ligne["idu"],
+                    $ligne["ide"]
             );
 			array_push($possede, $newPossede);
         }
@@ -39,24 +39,24 @@ class Possede
        
     }
 
-	public function getIDE()
+	public function getide()
 	{
-		return $this->IDE;
+		return $this->ide;
     }
     
-	public function getIDU()
+	public function getidu()
 	{
-		return $this->IDU;
+		return $this->idu;
 	}
 	
-	public function setIDE($IDE)
+	public function setide($ide)
 	{
-		$this->IDE=$IDE;
+		$this->ide=$ide;
 	}
     
-    public function setIDU($IDU)
+    public function setidu($idu)
 	{
-		$this->IDU=$IDU;
+		$this->idu=$idu;
 	}
 
 } // End Class Possede

@@ -6,10 +6,6 @@
 			text-align:center;
 		}
 
-		#mdp, #email{
-			border-radius: 15px;
-		}
-
 		#form-main{
 			width:100%;
 			float:left;
@@ -47,11 +43,25 @@
 		  	border-radius: 15px;
 		}
 
+		.label-etab{
+			color:white;
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 18px;
+			line-height: 22px;
+			padding: 13px 13px 13px 54px;
+			margin-bottom: 10px;
+			width:100%;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			box-sizing: border-box;
+		  	border: 3px solid rgba(0,0,0,0);
+			border-radius: 15px;
+		}
 		.feedback-input {
 			color:black;
-		  	font-weight:500;
+		  	font-weight:500px;
 			font-size: 18px;
-			border-radius: 0;
 			line-height: 22px;
 			background-color: #fbfbfb;
 			padding: 13px 13px 13px 54px;
@@ -62,6 +72,38 @@
 			-ms-box-sizing: border-box;
 			box-sizing: border-box;
 		  	border: 3px solid rgba(0,0,0,0);
+			border-radius: 15px;
+		}
+
+		.case-input {
+			font-family: Arial, Helvetica, sans-serif;
+			color:rgb(255, 255, 255);
+		  	font-weight:500;
+			font-size: 18px;
+			border-radius: 0;
+			line-height: 22px;
+			padding: 13px 13px 13px 54px;
+			margin-bottom: 10px;
+			width:100%;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			box-sizing: border-box;
+		}
+		.case-label {
+			font-family: Arial, Helvetica, sans-serif;
+			color:rgb(255, 255, 255);
+		  	font-weight:500;
+			font-size: 22px;
+			border-radius: 0;
+			line-height: 22px;
+			padding: 13px 13px 13px 54px;
+			margin-bottom: 10px;
+			width:100%;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
+			box-sizing: border-box;
 		}
 
 		.feedback-input:focus{

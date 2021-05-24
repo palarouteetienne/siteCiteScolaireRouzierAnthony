@@ -112,14 +112,14 @@
 
         $nb = count($lesActusCiteScolaire);
         $nbcol = 0; //Pour saut de ligne toutes les 4 actus;
-        
+
         for($i=0; $i<$nb; $i++) //Pour chaque ACTU
         {
 
             $lesRessourcesDeArt = array();
             
             $lesRessourcesDeArt = $lesActusCiteScolaire[$i]->getLesRessources();
-            
+
             $nbRes = count($lesRessourcesDeArt);
 
             $HTMLliens="";  
@@ -135,7 +135,7 @@
 
               for($j=0; $j<$nbRes; $j++)
               { 
-                if($lesRessourcesDeArt[$j]->getformatr()=="pdf")
+                if($lesRessourcesDeArt[$j]->getformatr()=="pdf"||$lesRessourcesDeArt[$j]->getformatr()==".pdf")
                 {//Préparation du code HTML d affichage des liens des ressources de l'actu
                   $HTMLliens = $HTMLliens.'
                   <a href="'.$lesRessourcesDeArt[$j]->getcheminr().'">
@@ -152,6 +152,7 @@
             }//Fin du si  
             //DEBUT CARTE : Une CARTE par ACTU -------------------------------------------------------------------
             $nouvEtab->retrieve("IDE=".$lesActusCiteScolaire[$i]->getetaba());
+            
             if($nbcol==0)
             {
               echo '<row>';

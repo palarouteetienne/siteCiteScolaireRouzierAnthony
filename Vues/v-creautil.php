@@ -54,47 +54,38 @@
 	        		<input name="nomu" type="text" class="validate[required,custom[onlyLetter]] feedback-input" id="nom" placeholder="Nom" required/>
 	      		</p>
 
-	      		<p class="prenom">
+	      		<p>
 	        		<input name="prenomu" type="text" class="validate[required,custom[onlyLetter]] feedback-input" id="prenom" placeholder="Prénom" required/>
 	      		</p>
 
 	      		<p class="etablissement">
-	      			<select name="etabu" class="feedback-input">
+					<label class="label-etab" for=".$lesEtab[$i]->getIDE().">Etablissement(s)</label>
+					
+					<select name="etabu[]" id="etabu" type="select" multiple="multiple" size="6" class="feedback-input">
+						<?php
 
-	      				<option selected disabled>Sélectionner l'établissement</option>
 
-	      				<?php
+							$nb = count($lesEtab);
 
-	      				$nb = count($lesEtab);
+							for ($i=0; $i < $nb; $i++)
+							{
+								echo '<option value="'.$lesEtab[$i]->getIDE().'">'.$lesEtab[$i]->getNomE().'</option>';
+							}
 
-	      				for ($i=0; $i < $nb; $i++)
-	      				{
+						?>
 
-	      				?>
-	      					<option name"<?php echo $lesEtab[$i]->getIDE(); ?>" >
-
-	      						<?php
-
-	      						echo $lesEtab[$i]->getNomE();
-
-	      						?>
-
-	      					</option>
-
-	      				<?php
-
-	      				}
-
-	      				?>
-	      					
-	      			</select>
+					</select>
+					<i>Sélection multiple avec shift enfoncée</i>
 	      		</p>
-
-	      		<p class="email">
+				<p>
+					<label for="adminu" class='case-label'>L'utilisateur est-il un administrateur ?</label>
+					<input id='adminu' name='adminu' type='checkbox' class='case-input' value='true'/>
+				</p>
+	      		<p>
 	        		<input name="emailu" type="email" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Adresse mail" required/>
 	      		</p>
 
-	      		<p class="mdp">
+	      		<p>
 	        		<input onkeypress="capLock(event)" name="mdpu" type="Password" class="validate[required,length[0,50]] feedback-input" placeholder="Mot de passe" id="mdp" required/>
 	      		</p>
 
@@ -121,9 +112,7 @@
 	        		<div class="ease"></div>
 	      		</div>
 	      	</form>
-	      	<br>
-	      	<br>
-    		<a href="index.php?action=connexion" style="color: white;">Se connecter</a>
+    		
     	</div>
   	</div>
     <?php

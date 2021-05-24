@@ -7,9 +7,9 @@ $_SESSION['ide'] = $_REQUEST['q'];
 
 $etablissementChoisi=new Etablissement();
 $etablissementChoisi->retrieve("IDE=".$_REQUEST['q']);
-//$lesArticlesEtab = $etablissementChoisi->getLesArticles();
+//$lesarticlesEtab = $etablissementChoisi->getLesArticles();
 $article = new Article();
-$lesArticlesEtab = $article->findByEtab($_REQUEST['q']);
+$lesarticlesEtab = $article->findByEtab($_REQUEST['q']);
 
 echo "<H3>".$etablissementChoisi->getNomE()."</H3>";
 
@@ -40,46 +40,46 @@ echo "<H3>".$etablissementChoisi->getNomE()."</H3>";
 
         <?php
 
-            $nb = count($lesArticlesEtab);
+            $nb = count($lesarticlesEtab);
 
             for($i=0; $i<$nb; $i++)
             {
 
         echo 
-        '<tr id="'.$lesArticlesEtab[$i]->getida().'" align="center" valign="middle">';
+        '<tr id="'.$lesarticlesEtab[$i]->getida().'" align="center" valign="middle">';
         ?>
             <td id="utila">
             
                 <?php
-                    echo $lesArticlesEtab[$i]->getutila();
+                    echo $lesarticlesEtab[$i]->getutila();
                 ?>
 
             </td>
             <td id="titrea">
             
                 <?php
-                    echo $lesArticlesEtab[$i]->gettitrea();
+                    echo $lesarticlesEtab[$i]->gettitrea();
                 ?>
 
             </td>
             <td id="commentaire">
             
                 <?php
-                    echo $lesArticlesEtab[$i]->getcommentairea();
+                    echo $lesarticlesEtab[$i]->getcommentairea();
                 ?>
 
             </td>
             <td id="datedebut">
             
                 <?php
-                    echo $lesArticlesEtab[$i]->getdatedebr();
+                    echo $lesarticlesEtab[$i]->getdatedebr();
                 ?>
 
             </td>
             <td id="datefin">
             
                 <?php
-                    echo $lesArticlesEtab[$i]->getdatefinr();
+                    echo $lesarticlesEtab[$i]->getdatefinr();
                 ?>
 
             </td>
@@ -90,7 +90,7 @@ echo "<H3>".$etablissementChoisi->getNomE()."</H3>";
                 <?php
                     echo "<a class='delete' title='Supprimer' data-toggle='modal' 
                     data-target='#confirm-delete' onclick=\"$('#maModale').html(
-                    ".$lesArticlesEtab[$i]->getida()."
+                    ".$lesarticlesEtab[$i]->getida()."
                     )\">
                     <i class='material-icons'>&#xE872;</i>
                     </a> ";
