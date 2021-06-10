@@ -196,19 +196,19 @@
 
 	      		<!-- Bouton de navigation vers la cité scolaire -->
 	      		<center>
-			        <a href="index.php?action=citeScolaire&typeArt=actu">
+			        <a href="index.php?action=citeScolaire&typeArt=actu&etab=4">
 			          	<button type="button" class="button button-a button-big button-rounded">Actualités</button>
 			        </a>
-			        <a href="index.php?action=citeScolaire&typeArt=inte">
+			        <a href="index.php?action=citeScolaire&typeArt=inte&etab=4">
 			          	<button type="button" class="button button-a button-big button-rounded">Internat</button>
 			        </a>
-			        <a href="index.php?action=citeScolaire&typeArt=self">
+			        <a href="index.php?action=citeScolaire&typeArt=self&etab=4">
 			          	<button type="button" class="button button-a button-big button-rounded">Self</button>
 			        </a>
-			        <a href="index.php?action=citeScolaire&typeArt=insc">
+			        <a href="index.php?action=citeScolaire&typeArt=insc&etab=4">
 			          	<button type="button" class="button button-a button-big button-rounded">Inscription</button>
 			        </a>
-			        <a href="index.php?action=citeScolaire&typeArt=bour">
+			        <a href="index.php?action=citeScolaire&typeArt=bour&etab=4">
 			        	<button type="button" class="button button-a button-big button-rounded">Bourses / Aides</button>
 			        </a>
 	      		</center>
@@ -289,10 +289,10 @@
 
       			<!-- Bouton de navigation vers le collège Eugène Jamot -->
 			    <center>
-			        <a href="index.php?action=collegeEJ">
+				<a href="index.php?action=citeScolaire&typeArt=info&etab=1">
 			          	<button type="button" class="button button-a button-big button-rounded">Informations Pratiques</button>
 			        </a>
-			        <a href="index.php?action=collegeEJf">
+			        <a href="index.php?action=citeScolaire&typeArt=form&etab=1">
 			          	<button type="button" class="button button-a button-big button-rounded">Formations</button>
 			        </a>
 			    </center>
@@ -401,10 +401,10 @@
 
 	      		<!-- Bouton de navigation vers le lycée Eugène Jamot -->
 	      		<center>
-			        <a href="index.php?action=lyceeEJ">
+				  	<a href="index.php?action=citeScolaire&typeArt=info&etab=2">
 			          	<button type="button" class="button button-a button-big button-rounded">Informations Pratiques</button>
 			        </a>
-			        <a href="index.php?action=lyceeEJf">
+			        <a href="index.php?action=citeScolaire&typeArt=form&etab=2">
 			          	<button type="button" class="button button-a button-big button-rounded">Formations</button>
 			        </a>
 			    </center>
@@ -513,10 +513,10 @@
 
       			<!-- Bouton de navigation vers le lycée Jean Jaurès -->
 			    <center>
-			        <a href="index.php?action=lyceeJJ">
+					<a href="index.php?action=citeScolaire&typeArt=info&etab=3">
 			          	<button type="button" class="button button-a button-big button-rounded">Informations Pratiques</button>
 			        </a>
-			        <a href="index.php?action=lyceeJJf">
+			        <a href="index.php?action=citeScolaire&typeArt=form&etab=3">
 			          	<button type="button" class="button button-a button-big button-rounded">Formations</button>
 			        </a>
 			    </center>

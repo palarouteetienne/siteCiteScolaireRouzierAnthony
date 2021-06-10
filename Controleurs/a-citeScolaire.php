@@ -4,9 +4,8 @@
 	include_once "Modele/etablissement.php";
 	$citeScolaire = new Etablissement();
 	$typeArt = $_REQUEST['typeArt'];
-    echo$_REQUEST['typeArt'];
-
-	$citeScolaire->retrieve("IDE=4");
+    
+	$citeScolaire->retrieve("IDE=".$_REQUEST['etab']);
     $etat = "citescolaire";
     
     if(!empty($_REQUEST['typeArt']))
@@ -17,30 +16,49 @@
             {
                 //Récup des articles actu.
                 $lesArtCiteScolaire = $citeScolaire->getLesArticlesDeType("actu"); 
+                $typeArt = "Actualités";
                 break;
             }
             case "inte" :
             {
                 //Récup des articles internat.
                 $lesArtCiteScolaire = $citeScolaire->getLesArticlesDeType("internat"); 
+                $typeArt = "Internat";
                 break;
             }
             case "self" :
             {
                 //Récup des articles self.
                 $lesArtCiteScolaire = $citeScolaire->getLesArticlesDeType("self"); 
+                $typeArt = "Self";
                 break;
             }
             case "insc" :
             {
                 //Récup des articles inscription.
                 $lesArtCiteScolaire = $citeScolaire->getLesArticlesDeType("inscription"); 
+                $typeArt = "Inscription";
                 break;
             }
             case "bour" :
             {
                 //Récup des articles bourses.
                 $lesArtCiteScolaire = $citeScolaire->getLesArticlesDeType("bourses"); 
+                $typeArt = "Bourses";
+                break;
+            }
+            case "info" :
+            {
+                //Récup des articles bourses.
+                $lesArtCiteScolaire = $citeScolaire->getLesArticlesDeType("information"); 
+                $typeArt = "informations Patiques";
+                break;
+            }
+            case "form" :
+            {
+                //Récup des articles bourses.
+                $lesArtCiteScolaire = $citeScolaire->getLesArticlesDeType("formation"); 
+                $typeArt = "Formations";
                 break;
             }
             default :

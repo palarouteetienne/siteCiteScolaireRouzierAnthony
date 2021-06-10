@@ -51,22 +51,10 @@
             <div class="awesome-menu ">
               <ul class="project-menu">
                 <li>
-                  <a href="#" id="tout" value="tout" class="active" data-filter="*">Tout</a>
+                  <a href="#" id="tout" value="tout" class="active" data-filter="*">Tout afficher</a>
                 </li>
                 <li>
-                  <a href="#" id="BTS" value="BTS" >BTS</a>
-                </li>                
-                <li>
-                  <a href="#" id="collegeEJ" value="Collège Eugène Jamot" >Collège Eugène Jamot</a>
-                </li>
-                <li>
-                  <a href="#" id="lyceeEJ" value="Lycée Eugène Jamot" >Lycée Eugène Jamot</a>
-                </li>
-                <li>
-                  <a href="#" id="lyceeJJ" value="Lycée Jean Jaurès" >Lycée Jean Jaurès</a>
-                </li>
-                <li>
-                  <a href="#" id="citescolaire" value="cité Scolaire" >cité Scolaire</a>
+                  <input class="form-control" id="myInput" type="text" placeholder="Rechercher..">
                 </li>
               </ul>
             </div>
@@ -74,7 +62,6 @@
         </div>
       </div> <!-- Fin menu page actualité -->
       
-      <input class="form-control" id="myInput" type="text" placeholder="Rechercher..">
       <br>
       
       <div class="card-group" id="cartes">
