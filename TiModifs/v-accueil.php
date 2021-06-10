@@ -30,10 +30,6 @@
 		<!-- Responsive Stylesheet File -->
 		<link href="css/responsive.css" rel="stylesheet">
 
-		<link href="css/bouton.css" rel="stylesheet">
-
-
-
 		<title> Jamot - Jaurès </title>
 
 	</head>

@@ -30,21 +30,17 @@
 		<!-- Responsive Stylesheet File -->
 		<link href="css/responsive.css" rel="stylesheet">
 
-		<link href="css/bouton.css" rel="stylesheet">
-
-
-
 		<title> Jamot - Jaurès </title>
 
 	</head>
 
 	<body data-spy="scroll" data-target="#navbar-example">
-
-	  	
-	  	
-	  	<!-- Début Page accueil -->
-	  	<div id="accueil" class="">
-		<!--<div id="accueil" class="intro route bg-image" style="background-image: url(img/index/fond3.png);">-->
+		
+		<div id="logo-fond">
+			<img src="img/logo_blanc.png"/>
+		</div>
+		<!-- Début Page accueil -->
+		<div id="accueil">
 
 		    <div class="intro-content display-table">
 		      	<div class="table-cell">
@@ -54,13 +50,17 @@
 			          	<div id="team" class="our-team-area area-padding">
 			            	<div class="container">
 
-			               	<!-- Début ligne vignette CITE -->
+			               	<!-- Début ligne VIDE -->
+							<div class="row espacement">
+								<div class="col-md-12 col-sm-12 col-xs-12">
+				                </div>
+							</div>
 				              	
-				                <div class="team-top">
-									<div class="row espacement">
-											<div class="col-md-4 col-sm-4 col-xs-4">
-										</div>
-										<div class="col-md-4 col-sm-4 col-xs-4">
+
+							<!-- fin ligne vignette Cité -->
+							<div class="row espacement">
+				                <!-- Start vignette colonne établissement -->
+								<div class="col-md-3 col-sm-3 col-xs-3">
 				                    		<div class="single-team-member">
 				                      			<div class="team-img">
 				                          				<a href="#cite_Scolaire">
@@ -69,9 +69,7 @@
 				                      			</div>
 				                      			<a href="#cite_Scolaire">
 				                        			<div class="team-content text-center">
-				                          				<h4 style="font-weight: bold; color: black; font-size: 200%;">Cité Scolaire</h4>
-				                          				
-				                          				<br>
+				                          				<h4 style="font-weight: bold; color: grey; font-size: 200%;">Cité Scolaire</h4>
 
 				                          				<h4>
 				                            				<div class='visible'>
@@ -85,15 +83,8 @@
 				                        			</div>
 				                      			</a>
 				                    		</div>
-				                  		</div>
-										<div class="col-md-4 col-sm-4 col-xs-4">
-										</div>
-				                	</div>
-				              	</div>
-							<!-- fin ligne vignette Cité -->
-							<div class="row">
-				                <!-- Start vignette colonne établissement -->
-				                <div class="col-md-4 col-sm-4 col-xs-4">
+				                </div>
+				                <div class="col-md-3 col-sm-3 col-xs-3">
 				                    <div class="single-team-member">
 				                      	<div class="team-img">
 				                        	
@@ -104,9 +95,7 @@
 				                      	</div>
 				                      	<a href="#college_EJ">
 				                        	<div class="team-content text-center">
-				                          		<h4 style="font-weight: bold; color: black; font-size: 200%;">Collège</h4>
-				                          		
-				                          		<br>
+				                          		<h4 style="font-weight: bold; color: grey; font-size: 200%;">Collège</h4>
 
 						                        <h4>
 						                            <div class='visible'>
@@ -122,40 +111,9 @@
 				                    </div>
 				                </div>
 				                <!-- End vignette column -->
-							
-				                <!-- Start vignette column -->
-				                <div class="col-md-4 col-sm-4 col-xs-4">
-				                    <div class="single-team-member">
-				                      	<div class="team-img">
-				                        	
-				                          		<a href="#lycee_EJ">
-				                            		<img src="img/index/lycee_jamot.jpg" alt="">
-				                          		</a>
-				                        	
-				                      	</div>
-				                      	<a href="#lycee_EJ">
-				                        	<div class="team-content text-center">
-					                          	<h4 style="font-weight: bold; color: black; font-size: 200%;">Lycée</h4>
-					                          	
-					                          	<br>
-
-					                          	<h4>
-					                            	<div class='visible'>
-					                              		<ul>
-							                                <li>Eugène Jamot</li>
-							                                <li>Général</li>
-							                                <li>Technologique</li>
-					                              		</ul>
-					                            	</div>
-					                          	</h4>
-				                        	</div>
-				                      	</a>
-				                    </div>
-				                </div>
-				                <!-- End vignette column -->
 
 				                <!-- Start vignette column -->
-				                <div class="col-md-4 col-sm-4 col-xs-4">
+				                <div class="col-md-3 col-sm-3 col-xs-3">
 				                    <div class="single-team-member">
 				                      	<div class="team-img">
 				                        	
@@ -166,9 +124,8 @@
 				                      	</div>
 				                      	<a href="#lycee_JJ">
 				                        	<div class="team-content text-center">
-				                          		<h4 style="font-weight: bold; color: black; font-size: 200%;">Lycée</h4>
+				                          		<h4 style="font-weight: bold; color: grey; font-size: 200%;">Lycée</h4>
 				                          		
-				                          		<br>
 
 				                          		<h4>
 				                            		<div class='visible'>
@@ -179,6 +136,35 @@
 						                              	</ul>
 						                            </div>
 				                          		</h4>
+				                        	</div>
+				                      	</a>
+				                    </div>
+				                </div>
+				                <!-- End vignette column -->
+
+												                <!-- Start vignette column -->
+																<div class="col-md-3 col-sm-3 col-xs-3">
+				                    <div class="single-team-member">
+				                      	<div class="team-img">
+				                        	
+				                          		<a href="#lycee_EJ">
+				                            		<img src="img/index/lycee_jamot.jpg" alt="">
+				                          		</a>
+				                        	
+				                      	</div>
+				                      	<a href="#lycee_EJ">
+				                        	<div class="team-content text-center">
+					                          	<h4 style="font-weight: bold; color: grey; font-size: 200%;">Lycée</h4>
+
+					                          	<h4>
+					                            	<div class='visible'>
+					                              		<ul>
+							                                <li>Eugène Jamot</li>
+							                                <li>Général</li>
+							                                <li>Technologique</li>
+					                              		</ul>
+					                            	</div>
+					                          	</h4>
 				                        	</div>
 				                      	</a>
 				                    </div>
@@ -210,19 +196,19 @@
 
 	      		<!-- Bouton de navigation vers la cité scolaire -->
 	      		<center>
-			        <a href="index.php?action=actualites">
+			        <a href="index.php?action=citeScolaire&typeArt=actu">
 			          	<button type="button" class="button button-a button-big button-rounded">Actualités</button>
 			        </a>
-			        <a href="index.php?action=citeScolaireInt">
+			        <a href="index.php?action=citeScolaire&typeArt=inte">
 			          	<button type="button" class="button button-a button-big button-rounded">Internat</button>
 			        </a>
-			        <a href="index.php?action=citeScolaireS">
+			        <a href="index.php?action=citeScolaire&typeArt=self">
 			          	<button type="button" class="button button-a button-big button-rounded">Self</button>
 			        </a>
-			        <a href="index.php?action=citeScolaireIns">
+			        <a href="index.php?action=citeScolaire&typeArt=insc">
 			          	<button type="button" class="button button-a button-big button-rounded">Inscription</button>
 			        </a>
-			        <a href="index.php?action=citeScolaireBA">
+			        <a href="index.php?action=citeScolaire&typeArt=bour">
 			        	<button type="button" class="button button-a button-big button-rounded">Bourses / Aides</button>
 			        </a>
 	      		</center>
@@ -623,36 +609,36 @@
     		</div>
   		</div>
   		<!-- End lycee JJ Area -->
-
   		<!-- Start Footer bottom Area -->
   		<footer>
-		    <div class="footer-area-bottom">
-		      	<div class="container">
-		        	<div class="row">
-		          		<div class="col-md-12 col-sm-12 col-xs-12">
-		            		<!--<div class=" text-center"  -->
-							<a id="pointless" href="
-							<?php 
+			  <div class="footer-area-bottom">
+				  <div class="container">
+					  <div class="row">
+						  <div class="col-md-12 col-sm-12 col-xs-12">
+							  <!--<div class=" text-center"  -->
+								  <a id="pointless" href="
+								  <?php 
 									echo 'index.php?action=connexion';
-							?>">
+									?>">
 
-		              			<p>
-		                			&copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
-		              			</p></a>
+<p>
+	&copy;  <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés
+</p></a>
 
-		            		</div>
-		          		</div>
-		        	</div>
-		    	</div>
-			</div>
-  		</footer>
+</div>
+</div>
+</div>
+</div>
+</div>
+</footer>
 
-  		<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+<a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
-		<!-- JavaScript Libraries -->
-		<script src="lib/knob/jquery.knob.js"></script>
-		<script src="lib/wow/wow.min.js"></script>
-		<script src="lib/parallax/parallax.js"></script>
+<!-- JavaScript Libraries -->
+<script src="lib/jquery/jquery.min.js"></script>
+<script src="lib/knob/jquery.knob.js"></script>
+<script src="lib/wow/wow.min.js"></script>
+<script src="lib/parallax/parallax.js"></script>
 		<script src="lib/nivo-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
 		<script src="lib/appear/jquery.appear.js"></script>
 		<script src="lib/isotope/isotope.pkgd.min.js"></script>
@@ -672,6 +658,39 @@
 
 		<!-- Template Main Javascript File -->
 		<script src="js/main.js"></script>
+		<script type="text/javascript">
+			$(window).load(function () {
+				var niveau = $(window).scrollTop();
+				
+				if(niveau  > 500) {
+					$("#logo-fond").css('filter', 'blur(5px)');
+					$("#logo-fond").css('opacity', '0.2');
+					$("#logo-fond").css('z-index', '-10');
+				}
+				else
+				{
+					$("#logo-fond").css('filter', 'blur(0px)');
+					$("#logo-fond").css('opacity', '1');
+					$("#logo-fond").css('z-index', '3');
+				}
+			});
+			$(window).scroll(function () {
+				var niveau = $(window).scrollTop();
+
+				if(niveau  > 500) {
+					$("#logo-fond").css('filter', 'blur(5px)');
+					$("#logo-fond").css('opacity', '0.2');
+					$("#logo-fond").css('z-index', '-10');
+				}
+				else
+				{
+					$("#logo-fond").css('filter', 'blur(0px)');
+					$("#logo-fond").css('opacity', '1');
+					$("#logo-fond").css('z-index', '3');
+				}
+			
+			});
+		</script>
 	</body>
 
 </html>

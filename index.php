@@ -25,4 +25,3 @@
 	$scriptVue = 'Vues/v-'.$etat.'.php';
 	include_once $scriptVue;
 ?>
-

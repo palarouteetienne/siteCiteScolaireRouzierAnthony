@@ -28,102 +28,19 @@
   <!-- Responsive Stylesheet File -->
   <link href="css/responsive.css" rel="stylesheet">
 
-  <script type="text/javascript">
-    
-    // Fonction permettant de faire un ancrage avec une variable php mis en variable javascript
-    function ancrer1()
-    {
-      var diriger = <?php echo json_encode($diriger1); ?>;
-      if (diriger == 1) {
-        window.location.href="#internat"
-      }
-      if (diriger == 2) {
-        window.location.href="#self"
-      }
-      if (diriger == 3) {
-        window.location.href="#inscription"
-      }
-      if (diriger == 4) {
-        window.location.href="#bourses_aides"
-      }
-    }
-
-  </script>
-
 </head>
 
-<body onload="ancrer1()" data-spy="scroll" data-target="#navbar-example">
+<body data-spy="scroll" data-target="#navbar-example">
 
-  <header>
-    <!-- header-area start -->
-    <div id="sticker" class="header-area">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 col-sm-12">
-
-            <!-- Navigation -->
-
-                <!-- Logo Cité Scolaire -->
-                <a class="navbar-brand page-scroll sticky-logo" href="index.php?action=init">
-                  <h1><span>Cité</span>Scolaire</h1>
-								</a>
-              </div>
-              <!-- Les onglets de la NAV BAR -->
-              <!-- Nav tabs -->
-              <ul class="nav nav-tabs">
-                <li class="nav-item">
-                  <a class="nav-link active" data-toggle="tab" href="#init">Accueil</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#collegeEJ">Collège Jamot</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#lyceeEJ">Lycée Jamot</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#lyceeJJ">Lycée Jaurès</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#citeScolaire">Cité Scolaire</a>
-                </li>
-              
-              
-                <li class="nav-item">
-                  <a class="nav-link active" data-toggle="tab" href="#actualite">Actualités</a>
-                </li>
-                <li>
-                    <a class="nav-link" data-toggle="tab" href="#internat">Internat</a>
-                  </li>
-                  <li>
-                    <a class="nav-link" data-toggle="tab" href="#self">Restauration</a>
-                  </li>
-                  <li>
-                    <a class="nav-link" data-toggle="tab" href="#inscription">Inscription</a>
-                  </li>
-                  <li>
-                    <a class="nav-link" data-toggle="tab" href="#bourses_aides">Bourses & Aides</a>
-                  </li>
-              </ul>
-              </div>
-            </nav>
-            <!-- END: Navigation -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- header-area end -->
-  </header>
-  <!-- header end -->
-
-  <!-- Start actualité Area -->
-  <div id="actualite" class="portfolio-area area-padding fix">
-    <div class="container">
+  <!-- Zone actualité -->
+  <div id="<?php echo $typeArt; ?>" class="portfolio-area area-padding fix">
+    <div class="container-fluid">
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
             <br>
             <br>
-            <h2>Actualités</h2>
+            <h2><?php echo $typeArt; ?></h2>
           </div>
         </div>
       </div>
@@ -134,154 +51,119 @@
             <div class="awesome-menu ">
               <ul class="project-menu">
                 <li>
-                  <a href="#" class="active" data-filter="*">Tout</a>
+                  <a href="#" id="tout" value="tout" class="active" data-filter="*">Tout</a>
                 </li>
                 <li>
-                  <a href="#" data-filter=".portes_ouvertes_collegeEJ">Portes Ouvertes Collège Jamot</a>
+                  <a href="#" id="BTS" value="BTS" >BTS</a>
+                </li>                
+                <li>
+                  <a href="#" id="collegeEJ" value="Collège Eugène Jamot" >Collège Eugène Jamot</a>
                 </li>
                 <li>
-                  <a href="#" data-filter=".portes_ouvertes_lyceeEJ">Portes Ouvertes Lycée Jamot</a>
+                  <a href="#" id="lyceeEJ" value="Lycée Eugène Jamot" >Lycée Eugène Jamot</a>
                 </li>
                 <li>
-                  <a href="#" data-filter=".portes_ouvertes_BTS">Portes Ouvertes BTS</a>
+                  <a href="#" id="lyceeJJ" value="Lycée Jean Jaurès" >Lycée Jean Jaurès</a>
                 </li>
                 <li>
-                  <a href="#" data-filter=".portes_ouvertes_lyceeJJ">Portes Ouvertes Lycée Jaurès</a>
-                </li>
-                <li>
-                  <a href="#" data-filter=".autres_actualités">Autres Actualités</a>
+                  <a href="#" id="citescolaire" value="cité Scolaire" >cité Scolaire</a>
                 </li>
               </ul>
             </div>
           </div>
         </div>
       </div> <!-- Fin menu page actualité -->
+      
+      <input class="form-control" id="myInput" type="text" placeholder="Rechercher..">
+      <br>
+      
+      <div class="card-group" id="cartes">
 
-        <div class="row">
+      <?php
 
-          <?php
-            $nb = count($lesActusCiteScolaire);
+        //Créer un etab pour recup du libellé etab dans les cartes
+        $nouvEtab = new Etablissement();
 
-            for($i=0; $i<$nb; $i++)
-            {
-              $lesRessourcesDeArt = array();
-              
-              $lesRessourcesDeArt = $lesActusCiteScolaire[$i]->getLesRessources();
+        $nb = count($lesArtCiteScolaire);
+        $nbcol = 0; //Pour saut de ligne toutes les 4 actus;
 
-              $HTMLliensPDF="";
-              $HTMLimages="";
+        for($i=0; $i<$nb; $i++) //Pour chaque ACTU
+        {
 
-              echo "HTMLliensPDF".$HTMLliensPDF;
-              
-              if(empty($lesRessourcesDeArt))
-              {
-                echo "<div>Aucune ressource pour cette section</div>";
-              }
-              else
-              {
-                $nbRes = count($lesRessourcesDeArt);
-                for($j=0; $j<$nbRes; $j++)
-                {  
-                  
-                  
-                  if($lesRessourcesDeArt[$j]->getformatr()=="pdf")
-                  {//Préparation du code HTML d affichage des liens de téléchargement des PDF
-                    $HTMLliensPDF = $HTMLliensPDF.
-                    ' <a href="'.$lesRessourcesDeArt[$j]->getcheminr().'" download="'.$lesRessourcesDeArt[$j]->getnomr().'">
-                        
-                      </a>';
-                  }
-                  else
-                  { 
-                    
-                    //Préparation du code HTML d affichage des images
-                    $HTMLimages = $HTMLimages.'
-                    <figure class="slider__item">
-                      <img class="slider__image" src="'.$lesRessourcesDeArt[$j]->getcheminr().'"/>
-                      <figcaption class="slider__caption">
-                        '.substr($lesRessourcesDeArt[$j]->getnomr(),0,strpos($lesRessourcesDeArt[$j]->getnomr(),".")).'
-                      </figcaption>
-                    </figure>';
-
-                  }//Fin du si
-                }//Fin du for
-
-              echo "				                
-              <!-- Start vignette column -->
-              <div class='col-md-4 col-sm-4 col-xs-4'>
-                  <div class='single-team-member'>
-                      <div class='team-img'>
-                        
-                            <a href=''>
-                              <img src='".$lesRessourcesDeArt[0]->getcheminr()."' alt='Actu'>
-                            </a>
-                      
-                      </div>
-                      <a href=''>
-                        <div class='team-content text-center'>
-                            <h4 style='font-weight: bold; color: black; font-size: 200%;'>".$lesActusCiteScolaire[$i]->gettitrea()."</h4>
-                            
-                            <br>
-
-                            <h4>
-                              <div class='visible'>
-                                <ul>
-                                    <li>".$lesActusCiteScolaire[$i]->getdatedebr()."</li>
-                                    <li>".$lesActusCiteScolaire[$i]->getdatedebr()."</li>
-                                    <li>".$lesActusCiteScolaire[$i]->getdatedebr()."</li>
-                                </ul>
-                              </div>
-                            </h4>
-                        </div>
-                      </a>
-                  </div>
-              </div>
-              <!-- End vignette column -->
-";
-           
-              echo "  <br>Numéro d'article actu : ".$lesActusCiteScolaire[$i]->getida();
-              echo "  <div class='cachee'>
-                        commentaire actu : ".$lesActusCiteScolaire[$i]->getcommentairea()."
-                      </div>";
-              echo "</div>";
-
-            }//Fin du For
-
-          }
-          ?>
-
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">  <!-- Liens vers les PDF -->
-              <?php 
-                echo $HTMLliensPDF;
-              ?>
-            </div>
-        </div>  <!-- Fin ligne pour les infos sur l'actu -->
-
-
-        <div class="row">  <!-- Une ligne pour le slider -->
-          
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          </div>
-          
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          
-            <div class="slider">
-              <?php echo $HTMLimages; ?>
-
-              <div class="slider__btn">
-              </div>
+            $lesRessourcesDeArt = array();
             
-            </div>
+            $lesRessourcesDeArt = $lesArtCiteScolaire[$i]->getLesRessources();
 
-          
-          </div>  <!-- fin du slider -->
+            $nbRes = count($lesRessourcesDeArt);
 
-          <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
-          </div>
+            $HTMLliens="";  
+            $HTMLimages="";
 
-        </div>   <!-- fin de la ligne -->
+            if(empty($lesRessourcesDeArt))
+            {
+              $HTMLliens = "Aucun document sur cette actu";
+            }
+            else
+            {
+              $nbRes = count($lesRessourcesDeArt);
+
+              for($j=0; $j<$nbRes; $j++)
+              { 
+                if($lesRessourcesDeArt[$j]->getformatr()=="pdf"||$lesRessourcesDeArt[$j]->getformatr()==".pdf")
+                {//Préparation du code HTML d affichage des liens des ressources de l'actu
+                  $HTMLliens = $HTMLliens.'
+                  <a href="'.$lesRessourcesDeArt[$j]->getcheminr().'">
+                  '.$lesRessourcesDeArt[$j]->getnomr().'
+                  </a>';
+                }
+                else 
+                {
+                  $HTMLimages = $HTMLimages.
+                  ' <img src="'.$lesRessourcesDeArt[$j]->getcheminr().'"/>
+                      ';
+                }//Fin du si
+              }//Fin du for RESSOURCES
+            }//Fin du si  
+            //DEBUT CARTE : Une CARTE par ACTU -------------------------------------------------------------------
+            $nouvEtab->retrieve("IDE=".$lesArtCiteScolaire[$i]->getetaba());
+            
+            if($nbcol==0)
+            {
+              echo '<row>';
+            }
+            echo 
+            //<div class="card-deck-group">
+            '<div class="col-lg-4">
+              <div class="card carte">
+                <div class="card-header">'.$nouvEtab->getNomE().'</div>
+                <div class="card-body">
+                  <h5 class="card-title">'.$lesArtCiteScolaire[$i]->gettitrea().'</h5> 
+                  <p class="card-text">'.$lesArtCiteScolaire[$i]->getcommentairea().'</p>
+                  <p class="card-text">'.$HTMLliens.'</p>
+                  <p class="card-text">'.$HTMLimages.'</p>
+                </div>
+
+                <div class="card-footer">
+                  <small class="text-muted">du '.$lesArtCiteScolaire[$i]->getdatedebr().' au '.$lesArtCiteScolaire[$i]->getdatefinr().'</small>
+                </div>
+              </div>
+            </div>            
+            ';
+            if($nbcol==3)
+            {
+              echo '</row>';
+              $nbcol = 0;
+            }
+            else
+            {
+              $nbcol ++;
+            }
+        }//Fin du For ACTUS
+
+      ?>
         
-      </div><!-- container fin -->
+        </div>
+      </div><!-- container principal fin -->
     </div> <!-- actualité fin -->
 
 
@@ -297,7 +179,7 @@
               </p>
             </div>
             <div class="credits">
-              Design <a href="https://bootstrapmade.com/">BootstrapMade</a>
+              Design <a href="https://bootstrapmade.com/">Fait avec Bootstrap</a>
             </div>
           </div>
         </div>
@@ -309,7 +191,7 @@
 
   <!-- Libraries JavaScript -->
   <script src="lib/jquery/jquery.min.js"></script>
-  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   <script src="lib/knob/jquery.knob.js"></script>
   <script src="lib/wow/wow.min.js"></script>
   <script src="lib/parallax/parallax.js"></script>
@@ -320,6 +202,58 @@
   <script src="js/sliderti.js"></script>
   <script src="contactform/contactform.js"></script>
   <script src="js/main.js"></script>
+
+  <script>
+    $(document).ready(function(){
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#cartes .card").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+
+      $("#collegeEJ").on("click",function() {
+        var value = $(this).attr('value').toLowerCase();
+        $("#cartes .card").filter(function() {
+          $(this).toggle($(".card-header",this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+
+      $("#BTS").on("click",function() {
+        var value = $(this).attr('value').toLowerCase();
+        $("#cartes .card").filter(function() {
+          $(this).toggle($(".card-header",this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+
+      $("#lyceeEJ").on("click",function() {
+        var value = $(this).attr('value').toLowerCase();
+        $("#cartes .card").filter(function() {
+          $(this).toggle($(".card-header",this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+
+      $("#lyceeJJ").on("click",function() {
+        var value = $(this).attr('value').toLowerCase();
+        $("#cartes .card").filter(function() {
+          $(this).toggle($(".card-header",this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+      
+      $('#tout').on('click',function(){
+        $("#cartes .card").filter(function() {
+          $(this).toggle(true)
+        });
+      });
+
+      $("#citescolaire").on("click",function() {
+        var value = $(this).attr('value').toLowerCase();
+        $("#cartes .card").filter(function() {
+          $(this).toggle($(".card-header",this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+  </script>
 
 </body>
 

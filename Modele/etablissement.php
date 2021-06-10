@@ -188,11 +188,31 @@ class Etablissement
 		return $this->lesarticles;
 	}
 
-	public function getLesArticlesACTU($tousEtab = false)
+	public function getLesArticlesDeType($typeArt)
 	{
 	
-		$this->lesarticles = $this->rechercheArticlesetabACTU($tousEtab); 
-	
+		include_once "connexionBDD.php";
+		include_once "article.php";
+		
+		$connStr = getBDD();
+		$articles = array();
+
+		$req="SELECT * 
+		FROM article
+		INNER JOIN type
+		ON TYPEA = IDT
+		WHERE etaba = :etablissement
+		AND TYPE = :type;";
+
+		$stmt = $connStr->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+		$stmt->execute(array(':etablissement' => $this->IDE, ':type' => $typeArt));
+
+		foreach($stmt as $enr)
+		{
+			$nouvelArticle = new Article($enr["IDA"], $enr["ETABA"], $enr["UTILA"], $enr["TITREA"], $enr["VOIEA"], $enr["TYPEA"], $enr["COMMENTAIREA"], $enr["DATEDEBR"], $enr["DATEFINR"]);
+			array_push($this->lesarticles, $nouvelArticle);
+
+		}
 		return $this->lesarticles;
 	}
 	public function rechercheArticlesetab()
@@ -211,44 +231,6 @@ class Etablissement
 		{
 
 			$nouvelArticle = new Article($ligne["IDA"], $ligne["ETABA"], $ligne["UTILA"], $ligne["TITREA"], $ligne["VOIEA"], $ligne["TYPEA"], $ligne["COMMENTAIREA"], $ligne["DATEDEBR"], $ligne["DATEFINR"]);
-			array_push($articles, $nouvelArticle);
-
-		}
-		return $articles;
-	}
-	public function rechercheArticlesetabACTU($tousEtab = false)
-	{
-		include_once "connexionBDD.php";
-		$connStr = getBDD();
-		$articles = array();
-		if($tousEtab == false) //Pour les actus d'un établissement donné
-		{
-			$req="	SELECT * 
-			FROM article
-			INNER JOIN type
-			ON TYPEA = IDT
-			WHERE etaba = :etablissement
-			AND TYPE = :type;";
-
-			$stmt = $connStr->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-			$stmt->execute(array(':etablissement' => $this->IDE, ':type' => 'actu'));
-		}
-		else //Pour les actus de tous les établissements
-		{
-			$req="	SELECT * 
-			FROM article
-			INNER JOIN type
-			ON TYPEA = IDT
-			WHERE TYPE = :type;";
-
-			$stmt = $connStr->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
-			$stmt->execute(array(':type' => 'actu'));
-		}
-
-		foreach($stmt as $enr)
-		{
-			include_once "article.php";
-			$nouvelArticle = new Article($enr["IDA"], $enr["ETABA"], $enr["UTILA"], $enr["TITREA"], $enr["VOIEA"], $enr["TYPEA"], $enr["COMMENTAIREA"], $enr["DATEDEBR"], $enr["DATEFINR"]);
 			array_push($articles, $nouvelArticle);
 
 		}
