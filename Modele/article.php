@@ -73,14 +73,35 @@ class Article
 		$ligne = $stmt->fetch();
 
 		$this->ida = $ligne["IDA"];
-		$this->titrea = $ligne["UTILA"];
+		$this->utila = $ligne["UTILA"];
 		$this->titrea = $ligne["TITREA"];
 		$this->voiea = $ligne["VOIEA"];
 		$this->typea = $ligne["TIPEA"];
 		$this->commentairea = $ligne["COMMENTAIREA"];
 		$this->datedebr = $ligne["DATEDEBR"];
 		$this->datefinr = $ligne["DATEFINR"];
-		$this->etaba = $monEtab->getIDE();
+		$this->etaba =  $ligne["ETABA"];
+	}
+
+	public function retrieveById($ida)
+	{		
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+		
+		$req = "SELECT * FROM article WHERE IDA = ".$ida;
+		
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+		
+		$this->ida = $ligne["IDA"];
+		$this->utila = $ligne["UTILA"];
+		$this->titrea = $ligne["TITREA"];
+		$this->voiea = $ligne["VOIEA"];
+		$this->typea = $ligne["TIPEA"];
+		$this->commentairea = $ligne["COMMENTAIREA"];
+		$this->datedebr = $ligne["DATEDEBR"];
+		$this->datefinr = $ligne["DATEFINR"];
+		$this->etaba = $ligne["ETABA"];
 	}
 
 	public function findAll()
@@ -109,7 +130,7 @@ class Article
 		return $lesarticles;
 	}
 
-	public function update($ida)
+	public function update()
 	{ 
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
@@ -163,38 +184,28 @@ class Article
 		return $articles;
 	}
 
-	public function findIns($etab)
+	public function findActu($etab=null)
 	{
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
-		$req=	"SELECT *
-				FROM article
-				WHERE ETABA = ".$etab."
-				AND TYPEA = 'inscriptions';";
-		$lesarticlesIns = array();
-
-		$stmt = $connStr->query($req);
-
-		while ($ligne = $stmt->fetch())
+		if($etab!=null)
 		{
-			$nouvelArticle = new Article($ligne['IDA'], $this->etaba, $ligne["UTILA"], $ligne["TITREA"], $ligne["VOIEA"], $ligne["TYPEA"], $ligne["COMMENTAIREA"], $ligne["DATEDEBR"], $ligne["DATEFINR"]);
-			array_push($lesarticlesIns, $nouvelArticle);
+			$req=	"SELECT *
+				FROM article a inner join type t
+				ON a.TYPEA = t.IDT
+				WHERE ETABA = ".$etab." 
+				AND TYPE = 'actu';";
+		} 
+		else
+		{
+			$req=	"SELECT *
+					FROM article a inner join type t
+					ON a.TYPEA = t.IDT
+					WHERE t.TYPE = 'actu';";
 		}
-
-		return $lesarticlesIns;
-	}
-
-	public function findActu($etab)
-	{
-
-		include_once "connexionBDD.php";
-		$connStr = getBDD();
-		$req=	"SELECT *
-				FROM article
-				WHERE ETABA = ".$etab." AND TYPEA = 'actu';";
 		$lesarticlesActu = array();
 		$stmt = $connStr->query($req);
-
+		
 		while ($ligne = $stmt->fetch())
 		{
 			$nouvelArticle = new Article($ligne['IDA'], $this->etaba, $ligne["UTILA"], $ligne["TITREA"], $ligne["VOIEA"], $ligne["TYPEA"], $ligne["COMMENTAIREA"], $ligne["DATEDEBR"], $ligne["DATEFINR"]);
@@ -203,6 +214,7 @@ class Article
 		
 		return $lesarticlesActu;
 	}
+
 	public function getLesRessources()
 	{
 		if(!empty($this->ida))

@@ -60,12 +60,12 @@
                         document.getElementById("message").innerHTML = this.responseText;
                     }
                 }
-                xmlhttp.open("GET", "Controleurs/a-supprimerArticle.php?q="+ida, true);
+                xmlhttp.open("GET", "../Controleurs/a-supprimerArticle.php?q="+ida, true);
                 xmlhttp.send();
             }
             
             function ajouterArticle() 
-            {
+            {   
 				window.location.href="index.php?action=saisieArticle&IDEtab="+IDEtabGlobal;
             }
             
@@ -252,12 +252,8 @@
                     }		
                 });
                 // Edit row on edit button click
-                $(document).on("click", ".edit", function(){		
-                    $(this).parents("tr").find("td:not(:last-child)").each(function(){
-                        $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-                    });		
-                    $(this).parents("tr").find(".add, .edit").toggle();
-                    $(".add-new").attr("disabled", "disabled");
+                $(document).on("click", ".edit", function(){
+                    window.location = "index.php?action=modifierArticle&ida="+$(this).parents('tr').attr('id');
                 });
                 // Delete row on delete button click
                 $(document).on("click", ".delete", function(){

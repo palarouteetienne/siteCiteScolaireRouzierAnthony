@@ -3,7 +3,6 @@
 	//Donc je crée un objet pour ceux en place, en dur ...
 	include_once "Modele/etablissement.php";
 	$citeScolaire = new Etablissement();
-	$typeArt = $_REQUEST['typeArt'];
     
 	$citeScolaire->retrieve("IDE=".$_REQUEST['etab']);
     $etat = "citescolaire";

@@ -16,7 +16,8 @@
         <script src="lib/popper/popper.min.js"></script>
         <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 
-        <script src="lib/tinymce/tinymce.min.js"></script>
+		<script src="lib/tinymce/js/tinymce/tinymce.min.js"></script>
+		
 		<script>
 			tinyMCE.init({
 			mode:"textareas"});

@@ -40,8 +40,20 @@
 			<img src="img/logo_blanc.png"/>
 		</div>
 		<!-- Début Page accueil -->
+		<div class="actualites box box1">
+			<!-- ENCART ACTUS -->
+			<div class = "oddboxinner">
+				ACTUS !
+				<?php
+					for($i=0;$i<count($actus);$i++)
+					{
+						echo $actus[$i]->getdatedebr();
+						echo $actus[$i]->gettitrea()."<BR/>";
+					}
+				?>
+			</div>
+		</div>
 		<div id="accueil">
-
 		    <div class="intro-content display-table">
 		      	<div class="table-cell">
 		        	<div class="container">
@@ -249,7 +261,7 @@
 			                                        
 											                                        <?php
 
-											                                          echo $unEtablissement->getmotProviseur();
+											                                          echo $cite->getmotProviseur();
 
 											                                        ?>
 
@@ -320,15 +332,15 @@
 			                        				<div class="about-info">
 			                          					<p>
 			                            					<span class="title-s">Téléphone : </span>
-			                            					<span><?php echo $unEtablissement->getTelephoneE(); ?></span>
+			                            					<span><?php echo $college->getTelephoneE(); ?></span>
 			                          					</p>
 			                          					<p>
 							                            	<span class="title-s">Email : </span>
-							                            	<span><?php echo $unEtablissement->getemailE(); ?></span>
+							                            	<span><?php echo $college->getemailE(); ?></span>
 							                          	</p>
 							                          	<p>
 							                            	<span class="title-s">Adresse : </span>
-							                            	<span> <?php echo $unEtablissement->getRueE(); ?> <br> <?php echo $unEtablissement->getCodePostalE(); ?> <br> <?php echo $unEtablissement->getVilleE(); ?> </span>
+							                            	<span> <?php echo $college->getRueE(); ?> <br> <?php echo $cite->getCodePostalE(); ?> <br> <?php echo $cite->getVilleE(); ?> </span>
 							                          	</p>
 			                        				</div>
 			                      				</div>
@@ -346,7 +358,7 @@
 						                    <div class="about-me pt-4 pt-md-0">
 						                      	<div class="title-box-2">
 						                        	<h5 class="title-left">
-						                          		Mot du Proviseur
+						                          		Présentation
 						                        	</h5>
 						                      	</div>
 						                      	<p class="lead">
@@ -361,7 +373,7 @@
 
 											                                        <?php
 
-											                                        echo $unEtablissement->getMotProviseur();
+											                                        echo $college->getMotProviseur();
 
 											                                        ?>
 
@@ -432,15 +444,15 @@
 			                        				<div class="about-info">
 								                        <p>
 									                        <span class="title-s">Téléphone : </span>
-									                        <span><?php echo $deuxEtablissement->getTelephoneE(); ?></span>
+									                        <span><?php echo $jamot->getTelephoneE(); ?></span>
 								                        </p>
 								                        <p>
 								                            <span class="title-s">Email : </span>
-								                            <span><?php echo $deuxEtablissement->geteMailE(); ?></span>
+								                            <span><?php echo $jamot->geteMailE(); ?></span>
 								                        </p>
 								                        <p>
 								                        	<span class="title-s">Adresse : </span>
-								                            <span> <?php echo $deuxEtablissement->getRueE(); ?> <br> <?php echo $deuxEtablissement->getCodePostalE(); ?> <br> <?php echo $deuxEtablissement->getVilleE(); ?></span>
+								                            <span> <?php echo $jamot->getRueE(); ?> <br> <?php echo $college->getCodePostalE(); ?> <br> <?php echo $college->getVilleE(); ?></span>
 								                        </p>
 			                        				</div>
 			                      				</div>
@@ -458,7 +470,7 @@
 			                    			<div class="about-me pt-4 pt-md-0">
 			                      				<div class="title-box-2">
 			                        				<h5 class="title-left">
-			                          					Mot du Proviseur
+			                          					Présentation
 			                        				</h5>
 			                      				</div>
 			                      				<p class="lead">
@@ -473,7 +485,7 @@
 
 												                                    <?php
 
-												                                        echo $deuxEtablissement->getMotProviseur();
+												                                        echo $jamot->getMotProviseur();
 
 												                                    ?>
 
@@ -544,15 +556,15 @@
 				                        			<div class="about-info">
 				                          				<p>
 							                            	<span class="title-s">Téléphone : </span>
-							                            	<span><?php echo $troisEtablissement->getTelephoneE(); ?></span>
+							                            	<span><?php echo $jaures->getTelephoneE(); ?></span>
 							                          	</p>
 							                          	<p>
 							                            	<span class="title-s">Email : </span>
-							                            	<span><?php echo $troisEtablissement->geteMailE(); ?></span>
+							                            	<span><?php echo $jaures->geteMailE(); ?></span>
 							                          	</p>
 								                        <p>
 								                            <span class="title-s">Adresse : </span>
-							                            	<span> <?php echo $troisEtablissement->getRueE(); ?> <br> <?php echo $troisEtablissement->getCodePostalE(); ?> <br> <?php echo $troisEtablissement->getVilleE(); ?></span>
+							                            	<span> <?php echo $jaures->getRueE(); ?> <br> <?php echo $jamot->getCodePostalE(); ?> <br> <?php echo $jamot->getVilleE(); ?></span>
 							                          	</p>
 				                        			</div>
 				                      			</div>
@@ -570,7 +582,7 @@
 						                    <div class="about-me pt-4 pt-md-0">
 						                      	<div class="title-box-2">
 						                        	<h5 class="title-left">
-						                          		Mot du Proviseur
+						                          		Présentation
 						                        	</h5>
 						                      	</div>
 				                      			<p class="lead">
@@ -585,7 +597,7 @@
 
 											                                        <?php
 
-											                                        	echo $troisEtablissement->getMotProviseur();
+											                                        	echo $jaures->getMotProviseur();
 
 											                                        ?>
 
@@ -662,7 +674,7 @@
 			$(window).load(function () {
 				var niveau = $(window).scrollTop();
 				
-				if(niveau  > 500) {
+				if(niveau  > 350) {
 					$("#logo-fond").css('filter', 'blur(5px)');
 					$("#logo-fond").css('opacity', '0.2');
 					$("#logo-fond").css('z-index', '-10');
@@ -677,7 +689,7 @@
 			$(window).scroll(function () {
 				var niveau = $(window).scrollTop();
 
-				if(niveau  > 500) {
+				if(niveau  > 350) {
 					$("#logo-fond").css('filter', 'blur(5px)');
 					$("#logo-fond").css('opacity', '0.2');
 					$("#logo-fond").css('z-index', '-10');

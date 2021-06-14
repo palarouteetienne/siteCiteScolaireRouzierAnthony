@@ -36,8 +36,29 @@
   Theme URL: https://bootstrapmade.com/devfolio-bootstrap-portfolio-html-template/
   Author: BootstrapMade.com
   License: https://bootstrapmade.com/license/
-
 */
+/*======================================
+//--//-->   STYLE POLICES FONTS
+======================================*/
+
+@font-face {
+  font-family: 'Raleway';
+  src:url('../fonts/Raleway/Raleway-VariableFont_wght.ttf') format('woff'); 
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AmaticSC-Regular';
+  src:url('../fonts/AmaticSC-Regular.ttf') format('woff'); 
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AmaticSC-Bold';
+  src:url('../fonts/AmaticSC-Bold.ttf') format('woff'); 
+  font-weight: normal;
+  font-style: normal;
+}
 /*======================================
 //--//-->   STYLE LOGO BS
 ======================================*/
@@ -1478,7 +1499,7 @@ a:active, a:hover {
 
 body {
   background: rgb(87, 70, 69) none repeat scroll 0 0;
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Chalkduster";
   font-size: 14px;
   text-align: left;
   overflow-x: hidden;
@@ -3494,8 +3515,6 @@ li.threaded-comments {
   margin-top: 60px;
 }
 
-h3.comment-reply-title {}
-
 span.email-notes {
   color: #42414f;
   display: block;
@@ -3569,6 +3588,50 @@ span.email-notes {
   margin-top: 10%;
 }
 
+.actualites {
+  animation: secoue 0.5s;
+  animation-iteration-count: infinite;
+  top: 10vh;
+  font-family: 'AmaticSC-Bold';
+  font-size: 25px;
+  position: sticky absolute;
+  position: -webkit-sticky;
+}
+.box{
+  margin:25px;
+  width:fit-content;
+  height:fit-content;
+  background:#fff;
+  border: solid black;
+  border-color: black;
+  float:left;
+}
+.box1{
+  border-width: 3px 4px 3px 5px;
+  border-radius:95% 4% 92% 5%/4% 95% 6% 95%;
+  transform: rotate(2deg);
+}
+.oddboxinner{
+  animation: secoue 0.5s reverse;
+  animation-iteration-count: infinite;
+  color: #0aaec4;
+  margin:15px;
+  /*transform: rotate(-2deg);*/
+}
+
+@keyframes secoue {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
 /*----------------------------------------
  .End CSS
 ----------------------------------------*/

@@ -1,17 +1,21 @@
 <?php
 	include "Modele/etablissement.php";
+	include "Modele/article.php";
 
-	$unEtablissement = new Etablissement();
-	$unEtablissement->retrieve("NOME='cité scolaire'");
+	$cite = new Etablissement();
+	$cite->retrieve("NOME='cité scolaire'");
 
-	$unEtablissement = new Etablissement();
-	$unEtablissement->retrieve("NOME='collège Eugène Jamot'");
+	$college = new Etablissement();
+	$college->retrieve("NOME='collège Eugène Jamot'");
 
-	$deuxEtablissement = new Etablissement();
-	$deuxEtablissement->retrieve("NOME='lycée Eugène Jamot'");
+	$jamot = new Etablissement();
+	$jamot->retrieve("NOME='lycée Eugène Jamot'");
 
-	$troisEtablissement = new Etablissement();
-	$troisEtablissement->retrieve("NOME='lycée Jean Jaurès'");
+	$jaures = new Etablissement();
+	$jaures->retrieve("NOME='lycée Jean Jaurès'");
+
+	$actusrecentes = new article();
+	$actus = $actusrecentes->findActu();
 
 	$etat = "accueil";
 
