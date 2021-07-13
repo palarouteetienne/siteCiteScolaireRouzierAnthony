@@ -3589,13 +3589,13 @@ span.email-notes {
 }
 
 .actualites {
-  animation: secoue 0.5s;
-  animation-iteration-count: infinite;
   top: 10vh;
   font-family: 'AmaticSC-Bold';
   font-size: 25px;
   position: sticky absolute;
   position: -webkit-sticky;
+  animation: secoue 0.5s;
+  animation-iteration-count: infinite;
 }
 .box{
   margin:25px;
@@ -3616,7 +3616,7 @@ span.email-notes {
   animation-iteration-count: infinite;
   color: #0aaec4;
   margin:15px;
-  /*transform: rotate(-2deg);*/
+  transform: rotate(-2deg);
 }
 
 @keyframes secoue {

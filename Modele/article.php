@@ -52,7 +52,6 @@ class Article
 
 	public function delete($ida)
 	{
-		
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 
@@ -76,7 +75,7 @@ class Article
 		$this->utila = $ligne["UTILA"];
 		$this->titrea = $ligne["TITREA"];
 		$this->voiea = $ligne["VOIEA"];
-		$this->typea = $ligne["TIPEA"];
+		$this->typea = $ligne["TYPEA"];
 		$this->commentairea = $ligne["COMMENTAIREA"];
 		$this->datedebr = $ligne["DATEDEBR"];
 		$this->datefinr = $ligne["DATEFINR"];
@@ -97,7 +96,7 @@ class Article
 		$this->utila = $ligne["UTILA"];
 		$this->titrea = $ligne["TITREA"];
 		$this->voiea = $ligne["VOIEA"];
-		$this->typea = $ligne["TIPEA"];
+		$this->typea = $ligne["TYPEA"];
 		$this->commentairea = $ligne["COMMENTAIREA"];
 		$this->datedebr = $ligne["DATEDEBR"];
 		$this->datefinr = $ligne["DATEFINR"];
@@ -159,7 +158,7 @@ class Article
 		$ligne = $stmt->fetch();
 
 		$nombre = $ligne["MAX"];
-
+		echo $nombre;
 		return $nombre;
 
 	}
@@ -185,7 +184,7 @@ class Article
 	}
 
 	public function findActu($etab=null)
-	{
+	{ //Seulement les 7 premières actus pour la page d'accueil
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 		if($etab!=null)
@@ -193,28 +192,56 @@ class Article
 			$req=	"SELECT *
 				FROM article a inner join type t
 				ON a.TYPEA = t.IDT
-				WHERE ETABA = ".$etab." 
-				AND TYPE = 'actu';";
+				WHERE ETABA = ".$etab."
+				AND t.TYPE = 'actu'
+				AND DATEFINR >= NOW()
+				ORDER BY DATEDEBR DESC
+				LIMIT 7;";
 		} 
 		else
 		{
 			$req=	"SELECT *
 					FROM article a inner join type t
 					ON a.TYPEA = t.IDT
-					WHERE t.TYPE = 'actu';";
+					WHERE t.TYPE = 'actu'
+					AND DATEFINR >= NOW()
+					ORDER BY DATEDEBR DESC
+					LIMIT 7;";
 		}
 		$lesarticlesActu = array();
 		$stmt = $connStr->query($req);
 		
 		while ($ligne = $stmt->fetch())
 		{
-			$nouvelArticle = new Article($ligne['IDA'], $this->etaba, $ligne["UTILA"], $ligne["TITREA"], $ligne["VOIEA"], $ligne["TYPEA"], $ligne["COMMENTAIREA"], $ligne["DATEDEBR"], $ligne["DATEFINR"]);
+			$nouvelArticle = new Article($ligne['IDA'], $ligne['ETABA'], $ligne["UTILA"], $ligne["TITREA"], $ligne["VOIEA"], $ligne["TYPEA"], $ligne["COMMENTAIREA"], $ligne["DATEDEBR"], $ligne["DATEFINR"]);
 			array_push($lesarticlesActu, $nouvelArticle);
 		}
 		
 		return $lesarticlesActu;
 	}
+	public function findByType($type)
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
 
+		$req=	"SELECT *
+				FROM article a inner join type t
+				ON a.TYPEA = t.IDT
+				WHERE t.TYPE = '".$type."'
+				AND DATEFINR >= NOW()
+				ORDER BY DATEDEBR DESC;";
+
+		$lesarticles = array();
+		$stmt = $connStr->query($req);
+		
+		while ($ligne = $stmt->fetch())
+		{
+			$nouvelArticle = new Article($ligne['IDA'], $ligne['ETABA'], $ligne["UTILA"], $ligne["TITREA"], $ligne["VOIEA"], $ligne["TYPEA"], $ligne["COMMENTAIREA"], $ligne["DATEDEBR"], $ligne["DATEFINR"]);
+			array_push($lesarticles, $nouvelArticle);
+		}
+		
+		return $lesarticles;
+	}
 	public function getLesRessources()
 	{
 		if(!empty($this->ida))

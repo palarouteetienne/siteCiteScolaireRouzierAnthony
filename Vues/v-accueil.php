@@ -47,7 +47,7 @@
 				<?php
 					for($i=0;$i<count($actus);$i++)
 					{
-						echo $actus[$i]->getdatedebr();
+						echo $actus[$i]->getdatedebr()." ".$actus[$i]->getdatefinr();
 						echo $actus[$i]->gettitrea()."<BR/>";
 					}
 				?>

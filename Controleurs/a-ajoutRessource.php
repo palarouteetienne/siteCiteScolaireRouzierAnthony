@@ -5,12 +5,8 @@
 	if (!empty($_POST['submit']))
 	{
 
-		if ($ressource->upload("fichier", "fichier/", array("jpg", "pdf"), 10000000)==true)
-		{
-			$codeErreur = "1";
-		}
 
-		elseif ($_SESSION["codeErreur"] == 2)
+		if ($_SESSION["codeErreur"] == 2)
 		{
 			$codeErreur = "2";
 

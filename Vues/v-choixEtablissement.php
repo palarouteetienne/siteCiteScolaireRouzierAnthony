@@ -60,7 +60,7 @@
                         document.getElementById("message").innerHTML = this.responseText;
                     }
                 }
-                xmlhttp.open("GET", "../Controleurs/a-supprimerArticle.php?q="+ida, true);
+                xmlhttp.open("GET", "Controleurs/a-supprimerArticle.php?q="+ida, true);
                 xmlhttp.send();
             }
             

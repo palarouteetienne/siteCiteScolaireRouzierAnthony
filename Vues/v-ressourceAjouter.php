@@ -28,7 +28,7 @@
 
 			if(codeErreur == 1){
 
-				alert ("La ressource à bien été upload");
+				alert ("La ressource à bien été uploadée");
 
 			}
 
@@ -197,7 +197,7 @@
     	</div>
   	</div>
 
-  	<form action="index.php?action=ajoutR" method="post" enctype="multipart/form-data">
+  	<form action="index.php?action=ajoutRessource" method="post" enctype="multipart/form-data">
 		<div class="modal fade" id="exampleModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
 		    <div class="modal-content">

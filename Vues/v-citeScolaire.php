@@ -67,25 +67,24 @@
       <div class="card-group" id="cartes">
 
       <?php
-
+        include_once("Modele/etablissement.php");
         //Créer un etab pour recup du libellé etab dans les cartes
         $nouvEtab = new Etablissement();
-
+        
         $nb = count($lesArtCiteScolaire);
         $nbcol = 0; //Pour saut de ligne toutes les 4 actus;
-
+       
         for($i=0; $i<$nb; $i++) //Pour chaque ACTU
         {
-
             $lesRessourcesDeArt = array();
             
             $lesRessourcesDeArt = $lesArtCiteScolaire[$i]->getLesRessources();
-
+            
             $nbRes = count($lesRessourcesDeArt);
-
+            
             $HTMLliens="";  
             $HTMLimages="";
-
+            
             if(empty($lesRessourcesDeArt))
             {
               $HTMLliens = "Aucun document sur cette actu";
@@ -94,8 +93,8 @@
             {
               $nbRes = count($lesRessourcesDeArt);
 
-              for($j=0; $j<$nbRes; $j++)
-              { 
+              for($j=0;$j<$nbRes;$j++)
+              {
                 if($lesRessourcesDeArt[$j]->getformatr()=="pdf"||$lesRessourcesDeArt[$j]->getformatr()==".pdf")
                 {//Préparation du code HTML d affichage des liens des ressources de l'actu
                   $HTMLliens = $HTMLliens.'
@@ -113,7 +112,7 @@
             }//Fin du si  
             //DEBUT CARTE : Une CARTE par ACTU -------------------------------------------------------------------
             $nouvEtab->retrieve("IDE=".$lesArtCiteScolaire[$i]->getetaba());
-            
+
             if($nbcol==0)
             {
               echo '<row>';

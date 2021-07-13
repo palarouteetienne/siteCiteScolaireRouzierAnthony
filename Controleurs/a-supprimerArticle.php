@@ -6,6 +6,7 @@ $lArticle = new Article();
 $lesRessources = new Ressource();
 
 $lesRessources->deleteParArticle($_REQUEST['q']);
+
 $lArticle->delete($_REQUEST['q']);
 
 $etat = "supprimerArticle";

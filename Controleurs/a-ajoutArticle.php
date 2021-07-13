@@ -15,9 +15,9 @@
 	$numArticleCree=$unArticle->numero();
 	$unArticle->create();
 	
-	$nomsFichiers=$_FILES['pieceJointe']['name'];
-	$taillesFichiers=$_FILES['pieceJointe']['size']; 
-	$nomsTemps=$_FILES['pieceJointe']['tmp_name'];
+	$nomsFichiers=$_FILES['tabRessources']['name'];
+	$taillesFichiers=$_FILES['tabRessources']['size']; 
+	$nomsTemps=$_FILES['tabRessources']['tmp_name'];
 	
 	$i=0;
 	while ($i<count($nomsFichiers)) 

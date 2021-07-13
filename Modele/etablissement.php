@@ -3,7 +3,6 @@
 class Etablissement 			
 {
 	//Attributes
-		
 	 
 	private $IDE; // type : int
 	private $nomE; // type : string
