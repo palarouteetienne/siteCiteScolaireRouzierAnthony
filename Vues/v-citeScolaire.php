@@ -27,7 +27,7 @@
 
   <!-- Responsive Stylesheet File -->
   <link href="css/responsive.css" rel="stylesheet">
-
+  
 </head>
 
 <body data-spy="scroll" data-target="#navbar-example">
@@ -35,6 +35,7 @@
   <!-- Zone actualité -->
   <div id="<?php echo $typeArt; ?>" class="portfolio-area area-padding fix">
     <div class="container-fluid">
+
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
@@ -67,19 +68,23 @@
       <div class="card-group" id="cartes">
 
       <?php
+
         include_once("Modele/etablissement.php");
         //Créer un etab pour recup du libellé etab dans les cartes
         $nouvEtab = new Etablissement();
         
         $nb = count($lesArtCiteScolaire);
         $nbcol = 0; //Pour saut de ligne toutes les 4 actus;
-       
+
         for($i=0; $i<$nb; $i++) //Pour chaque ACTU
         {
+
             $lesRessourcesDeArt = array();
             
             $lesRessourcesDeArt = $lesArtCiteScolaire[$i]->getLesRessources();
             
+            $numArt = $lesArtCiteScolaire[$i]->getida();
+
             $nbRes = count($lesRessourcesDeArt);
             
             $HTMLliens="";  
@@ -104,6 +109,7 @@
                 }
                 else 
                 {
+                  //$im1 = image_crop(10,10,10,10,$lesRessourcesDeArt[$j]->getcheminr());
                   $HTMLimages = $HTMLimages.
                   ' <img src="'.$lesRessourcesDeArt[$j]->getcheminr().'"/>
                       ';
@@ -112,18 +118,17 @@
             }//Fin du si  
             //DEBUT CARTE : Une CARTE par ACTU -------------------------------------------------------------------
             $nouvEtab->retrieve("IDE=".$lesArtCiteScolaire[$i]->getetaba());
-
             if($nbcol==0)
             {
-              echo '<row>';
+              echo '<div class="row ligne">';
             }
             echo 
             //<div class="card-deck-group">
-            '<div class="col-lg-4">
+            '<div id="'.$lesArtCiteScolaire[$i]->getida().'" class="col-lg">
               <div class="card carte">
                 <div class="card-header">'.$nouvEtab->getNomE().'</div>
                 <div class="card-body">
-                  <h5 class="card-title">'.$lesArtCiteScolaire[$i]->gettitrea().'</h5> 
+                  <h5 id="'.$numArt.'" class="card-title">'.$lesArtCiteScolaire[$i]->gettitrea().'</h5> 
                   <p class="card-text">'.$lesArtCiteScolaire[$i]->getcommentairea().'</p>
                   <p class="card-text">'.$HTMLliens.'</p>
                   <p class="card-text">'.$HTMLimages.'</p>
@@ -135,23 +140,19 @@
               </div>
             </div>            
             ';
-            if($nbcol==3)
+            if($nbcol==3 && $i<>$nb-1)
             {
-              echo '</row>';
+              echo '</div><div class="row ligne">';
               $nbcol = 0;
             }
-            else
-            {
-              $nbcol ++;
-            }
+            
+            $nbcol ++;
         }//Fin du For ACTUS
-
       ?>
         
         </div>
       </div><!-- container principal fin -->
     </div> <!-- actualité fin -->
-
 
   <!-- Start Footer bottom Area -->
   <footer>
@@ -176,21 +177,14 @@
   <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
 
   <!-- Libraries JavaScript -->
-  <script src="lib/jquery/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-  <script src="lib/knob/jquery.knob.js"></script>
-  <script src="lib/wow/wow.min.js"></script>
-  <script src="lib/parallax/parallax.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/nivo-slider/js/jquery.nivo.slider.js" type="text/javascript"></script>
-  <script src="lib/appear/jquery.appear.js"></script>
-  <script src="lib/isotope/isotope.pkgd.min.js"></script>
-  <script src="js/sliderti.js"></script>
-  <script src="contactform/contactform.js"></script>
-  <script src="js/main.js"></script>
 
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/popper/popper.min.js"></script>
+  <script src="lib/bootstrap/js/bootstrap.min.js"></script>
   <script>
     $(document).ready(function(){
+
       $("#myInput").on("keyup", function() {
         var value = $(this).val().toLowerCase();
         $("#cartes .card").filter(function() {
@@ -228,7 +222,8 @@
       
       $('#tout').on('click',function(){
         $("#cartes .card").filter(function() {
-          $(this).toggle(true)
+          $(this).toggle(true);
+          $("#myInput").val("");
         });
       });
 
@@ -239,6 +234,11 @@
         });
       });
     });
+    function void consuleterArt()
+    {
+      //var x = $(this).attr("id");
+      console.log("x");
+    }
   </script>
 
 </body>

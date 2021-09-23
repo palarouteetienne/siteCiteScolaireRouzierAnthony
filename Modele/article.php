@@ -168,6 +168,7 @@ class Article
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 		$req="SELECT * FROM article WHERE etaba = '".$etab."';";
+
 		$articles = array();
 
 		$stmt = $connStr->query($req);
@@ -219,16 +220,17 @@ class Article
 		
 		return $lesarticlesActu;
 	}
-	public function findByType($type)
+	public function findByType($type,$etab)
 	{
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
-
-		$req=	"SELECT *
+		$req =	"SELECT *
 				FROM article a inner join type t
 				ON a.TYPEA = t.IDT
-				WHERE t.TYPE = '".$type."'
-				AND DATEFINR >= NOW()
+				WHERE t.TYPE = lcase('".$type."')
+				AND (DATEFINR >= NOW()
+				OR DATEFINR = 0000-00-00)
+				AND a.ETABA = '".$etab."'
 				ORDER BY DATEDEBR DESC;";
 
 		$lesarticles = array();

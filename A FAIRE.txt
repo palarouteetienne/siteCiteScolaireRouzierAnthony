@@ -1,12 +1,18 @@
 A FAIRE CITESCOLAIRE
-Faire apparaître les actus sous forme de tuiles, dans v-citescolaire.php.
-    Chaque actu/tuile ouvre les photos qu'elle inclue qd clic dessus. Il y a une petite icône de téléchargement pour le PDF
+Faire apparaître les actus sous forme de tuiles, dans v-citescolaire.php. FAIT
+    Chaque actu/tuile ouvre les photos qu'elle inclue qd clic dessus. A FAIRE
+Il y a une petite icône de téléchargement pour le PDF
 Copier le code de la page v-citescolaire pour faire la vue internat, la vue inscriptions, self, bourses. FAIT
-Procéder à la correction de la page collège, lycée jamot et jaurès A FAIRE
+Procéder à la correction de la page collège, lycée jamot et jaurès FAIT
 
 Qd création utilisateur : Vérif existence MAILU dans la base. DOIT ETRE UNIQUE. FAIT
 
 Modification Article (avec ajout et suppression ressources - bouton MOINS - ) A FAIRE
 
 Clic sur tuiles article pour voir détail.
+
+Dubois      R&PziC?5Sn
+Raia        Q3MqH$EfJe
+Gibouret    xD4Ge3?Aqq
+Admin       @zHbAY3&bQ
 

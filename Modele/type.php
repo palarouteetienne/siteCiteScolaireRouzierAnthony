@@ -49,6 +49,21 @@ class Type
 
 	}
 
+	public function retrieveById($id)
+	{		
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+
+		$req = "SELECT * FROM type WHERE IDT = ".$id;
+
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		$this->idt = $ligne["IDT"];
+		$this->type = $ligne["TYPE"];
+
+	}
+
 	public function findAll()
 	{
 		include_once "connexionBDD.php";

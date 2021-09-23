@@ -87,7 +87,11 @@
 #cartes h5{
   color: #ffa538;
 }
-
+.ligne{
+  line-height:normal;
+  margin-bottom: 5vw;
+  margin-right: 15px;
+}
 .carte{
   height: 400px;
   width: 270px;
@@ -1036,6 +1040,10 @@ a:hover {
 .card-blog .card-title {
   font-size: 1.3rem;
   margin-top: .6rem;
+}
+
+.card-title {
+  cursor: pointer;
 }
 
 .card-blog .card-description {
