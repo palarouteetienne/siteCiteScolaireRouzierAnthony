@@ -1,3 +1,6 @@
 #ajouter {
     cursor: pointer;
-  }
+}
+.supprimer {
+    cursor: pointer;
+}

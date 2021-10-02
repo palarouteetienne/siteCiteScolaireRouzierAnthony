@@ -6,7 +6,7 @@
 		<meta charset="utf-8">
         <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-		<link href="css/modifArt.css" rel="stylesheet">
+		<link href="css/consultArt.css" rel="stylesheet">
         <!-- Bootstrap CSS File -->
         <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
@@ -18,10 +18,6 @@
         <script src="lib/popper/popper.min.js"></script>
         <script src="lib/bootstrap/js/bootstrap.min.js"></script>
 
-        <script src="lib/tinymce/js/tinymce/tinymce.min.js"></script>
-		<script>
-			tinyMCE.init({mode:"textareas"});
-		</script>	
     </head>
     <body>
  		<div class="container-fluid">

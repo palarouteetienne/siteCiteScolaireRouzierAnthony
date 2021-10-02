@@ -32,7 +32,9 @@
 
                 // Delete row on delete button click
 			$(document).on("click", ".supprimer", function(){
-				var numRessASuppr = $("div[class='col-sm-2']").html();
+				
+				var $parent = $(this).closest('.row');
+        		var numRessASuppr = $parent.find('.idr').text();
 				$(this).parents(".ressource").remove();
 
 				let listASuppr = document.getElementById('listASuppr');
@@ -135,23 +137,23 @@
 						{
 				      		echo "
 							<div class='ressource row'>
-							  	<div class='col-sm-2'>"
+							  	<div class='idr col-sm-1'>"
 							  		.$lesRessources[$i]->getIDR().
 								"</div>
-								<div class='col-sm-8'>";
+								<div class='col-sm-10'>";
 							if($lesRessources[$i]->getformatr() != "pdf")
 							{
 								echo "<img class='ressource' src='".$lesRessources[$i]->getcheminr()."' width='30px' height='30px'/>";
 							}
 							else
 							{
-								echo $lesRessources[$i]->getnomr()." <i class='fas fa-file-pdf fa-3x'></i>";
+								echo $lesRessources[$i]->getnomr()." <i class='fa fa-file-pdf-o'></i>";
 							}
 							echo "
 								</div>
-								<div class='col-sm-2'>
+								<div class='col-sm-1'>
 									<a class='supprimer' title='Supprimer' data-toggle='modal' data-target='#confirm-delete'>
-										<i class='fa fa-trash fa-5x' aria-hidden='true'></i>
+										<i class='fa fa-trash fa-2x' aria-hidden='true'></i>
 
 									</a>
 						  		</div>
