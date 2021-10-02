@@ -246,7 +246,7 @@
                     if(!empty){
                         input.each(function(){
                             $(this).parent("td").html($(this).val());
-                        });			
+                        });
                         $(this).parents("tr").find(".add, .edit").toggle();
                         $(".add-new").removeAttr("disabled");
                     }		

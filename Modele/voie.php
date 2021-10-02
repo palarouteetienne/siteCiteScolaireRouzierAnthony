@@ -49,6 +49,20 @@ class Voie
 
 	}
 
+	public function retrieveById($idv)
+	{		
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+
+		$req = "SELECT * FROM voie WHERE IDV = ".$idv;
+
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		$this->idv = $ligne["IDV"];
+		$this->voie = $ligne["VOIE"];
+
+	}
 	public function findAll()
 	{
 		include_once "connexionBDD.php";

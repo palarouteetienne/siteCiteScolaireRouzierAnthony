@@ -133,18 +133,19 @@ class Article
 	{ 
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
-
+		
 		$req = "UPDATE article set 
 		etaba = '".$this->etaba."',
 		titrea = '".$this->titrea."',
-		utila = '".$this->utila."'
-		typea = '".$this->typea."'
+		utila = '".$this->utila."',
+		typea = '".$this->typea."',
 		voiea = '".$this->voiea."',
 		commentairea = '".$this->commentairea."',
 		datedebr = '".$this->datedebr."',
 		datefinr = '".$this->datefinr."'
-		where IDa = '".$ida."'";
+		where IDA = '".$this->ida."'";
 
+		echo $req;
 		$connStr->exec($req);
 	}
 
@@ -235,7 +236,7 @@ class Article
 
 		$lesarticles = array();
 		$stmt = $connStr->query($req);
-		
+
 		while ($ligne = $stmt->fetch())
 		{
 			$nouvelArticle = new Article($ligne['IDA'], $ligne['ETABA'], $ligne["UTILA"], $ligne["TITREA"], $ligne["VOIEA"], $ligne["TYPEA"], $ligne["COMMENTAIREA"], $ligne["DATEDEBR"], $ligne["DATEFINR"]);

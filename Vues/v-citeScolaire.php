@@ -128,7 +128,7 @@
               <div class="card carte">
                 <div class="card-header">'.$nouvEtab->getNomE().'</div>
                 <div class="card-body">
-                  <h5 id="'.$numArt.'" class="card-title">'.$lesArtCiteScolaire[$i]->gettitrea().'</h5> 
+                  <h5 id="'.$numArt.'" onclick="consulterArt('.$lesArtCiteScolaire[$i]->getida().')" class="card-title">'.$lesArtCiteScolaire[$i]->gettitrea().'</h5> 
                   <p class="card-text">'.$lesArtCiteScolaire[$i]->getcommentairea().'</p>
                   <p class="card-text">'.$HTMLliens.'</p>
                   <p class="card-text">'.$HTMLimages.'</p>
@@ -234,10 +234,11 @@
         });
       });
     });
-    function void consuleterArt()
+    function consulterArt(ida)
     {
-      //var x = $(this).attr("id");
-      console.log("x");
+      console.log('ida '+ida);
+      window.location.href = "index.php?action=consulterArticle&ida="+ida;
+
     }
   </script>
 

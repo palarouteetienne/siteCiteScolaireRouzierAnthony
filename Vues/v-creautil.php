@@ -124,7 +124,7 @@
             "<center>
                 connectez vous comme administrateur, pour créer un utilisateur
                 <BR/>
-                <a href='index.php?action=init' style='color: grey;'>Retour accueil</a>
+                <a href='index.php?action=init' style='color: grey;font-size: 20px;'>Retour accueil</a>
             </center>";
         }
     ?>

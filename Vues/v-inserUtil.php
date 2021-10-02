@@ -11,5 +11,5 @@
         }*/
     ?>
     <BR/>
-    <a href='index.php?action=init' style='color: grey;'>Retour accueil</a>
+    <a href='index.php?action=init' style='color: grey;font-size: 20px;'>Retour accueil</a>
 </center>

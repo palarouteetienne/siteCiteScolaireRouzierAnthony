@@ -40,7 +40,7 @@
     		</form>
     		<br>
     		<br>
-    		<a href="index.php?action=connexion" style="color: white;">Retour à mon compte</a>
+    		<a href="index.php?action=connexion" style="color: grey;font-size: 20px;">Retour à mon compte</a>
     	</div>
   	</div>
 

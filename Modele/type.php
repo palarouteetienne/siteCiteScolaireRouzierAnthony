@@ -49,12 +49,12 @@ class Type
 
 	}
 
-	public function retrieveById($id)
+	public function retrieveById($idt)
 	{		
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 
-		$req = "SELECT * FROM type WHERE IDT = ".$id;
+		$req = "SELECT * FROM type WHERE IDT = ".$idt;
 
 		$stmt = $connStr->query($req);
 		$ligne = $stmt->fetch();

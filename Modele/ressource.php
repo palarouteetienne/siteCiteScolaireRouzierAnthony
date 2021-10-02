@@ -29,11 +29,14 @@ class Ressource
 	{
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
-		$req = "INSERT into ressource values (NULL,'"
-
-			.$this->articler."',
-			'".$this->nomr."','".$this->formatr."',
-			'".$this->cheminr."','".$this->poidsr."');";
+		$req = "INSERT into ressource values (
+			NULL,
+			'".$this->articler."',
+			'".$this->nomr."',
+			'".$this->formatr."',
+			'".$this->cheminr."',
+			'".$this->poidsr."');";
+			
 		$connStr->exec($req);
 	}
 
@@ -74,6 +77,27 @@ class Ressource
 		$this->formatr = $ligne["formatr"];
 		$this->cheminr = $ligne["cheminr"];
 		$this->poidsr = $ligne["poidsr"];
+	}
+
+	public function retrieveById($id)
+	{		
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+
+		$req = "SELECT * FROM ressource WHERE IDR = '".$id."';";
+		
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		$this->IDR = $ligne["IDR"];
+
+		$this->articler = new Article();
+		$this->articler->retrieve("ida='".$ligne["ARTICLER"]."'");
+		
+		$this->nomr = $ligne["NOMR"];
+		$this->formatr = $ligne["FORMATR"];
+		$this->cheminr = $ligne["CHEMINR"];
+		$this->poidsr = $ligne["POIDSR"];
 	}	
 
 	public function numero()
