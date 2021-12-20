@@ -1,3 +1,60 @@
+@font-face {
+  font-family: 'Raleway';
+  src:url('../fonts/Raleway/Raleway-VariableFont_wght.ttf') format('woff'); 
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AmaticSC-Regular';
+  src:url('../fonts/AmaticSC-Regular.ttf') format('woff'); 
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'AmaticSC-Bold';
+  src:url('../fonts/AmaticSC-Bold.ttf') format('woff'); 
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+#page {
+  background: rgb(87, 70, 69) none repeat scroll 0 0;
+  font-family: "Chalkduster";
+}
+
 #ajouter {
     cursor: pointer;
   }
+#titre {
+  color: #3ec1d5;
+  font-size:8vw;
+  font-family: AmaticSC-Bold;
+  font-weight: bolder;
+  text-align: center;
+}
+#corps {
+  font-size:2vw;
+  font-family: AmaticSC-Bold;
+  font-weight: bolder;
+  text-align: center;
+}
+#commentaire {
+  font-size:1.6vw;
+  font-family: AmaticSC-Bold;
+  font-weight:lighter;
+  text-align: left;
+  background: rgb(230, 224, 224) none repeat scroll 0 0;
+  margin-top: 2vw;
+  margin-bottom: 1vw;
+  border-radius: 15px 50px 30px;
+  padding-left: 2vw;
+  padding-top: 2vw;
+  padding-bottom: 2vw;
+}
+#galerie {
+	height: 10vw;
+	width: auto;
+  border-radius: 15px 50px 30px;
+  margin: 2vw;
+}

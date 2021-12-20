@@ -154,7 +154,6 @@
 								<div class='col-sm-1'>
 									<a class='supprimer' title='Supprimer' data-toggle='modal' data-target='#confirm-delete'>
 										<i class='fa fa-trash fa-2x' aria-hidden='true'></i>
-
 									</a>
 						  		</div>
 							</div>

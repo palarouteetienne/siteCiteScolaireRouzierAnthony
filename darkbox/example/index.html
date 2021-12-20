@@ -1,0 +1,78 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>jQuery Darkbox.js: Lightbox Plugin Demo</title>
+
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="../css/darkbox.css" />
+	<script type="text/javascript" src="../js/darkbox.js"></script>
+
+	<style>
+		body {
+			background-color: #333;
+		}
+		main {
+			width: 100%;
+			height: 100%;
+      text-align:center;
+      color:#fff;
+		}
+		main img {
+			width: 360px;
+			cursor: pointer;
+		}
+	</style>
+
+</head>
+<body>
+
+	<main>
+    <h1>jQuery Darkbox.js: Lightbox Plugin Demo</h1>
+    <div class="jquery-script-ads" style="margin:50px auto" align="center"><script type="text/javascript"><!--
+google_ad_client = "ca-pub-2783044520727903";
+/* jQuery_demo */
+google_ad_slot = "2780937993";
+google_ad_width = 728;
+google_ad_height = 90;
+//-->
+</script>
+<script type="text/javascript"
+src="https://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+		<div>
+			<img id="gallery" src="https://picsum.photos/2000/1800/?random" alt="" />
+		</div>
+	</main>
+
+	<script type="text/javascript">
+		$(document).ready(function ()
+    {
+      $('#gallery').click(function () {
+        $(this).darkbox([
+          "https://picsum.photos/2000/1800/?random",
+              "https://picsum.photos/1680/1280/?random",
+              "https://picsum.photos/1920/1680/?random",
+        ],{wrapAround: true});
+      });
+    });
+	</script>
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36251023-1']);
+  _gaq.push(['_setDomainName', 'jqueryscript.net']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+</body>
+</html>
