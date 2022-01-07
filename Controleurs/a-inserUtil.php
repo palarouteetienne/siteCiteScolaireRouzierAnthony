@@ -8,10 +8,17 @@
 	$prenomu = $_POST["prenomu"];
 	$emailu = $_POST["emailu"];
 	$mdpu = password_hash($_POST["mdpu"], PASSWORD_DEFAULT);
-	$adminu = $_POST["adminu"];
+	if(empty($_POST["adminu"]))
+	{
+		$adminu = 0;
+	}
+	else
+	{
+		$adminu = 1;
+	}
 	
 	$unUtilisateur = new Utilisateur("null", $ide, $nomu, $prenomu, $emailu, $mdpu, $adminu);
-	
+
 	$reussi = $unUtilisateur->create();
 	
 	if($reussi == true)

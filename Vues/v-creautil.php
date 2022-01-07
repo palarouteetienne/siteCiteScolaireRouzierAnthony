@@ -79,7 +79,7 @@
 	      		</p>
 				<p>
 					<label for="adminu" class='case-label'>L'utilisateur est-il un administrateur ?</label>
-					<input id='adminu' name='adminu' type='checkbox' class='case-input' value='true'/>
+					<input id='adminu' name='adminu' type='checkbox' class='case-input' value='1'/>
 				</p>
 	      		<p>
 	        		<input name="emailu" type="email" class="validate[required,custom[email]] feedback-input" id="email" placeholder="Adresse mail" required/>

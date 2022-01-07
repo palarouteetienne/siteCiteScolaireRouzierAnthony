@@ -25,7 +25,11 @@
 		      		<h4 style="color: white">
 
 						<p> Le compte ne peut pas être créé l'adresse est sans doute déjà utilisée par un autre.</p>
-
+						<p> 
+							Si ce n'est pas le cas, prevenez l'administrateur. 
+							Dites-lui qu'il y a une erreur dans la requête
+							d'insertion utilisateur.
+						</p>
 					</h4>
 
 	      		</div>

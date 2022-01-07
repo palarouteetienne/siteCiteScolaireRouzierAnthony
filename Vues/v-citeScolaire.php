@@ -55,7 +55,7 @@
                   <a href="#" id="tout" value="tout" class="active" data-filter="*">Tout afficher</a>
                 </li>
                 <li>
-                  <input class="form-control" id="myInput" type="text" placeholder="Rechercher..">
+                  <input class="form-control" id="myInput" type="text" placeholder="Rechercher une filière, un mot..">
                 </li>
               </ul>
             </div>

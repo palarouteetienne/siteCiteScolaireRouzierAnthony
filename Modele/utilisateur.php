@@ -45,7 +45,6 @@ class Utilisateur
 
 	public function create()
 	{
-
 		$mailExiste = $this->verifmailexiste($this->mailu);
 
 		if($mailExiste == true)
@@ -56,11 +55,27 @@ class Utilisateur
 		{
 			include_once "connexionBDD.php";
 			$connStr = getBDD();
-		
-			$req = "INSERT INTO UTILISATEUR values ('".$this->idu."','".$this->nomu."','".$this->prenomu."','".$this->mailu."','".$this->mdpu."','".$this->adminu."');";
-		
+
+			if($this->adminu == '0')
+			{
+				$admin = false;
+			}
+			else
+			{
+				$admin = true;
+			}
+
+			$req = "INSERT INTO utilisateur values (".$this->idu.",'".$this->nomu."','".$this->prenomu."','".$this->mailu."','".$this->mdpu."','".$admin."');";
+
 			$stmt = $connStr->query($req);
-			return true;
+			if($stmt)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
 		}
 	}
 

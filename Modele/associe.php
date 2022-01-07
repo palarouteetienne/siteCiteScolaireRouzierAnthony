@@ -44,6 +44,7 @@ class Associe
             $newAssocie = new Associe($ligne["idu"],$ligne["ide"]);
 			array_push($lesAssocies, $newAssocie);
         }
+		var_dump($lesAssocies);
         return $lesAssocies;
     }
     

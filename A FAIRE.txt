@@ -11,8 +11,42 @@ Modification Article (avec ajout et suppression ressources - bouton MOINS - ) A 
 
 Clic sur tuiles article pour voir détail.
 
-Dubois      R&PziC?5Sn
-Raia        Q3MqH$EfJe
-Gibouret    xD4Ge3?Aqq
-Admin       @zHbAY3&bQ
+Dubois :  login adresse académique    R&PziC?5Sn
+Raia     login adresse académique   Q3MqH$EfJe
+Gibouret  login adresse académique  xD4Ge3?Aqq
+Admin    login adresse académique (thierry.rouzier@citeScolaire.fr)   @zHbAY3&bQ
 
+BDD : jqdnjtrto.mysql.db
+
+
+FTP : https://net2ftp.cluster030.hosting.ovh.net/index.php
+
+
+Réunion Bureau Mme Dubois 13 Ve 08/01/2022
+
+Vérifier que si l'on ne saisit pas les date (null) d'un article, il reste tout le temps. A FAIRE
+
+Actu sans vibration à gauche surgissant A FAIRE
+Pas de scroll toutes les infos sur la page de garde : menu à droite avec les bulles de chaque établissement (surgissant) A FAIRE
+Pour chaque cadre blanc de chaque étab intégrer les boutons bleus dans la présentation A FAIRE
+Oter le cadre blanc de la cité scolaire et son menu. A FAIRE
+A la place : dans le menu surgissant des actus, mettre le mot du pro ET tous les liens Interna tself inscription Bourse, etc. (tout ce qui concerne la cité sco) A FAIRE
+
+Tuiles des articles entièrement cliquables ENVOYER DU TEXTE descriptif des articles et, plus tard, SUR LES VIDEOS A FAIRE
+Tuiles articles : pas de dates apparentes A FAIRE
+Intégration de vidéos dans les articles A FAIRE
+
+Ajouter GRETA et Apprentissage dans une seule bulle supplémentaire à droite. A FAIRE
+Le clique nous amène à une page avec un article pour le GRETA, un pour le CFA A FAIRE
+
+Dans Formation  (METTRE UN "S" FAIT):
+4 Bulles : Voie Générale Voie technologique Voie Professionnelle Post-bac (Regarder si toutes ces voies sont ans la BDD) A FAIRE
+
+Logos du ministère, région, Département, ... A FAIRE
+
+Créer compte Marc Celerier
+marc.celerier@ac-limoges.fr adminJaures@23 FAIT
+
+Faire clignoter la flèche pour remonter + mention "Accueil"
+
+Affichage des tuiles : Mettre un bouton retour "Accueil"

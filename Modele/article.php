@@ -186,29 +186,31 @@ class Article
 	}
 
 	public function findActu($etab=null)
-	{ //Seulement les 7 premières actus pour la page d'accueil
+	{ //Seulement les 10 premières actus pour la page d'accueil
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 		if($etab!=null)
-		{
+		{//Pour la page d'accueil
 			$req=	"SELECT *
-				FROM article a inner join type t
-				ON a.TYPEA = t.IDT
-				WHERE ETABA = ".$etab."
-				AND t.TYPE = 'actu'
-				AND DATEFINR >= NOW()
-				ORDER BY DATEDEBR DESC
-				LIMIT 7;";
+					FROM article a inner join type t
+					ON a.TYPEA = t.IDT
+					WHERE ETABA = ".$etab."
+					AND t.TYPE = 'actu'
+					AND (DATEFINR >= NOW()
+					OR (DATEDEBR = '00/00/0000' AND DATEFINR = '00/00/0000'))
+					ORDER BY DATEDEBR DESC
+					LIMIT 10;";
 		} 
 		else
-		{
+		{//Pour les page Actualités
 			$req=	"SELECT *
 					FROM article a inner join type t
 					ON a.TYPEA = t.IDT
 					WHERE t.TYPE = 'actu'
-					AND DATEFINR >= NOW()
+					AND (DATEFINR >= NOW()
+					OR (DATEDEBR = '00/00/0000' AND DATEFINR = '00/00/0000'))
 					ORDER BY DATEDEBR DESC
-					LIMIT 7;";
+					LIMIT 10;";
 		}
 		$lesarticlesActu = array();
 		$stmt = $connStr->query($req);

@@ -18,7 +18,7 @@
     		<form action="index.php?action=formationModifier" method ="post" class="form" id="form1">
 	      		
 	      		<div class="text-center">
-	      			<h2> Formation </h2>
+	      			<h2> Formations </h2>
 	      		</div>
 
 	      		<div class="submit">

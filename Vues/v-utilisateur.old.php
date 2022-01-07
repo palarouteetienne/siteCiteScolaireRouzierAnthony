@@ -92,7 +92,7 @@
     		<form action="index.php?action=formationModifier" method ="post" class="form" id="form1">
 	      		
 	      		<div class="text-center">
-	      		<h2 style="color: white"> Formation </h2>
+	      		<h2 style="color: white"> Formations </h2>
 	      		</div>
 
 	      		<div class="submit">
