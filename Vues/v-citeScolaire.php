@@ -15,6 +15,8 @@
   <!-- Libraries CSS Files -->
   <link href="lib/nivo-slider/css/nivo-slider.css" rel="stylesheet">
 
+
+
   <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link href="lib/animate/animate.min.css" rel="stylesheet">
 
@@ -36,6 +38,25 @@
   <div id="<?php echo $typeArt; ?>" class="portfolio-area area-padding fix">
     <div class="container-fluid">
 
+    <div class="awesome-project-1 fix">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="awesome-menu ">
+              <ul class="project-menu">
+                <li>
+                  <input class="form-control" id="myInput" type="text" placeholder="Rechercher une filière, un mot.." size="60%">
+                </li>
+                <li>
+                  <i id="loupe" class="fa fa-search" aria-hidden="true"></i>
+                </li>
+                <li>
+                  <a href="#" id="tout" value="tout" class="active" data-filter="*">Tout afficher</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div> <!-- Fin menu page actualité -->
+
       <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
@@ -46,22 +67,6 @@
         </div>
       </div>
       <div class="row"> <!-- Début menu page actualité -->
-        
-        <div class="awesome-project-1 fix">
-          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-            <div class="awesome-menu ">
-              <ul class="project-menu">
-                <li>
-                  <a href="#" id="tout" value="tout" class="active" data-filter="*">Tout afficher</a>
-                </li>
-                <li>
-                  <input class="form-control" id="myInput" type="text" placeholder="Rechercher une filière, un mot..">
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div> <!-- Fin menu page actualité -->
       
       <br>
       

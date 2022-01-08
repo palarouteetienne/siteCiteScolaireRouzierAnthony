@@ -34,159 +34,155 @@
 
 	</head>
 
-	<body data-spy="scroll" data-target="#navbar-example">
+	<body data-spy="scroll">
 		
 		<div id="logo-fond">
 			<img src="img/logo_blanc.png"/>
 		</div>
 		<!-- Début Page accueil -->
-		<div class="actualites box box1">
-			<!-- ENCART ACTUS -->
-			<div class = "oddboxinner">
-				ACTUS !
-				<?php
-					for($i=0;$i<count($actus);$i++)
-					{
-						echo $actus[$i]->gettitrea()."<BR/>";
-					}
-				?>
+		<div class="boite-boite">
+			<div id="b" class="boite">
+				<div id="actualites">
+					ACTUS !
+				</div>
+				<!-- ENCART ACTUS -->
+				<div class = "oddboxinner">
+					<div class="table">
+						<?php
+							for($i=0;$i<count($actus);$i++)
+							{
+								setlocale(LC_TIME, "fr_FR");
+								echo '<div class="row">
+										<div class="col vert">'.
+											$actus[$i]->gettitrea()
+										.'</div>
+										<div class="col blanc">Le '.
+											strftime("%d %B", strtotime($actus[$i]->getdatedebr())).
+										'</div>
+									</div>';
+							}
+						?>
+					</div>	
+				</div>
 			</div>
 		</div>
 		<div id="accueil">
 		    <div class="intro-content display-table">
 		      	<div class="table-cell">
-		        	<div class="container">
+				  	<div class="boite-boite-vignette">
+		        		<div id="bv" class="container conteneur-vignettes">
 
 			         	<!-- Start Vignette Area -->
 			          	<div id="team" class="our-team-area area-padding">
 			            	<div class="container">
-
-			               	<!-- Début ligne VIDE -->
-							<div class="row espacement">
-								<div class="col-md-12 col-sm-12 col-xs-12">
-				                </div>
-							</div>
-				              	
-
-							<!-- fin ligne vignette Cité -->
 							<div class="row espacement">
 				                <!-- Start vignette colonne établissement -->
-								<div class="col-md-3 col-sm-3 col-xs-3">
-				                    		<div class="single-team-member">
-				                      			<div class="team-img">
-				                          				<a href="#cite_Scolaire">
-				                            				<img src="img/index/aubusson.jpg" alt=""/>
-				                          				</a>
-				                      			</div>
-				                      			<a href="#cite_Scolaire">
-				                        			<div class="team-content text-center">
-				                          				<h4 style="font-weight: bold; color: grey; font-size: 200%;">Cité Scolaire</h4>
+								<div class="col-md-12 col-sm-12 col-xs-12">
+									<div class="single-team-member">
+										<div class="team-img">
+												<a href="#cite_Scolaire">
+													<img src="img/index/aubusson.jpg" alt=""/>
+												</a>
+										</div>
+										<a href="#cite_Scolaire">
+											<div class="team-content text-center">
+												<h4 style="font-weight: bold; color: grey; font-size: 200%;">Cité Scolaire</h4>
 
-				                          				<h4>
-				                            				<div class='visible'>
-				                              					<ul>
-				                                					<li>Jamot - Jaurès</li>
-									                                <li>Jamot - Jaurès</li>
-									                                <li>Jamot - Jaurès</li>
-				                              					</ul>
-				                            				</div>
-				                          				</h4>
-				                        			</div>
-				                      			</a>
-				                    		</div>
-				                </div>
-				                <div class="col-md-3 col-sm-3 col-xs-3">
-				                    <div class="single-team-member">
-				                      	<div class="team-img">
-				                        	
-				                          		<a href="#college_EJ">
-				                            		<img src="img/index/lycee_jamot.jpg" alt="">
-				                          		</a>
-				                        	
-				                      	</div>
-				                      	<a href="#college_EJ">
-				                        	<div class="team-content text-center">
-				                          		<h4 style="font-weight: bold; color: grey; font-size: 200%;">Collège</h4>
+												<h4>
+													<div class='visible'>
+														<ul>
+															<li>Jamot - Jaurès</li>
+															<li>Jamot - Jaurès</li>
+															<li>Jamot - Jaurès</li>
+														</ul>
+													</div>
+												</h4>
+											</div>
+										</a>
+									</div>
+									<div class="single-team-member">
+										<div class="team-img">
+											
+												<a href="#college_EJ">
+													<img src="img/index/lycee_jamot.jpg" class="bulles" alt="">
+												</a>
+											
+										</div>
+										<a href="#college_EJ">
+											<div class="team-content text-center">
+												<h4 style="font-weight: bold; color: grey; font-size: 200%;">Collège</h4>
 
-						                        <h4>
-						                            <div class='visible'>
-						                              	<ul>
-								                            <li>Eugène Jamot</li>
-								                            <li>Eugène Jamot</li>
-								                            <li>Eugène Jamot</li>
-						                              	</ul>
-						                            </div>
-				                          		</h4>
-				                        	</div>
-				                      	</a>
-				                    </div>
-				                </div>
-				                <!-- End vignette column -->
+												<h4>
+													<div class='visible'>
+														<ul>
+															<li>Eugène Jamot</li>
+															<li>Eugène Jamot</li>
+															<li>Eugène Jamot</li>
+														</ul>
+													</div>
+												</h4>
+											</div>
+										</a>
+									</div>
+									<div class="single-team-member">
+										<div class="team-img">
+											
+												<a href="#lycee_JJ">
+													<img src="img/index/lycee_jaures.jpg" class="bulles" alt="">
+												</a>
+										
+										</div>
+										<a href="#lycee_JJ">
+											<div class="team-content text-center">
+												<h4 style="font-weight: bold; color: grey; font-size: 200%;">Lycée</h4>
+												
 
-				                <!-- Start vignette column -->
-				                <div class="col-md-3 col-sm-3 col-xs-3">
-				                    <div class="single-team-member">
-				                      	<div class="team-img">
-				                        	
-				                          		<a href="#lycee_JJ">
-				                            		<img src="img/index/lycee_jaures.jpg" alt="">
-				                          		</a>
-				                        
-				                      	</div>
-				                      	<a href="#lycee_JJ">
-				                        	<div class="team-content text-center">
-				                          		<h4 style="font-weight: bold; color: grey; font-size: 200%;">Lycée</h4>
-				                          		
-
-				                          		<h4>
-				                            		<div class='visible'>
-						                            	<ul>
-						                                	<li>Jean Jaurès</li>
+												<h4>
+													<div class='visible'>
+														<ul>
+															<li>Jean Jaurès</li>
 															<li>Professionnel</li>
 															<li>Professionnel</li>
-						                              	</ul>
-						                            </div>
-				                          		</h4>
-				                        	</div>
-				                      	</a>
-				                    </div>
-				                </div>
-				                <!-- End vignette column -->
+														</ul>
+													</div>
+												</h4>
+											</div>
+										</a>
+									</div>
+									<div class="single-team-member">
+										<div class="team-img">
+										
+											<a href="#lycee_EJ">
+												<img src="img/index/lycee_jamot.jpg" class="bulles" alt="">
+											</a>
+										
+										</div>
+										<a href="#lycee_EJ">
+											<div class="team-content text-center">
+												<h4 style="font-weight: bold; color: grey; font-size: 200%;">Lycée</h4>
 
-												                <!-- Start vignette column -->
-																<div class="col-md-3 col-sm-3 col-xs-3">
-				                    <div class="single-team-member">
-				                      	<div class="team-img">
-				                        	
-				                          		<a href="#lycee_EJ">
-				                            		<img src="img/index/lycee_jamot.jpg" alt="">
-				                          		</a>
-				                        	
-				                      	</div>
-				                      	<a href="#lycee_EJ">
-				                        	<div class="team-content text-center">
-					                          	<h4 style="font-weight: bold; color: grey; font-size: 200%;">Lycée</h4>
-
-					                          	<h4>
-					                            	<div class='visible'>
-					                              		<ul>
-							                                <li>Eugène Jamot</li>
-							                                <li>Général</li>
-							                                <li>Technologique</li>
-					                              		</ul>
-					                            	</div>
-					                          	</h4>
-				                        	</div>
-				                      	</a>
-				                    </div>
-				                </div>
-				                <!-- End vignette column -->
+												<h4>
+													<div class='visible'>
+														<ul>
+															<li>Eugène Jamot</li>
+															<li>Général</li>
+															<li>Technologique</li>
+														</ul>
+													</div>
+												</h4>
+											</div>
+										</a>
+									</div>
+								</div>
+							<!-- End vignette column -->
 
 		            		</div>
 		        		</div>
 		    			<!-- End vignette Area -->
 
 						</div>
+					</div>
+					<!-- End boite-boite-vignette -->
 					</div>
 				</div>
 			</div>
@@ -205,27 +201,6 @@
 	        		</div>
 	      		</div>
 
-	      		<!-- Bouton de navigation vers la cité scolaire -->
-	      		<center>
-			        <a href="index.php?action=citeScolaire&typeArt=5&etab=4">
-			          	<button type="button" class="button button-a button-big button-rounded">Actualités</button>
-			        </a>
-			        <a href="index.php?action=citeScolaire&typeArt=2&etab=4">
-			          	<button type="button" class="button button-a button-big button-rounded">Internat</button>
-			        </a>
-			        <a href="index.php?action=citeScolaire&typeArt=3&etab=4">
-			          	<button type="button" class="button button-a button-big button-rounded">Self</button>
-			        </a>
-			        <a href="index.php?action=citeScolaire&typeArt=7&etab=4">
-			          	<button type="button" class="button button-a button-big button-rounded">Inscription</button>
-			        </a>
-			        <a href="index.php?action=citeScolaire&typeArt=4&etab=4">
-			        	<button type="button" class="button button-a button-big button-rounded">Bourses / Aides</button>
-			        </a>
-	      		</center>
-
-	      		<br>
-
 	      		<section class="about-mf sect-pt4 route">
 			        <div class="container">
 			          	<div class="row">
@@ -233,12 +208,8 @@
 			              		<div class="box-shadow-full">
 			                		<div class="row">
 			                  			<div class="col-md-6">
-
-			                    			<br>
-			                    			<br>
-
 			                    			<div class="skill-mf">
-			                      				<img src="img/logo.png" class="img-fluid rounded b-shadow-a" alt="">
+			                      				<img src="img/logo.png" class="img-fluid rounded b-shadow-a" id="logo-cite" alt="">
 			                    			</div>
 			                  			</div>
 			                  			<div class="col-md-6">
@@ -274,7 +245,25 @@
 			                        				</section>
 			                      				</p>
 			                    			</div>
-			                  			</div>
+										</div>
+										<!-- Bouton de navigation vers la cité scolaire -->
+										<center>
+											<a href="index.php?action=citeScolaire&typeArt=5&etab=4">
+												<button type="button" class="button button-a  button-rounded">Actualités</button>
+											</a>
+											<a href="index.php?action=citeScolaire&typeArt=2&etab=4">
+												<button type="button" class="button button-a  button-rounded">Internat</button>
+											</a>
+											<a href="index.php?action=citeScolaire&typeArt=3&etab=4">
+												<button type="button" class="button button-a  button-rounded">Self</button>
+											</a>
+											<a href="index.php?action=citeScolaire&typeArt=7&etab=4">
+												<button type="button" class="button button-a  button-rounded">Inscription</button>
+											</a>
+											<a href="index.php?action=citeScolaire&typeArt=4&etab=4">
+												<button type="button" class="button button-a  button-rounded">Bourses / Aides</button>
+											</a>
+										</center>
 			                		</div>
 			              		</div>
 			            	</div>
@@ -295,20 +284,6 @@
 	          			</div>
 	        		</div>
 	      		</div>
-
-	      		<br>
-
-      			<!-- Bouton de navigation vers le collège Eugène Jamot -->
-			    <center>
-					<a href="index.php?action=citeScolaire&typeArt=6&etab=1">
-			          	<button type="button" class="button button-a button-big button-rounded">Informations Pratiques</button>
-			        </a>
-			        <a href="index.php?action=citeScolaire&typeArt=1&etab=1">
-			          	<button type="button" class="button button-a button-big button-rounded">Formations</button>
-			        </a>
-			    </center>
-      			
-      			<br>
 
 			    <section class="about-mf sect-pt4 route">
 			        <div class="container">
@@ -343,16 +318,15 @@
 							                          	</p>
 			                        				</div>
 			                      				</div>
-			                    			</div>
-
-						                    <br>
-						                    <br>
-
-			                    			<div>
-						                      	<p class="title-s">Carte de navigation</p>
-						                      	<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2773.8852445553957!2d2.1649188158934427!3d45.9535757791098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f99470eab55a19%3A0x6fe2598f0adb6015!2s1+Rue+Williams+Dumazet%2C+23200+Aubusson!5e0!3m2!1sfr!2sfr!4v1546857061068" width="500" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
-						                    </div>
-			                  			</div>
+											</div>
+			                    			
+											<div class="row">
+												<div class="col-lg-12 col-md-12 col-xs-12">	
+													<p class="title-s">Carte de navigation</p>
+													<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2773.8852445553957!2d2.1649188158934427!3d45.9535757791098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f99470eab55a19%3A0x6fe2598f0adb6015!2s1+Rue+Williams+Dumazet%2C+23200+Aubusson!5e0!3m2!1sfr!2sfr!4v1546857061068" width="auto" height="auto" frameborder="0" style="border:0" allowfullscreen></iframe>
+												</div>
+											</div>
+			                  			</div><!-- Fin col carte -->
 			                  			<div class="col-md-6">
 						                    <div class="about-me pt-4 pt-md-0">
 						                      	<div class="title-box-2">
@@ -385,8 +359,17 @@
 							                          	</div>
 							                        </section>
 			                      				</p>
+							        			<!-- Bouton de navigation vers le collège Eugène Jamot -->
+												<center>
+													<a href="index.php?action=citeScolaire&typeArt=6&etab=1">
+														<button type="button" class="button button-a  button-rounded">Informations Pratiques</button>
+													</a>
+													<a href="index.php?action=citeScolaire&typeArt=1&etab=1">
+														<button type="button" class="button button-a  button-rounded">Formations</button>
+													</a>
+												</center>
 			                    			</div>
-			                  			</div>
+			                  			</div><!-- Fin col présentation -->
 			                		</div>
 			              		</div>
 			            	</div>
@@ -407,20 +390,6 @@
 	          			</div>
 	        		</div>
 	      		</div>
-	      		
-	      		<br>
-
-	      		<!-- Bouton de navigation vers le lycée Eugène Jamot -->
-	      		<center>
-				  	<a href="index.php?action=citeScolaire&typeArt=6&etab=2">
-			          	<button type="button" class="button button-a button-big button-rounded">Informations Pratiques</button>
-			        </a>
-			        <a href="index.php?action=citeScolaire&typeArt=1&etab=2">
-			          	<button type="button" class="button button-a button-big button-rounded">Formations</button>
-			        </a>
-			    </center>
-	      		
-	      		<br>
 
 	      		<section class="about-mf sect-pt4 route">
 			        <div class="container">
@@ -462,7 +431,7 @@
 
 			                    			<div class="skill-mf">
 			                      				<p class="title-s">Carte de navigation</p>
-			                      				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2773.8852445553957!2d2.1649188158934427!3d45.9535757791098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f99470eab55a19%3A0x6fe2598f0adb6015!2s1+Rue+Williams+Dumazet%2C+23200+Aubusson!5e0!3m2!1sfr!2sfr!4v1546857061068" width="500" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+			                      				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2773.8852445553957!2d2.1649188158934427!3d45.9535757791098!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f99470eab55a19%3A0x6fe2598f0adb6015!2s1+Rue+Williams+Dumazet%2C+23200+Aubusson!5e0!3m2!1sfr!2sfr!4v1546857061068" width="auto" height="auto" frameborder="0" style="border:0" allowfullscreen></iframe>
 			                    			</div>
 			                  			</div>
 			                  			<div class="col-md-6">
@@ -497,6 +466,15 @@
 								                        </div>
 								                    </section>
 			                      				</p>
+								  	      		<!-- Bouton de navigation vers le lycée Eugène Jamot -->
+												<center>
+													<a href="index.php?action=citeScolaire&typeArt=6&etab=2">
+														<button type="button" class="button button-a  button-rounded">Informations Pratiques</button>
+													</a>
+													<a href="index.php?action=citeScolaire&typeArt=1&etab=2">
+														<button type="button" class="button button-a  button-rounded">Formations</button>
+													</a>
+												</center>
 			                    			</div>
 			                  			</div>
 			                		</div>
@@ -519,20 +497,6 @@
           				</div>
         			</div>
       			</div>
-      			
-      			<br>
-
-      			<!-- Bouton de navigation vers le lycée Jean Jaurès -->
-			    <center>
-					<a href="index.php?action=citeScolaire&typeArt=6&etab=3">
-			          	<button type="button" class="button button-a button-big button-rounded">Informations Pratiques</button>
-			        </a>
-			        <a href="index.php?action=citeScolaire&typeArt=1&etab=3">
-			          	<button type="button" class="button button-a button-big button-rounded">Formations</button>
-			        </a>
-			    </center>
-      			
-      			<br>
 
 			    <section class="about-mf sect-pt4 route">
 			        <div class="container">
@@ -574,7 +538,7 @@
 
 				                    		<div class="skill-mf">
 				                      			<p class="title-s">Carte de navigation</p>
-				                      			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2773.9492843633857!2d2.172266415211766!3d45.95229630876297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f9947c8a7b8337%3A0x2d7a3cc4c39cbf18!2s38%20Rue%20Jean%20Jaur%C3%A8s%2C%2023200%20Aubusson!5e0!3m2!1sen!2sfr!4v1575767843664!5m2!1sen!2sfr" width="500" height="250" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+				                      			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2773.9492843633857!2d2.172266415211766!3d45.95229630876297!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f9947c8a7b8337%3A0x2d7a3cc4c39cbf18!2s38%20Rue%20Jean%20Jaur%C3%A8s%2C%2023200%20Aubusson!5e0!3m2!1sen!2sfr!4v1575767843664!5m2!1sen!2sfr" width="auto" height="auto" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
 				                    		</div>
 				                  		</div>
 				                  		<div class="col-md-6">
@@ -609,6 +573,15 @@
 							                          	</div>
 							                        </section>
 				                      			</p>
+							        			<!-- Bouton de navigation vers le lycée Jean Jaurès -->
+												<center>
+													<a href="index.php?action=citeScolaire&typeArt=6&etab=3">
+														<button type="button" class="button button-a  button-rounded">Informations Pratiques</button>
+													</a>
+													<a href="index.php?action=citeScolaire&typeArt=1&etab=3">
+														<button type="button" class="button button-a  button-rounded">Formations</button>
+													</a>
+												</center>
 				                    		</div>
 				                  		</div>
 			                		</div>
@@ -672,8 +645,8 @@
 		<script type="text/javascript">
 			$(window).load(function () {
 				var niveau = $(window).scrollTop();
-				
-				if(niveau  > 350) {
+				if(niveau  > 350 || $("#bv").is(':visible')) 
+				{
 					$("#logo-fond").css('filter', 'blur(5px)');
 					$("#logo-fond").css('opacity', '0.2');
 					$("#logo-fond").css('z-index', '-10');
@@ -685,10 +658,42 @@
 					$("#logo-fond").css('z-index', '3');
 				}
 			});
+			$("#bv").mouseover(function () {
+				$("#logo-fond,.box-shadow-full").css('filter', 'blur(5px)');
+				$("#logo-fond,.box-shadow-full").css('opacity', '0.2');
+				$("#logo-fond,.box-shadow-full").css('z-index', '-10');
+
+			});
+			$("#bv").mouseout(function () {
+				var niveau = $(window).scrollTop();
+				if(niveau  <= 350) 
+				{
+					$("#logo-fond").css('filter', 'blur(0px)');
+					$("#logo-fond").css('opacity', '1');
+					$("#logo-fond").css('z-index', '3');
+				}
+				$("#logo-fond,.box-shadow-full").css('filter', 'blur(0px)');
+					$(".box-shadow-full").css('opacity', '1');
+					$(".box-shadow-full").css('z-index', '3');
+			});
+			$("#b").mouseover(function () {
+				$("#logo-fond").css('filter', 'blur(5px)');
+				$("#logo-fond").css('opacity', '0.2');
+				$("#logo-fond").css('z-index', '-10');
+			});
+			$("#b").mouseout(function () {var niveau = $(window).scrollTop();
+				if(niveau  <= 350) 
+				{
+					$("#logo-fond").css('filter', 'blur(0px)');
+					$("#logo-fond").css('opacity', '1');
+					$("#logo-fond").css('z-index', '3');
+				}
+			});
 			$(window).scroll(function () {
 				var niveau = $(window).scrollTop();
 
-				if(niveau  > 350) {
+				if(niveau  > 350) 
+				{
 					$("#logo-fond").css('filter', 'blur(5px)');
 					$("#logo-fond").css('opacity', '0.2');
 					$("#logo-fond").css('z-index', '-10');

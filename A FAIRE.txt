@@ -24,7 +24,7 @@ FTP : https://net2ftp.cluster030.hosting.ovh.net/index.php
 
 Réunion Bureau Mme Dubois 13 Ve 08/01/2022
 
-Vérifier que si l'on ne saisit pas les date (null) d'un article, il reste tout le temps. A FAIRE
+Vérifier que si l'on ne saisit pas les date (null) d'un article, il reste tout le temps. FAIT
 
 Actu sans vibration à gauche surgissant A FAIRE
 Pas de scroll toutes les infos sur la page de garde : menu à droite avec les bulles de chaque établissement (surgissant) A FAIRE
@@ -50,3 +50,5 @@ marc.celerier@ac-limoges.fr adminJaures@23 FAIT
 Faire clignoter la flèche pour remonter + mention "Accueil"
 
 Affichage des tuiles : Mettre un bouton retour "Accueil"
+
+Mettre une grosse loupe à côté de la zone de recherche des filières v-citescolaire.php.
