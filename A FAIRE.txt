@@ -16,21 +16,25 @@ Raia     login adresse académique   Q3MqH$EfJe
 Gibouret  login adresse académique  xD4Ge3?Aqq
 Admin    login adresse académique (thierry.rouzier@citeScolaire.fr)   @zHbAY3&bQ
 
+BDD : 
+https://phpmyadmin.cluster028.hosting.ovh.net/index.php?route=/&route=%2F
 BDD : jqdnjtrto.mysql.db
+user : jqdnjtrto
 
 
 FTP : https://net2ftp.cluster030.hosting.ovh.net/index.php
+user : jqdnjtr-To
 
 
 Réunion Bureau Mme Dubois 13 Ve 08/01/2022
 
 Vérifier que si l'on ne saisit pas les date (null) d'un article, il reste tout le temps. FAIT
 
-Actu sans vibration à gauche surgissant A FAIRE
-Pas de scroll toutes les infos sur la page de garde : menu à droite avec les bulles de chaque établissement (surgissant) A FAIRE
-Pour chaque cadre blanc de chaque étab intégrer les boutons bleus dans la présentation A FAIRE
+Actu sans vibration à gauche surgissant FAIT
+Pas de scroll toutes les infos sur la page de garde : menu à droite avec les bulles de chaque établissement (surgissant) FAIT
+Pour chaque cadre blanc de chaque étab intégrer les boutons bleus dans la présentation FAIT
 Oter le cadre blanc de la cité scolaire et son menu. A FAIRE
-A la place : dans le menu surgissant des actus, mettre le mot du pro ET tous les liens Interna tself inscription Bourse, etc. (tout ce qui concerne la cité sco) A FAIRE
+A la place : dans le menu surgissant des actus, mettre le mot du pro ET tous les liens Internat self inscription Bourse, etc. (tout ce qui concerne la cité sco) A FAIRE
 
 Tuiles des articles entièrement cliquables ENVOYER DU TEXTE descriptif des articles et, plus tard, SUR LES VIDEOS A FAIRE
 Tuiles articles : pas de dates apparentes A FAIRE
@@ -52,3 +56,8 @@ Faire clignoter la flèche pour remonter + mention "Accueil"
 Affichage des tuiles : Mettre un bouton retour "Accueil"
 
 Mettre une grosse loupe à côté de la zone de recherche des filières v-citescolaire.php.
+Saisie/modif mot du proviseur
+
+Clef TinyMCE
+rdiilpifek0eghc9o6835o977cnmntdlxnph6m0fr8m96mg8
+(palarouteetienne@gmx.fr mdp 63zKepdBSC@&FsGi)

@@ -535,7 +535,7 @@ a:hover {
   border-radius: 50%;
   right: 15px;
   bottom: 15px;
-  transition: background 0.5s;
+  transition: background 0.9s;
   z-index: 11;
 }
 
@@ -3679,11 +3679,31 @@ span.email-notes {
 .vert{
   color:#8dee67;
   background-color: rgba(0, 0, 0, 0.534);
+  cursor: pointer;
 }
 .blanc{
   font-weight:normal;
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.534);
+}
+.titre-menu{
+  cursor: pointer;
+  color: #ffffff;
+  padding-left: 1em;
+  margin-top: 0.1em;
+}
+.titre-menu a{
+  font-weight:900;
+  font-size:large;
+}
+#mot-proviseur{
+  font-weight:900;
+  font-size:large;
+  padding-left: 1em;
+  margin-top: 0.1em;
+}
+.mot-du-pro{
+  display: none;
 }
 .boite-boite-vignette{
   display: block;

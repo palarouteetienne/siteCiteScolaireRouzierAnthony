@@ -9,7 +9,8 @@
 		<link href="img/favicon.png" rel="icon">
 
 		<!-- Bootstrap CSS File -->
-		<link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
 
 		<!-- Libraries CSS Files -->
 		<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -51,11 +52,14 @@
 						<?php
 							for($i=0;$i<count($actus);$i++)
 							{
-								setlocale(LC_TIME, "fr_FR");
+								setlocale(LC_TIME, "fr_FR.UTF-8"); //Pour les accents sur les mois de la date
 								echo '<div class="row">
-										<div class="col vert">'.
-											$actus[$i]->gettitrea()
-										.'</div>
+										<div class="col vert">
+											<form id="'.$actus[$i]->getida().'" method="POST" onclick="document.getElementById('.$actus[$i]->getida().
+											').submit();" action="index.php?action=citeScolaire&typeArt='.$actus[$i]->gettypea().'&etab='.$actus[$i]->getetaba().'">'
+												.$actus[$i]->gettitrea().
+											'</form>
+										</div>
 										<div class="col blanc">Le '.
 											strftime("%d %B", strtotime($actus[$i]->getdatedebr())).
 										'</div>
@@ -63,6 +67,51 @@
 							}
 						?>
 					</div>	
+				</div>
+
+				<div class="table">
+					<div class="row">
+						<div id="mot-proviseur" class="col titre-menu">
+							<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modaleMotPro">
+								Mot du Proviseur
+								<i class="fa fa-chevron-right" aria-hidden="true"></i>
+							</button>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col titre-menu">
+							<a href="index.php?action=citeScolaire&typeArt=2&etab=4">
+								<div class="titre-menu">Internat</div>
+							</a>
+							<a href="index.php?action=citeScolaire&typeArt=3&etab=4">
+								<div class="titre-menu">Self</div>
+							</a>
+							<a href="index.php?action=citeScolaire&typeArt=7&etab=4">
+								<div class="titre-menu">Inscription</div>
+							</a>
+							<a href="index.php?action=citeScolaire&typeArt=4&etab=4">
+								<div class="titre-menu">Bourses / Aides</div>
+							</a>
+						</div>
+					</div>
+				</div>	
+
+			</div>
+		</div>
+		<div id="modaleMotPro" class="modal" tabindex="-1">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Le Mot de la Proviseure</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<p>
+							<?php
+								echo $cite->getmotProviseur();
+							?>
+						</p>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -78,28 +127,6 @@
 							<div class="row espacement">
 				                <!-- Start vignette colonne établissement -->
 								<div class="col-md-12 col-sm-12 col-xs-12">
-									<div class="single-team-member">
-										<div class="team-img">
-												<a href="#cite_Scolaire">
-													<img src="img/index/aubusson.jpg" alt=""/>
-												</a>
-										</div>
-										<a href="#cite_Scolaire">
-											<div class="team-content text-center">
-												<h4 style="font-weight: bold; color: grey; font-size: 200%;">Cité Scolaire</h4>
-
-												<h4>
-													<div class='visible'>
-														<ul>
-															<li>Jamot - Jaurès</li>
-															<li>Jamot - Jaurès</li>
-															<li>Jamot - Jaurès</li>
-														</ul>
-													</div>
-												</h4>
-											</div>
-										</a>
-									</div>
 									<div class="single-team-member">
 										<div class="team-img">
 											
@@ -153,7 +180,7 @@
 										<div class="team-img">
 										
 											<a href="#lycee_EJ">
-												<img src="img/index/lycee_jamot.jpg" class="bulles" alt="">
+												<img src="img/index/aubusson.jpg" class="bulles" alt="">
 											</a>
 										
 										</div>
@@ -188,91 +215,6 @@
 			</div>
 		</div>
 	  	<!-- End Intro -->
-
-	  	<!-- Start Cité Scolaire Area -->
-	  	<div id="cite_Scolaire" class="portfolio-area area-padding fix">
-	    	<div class="container">
-
-	      		<div class="row">
-	        		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-	          			<div class="section-headline text-center">
-	            			<h2>La Cité Scolaire</h2>
-	          			</div>
-	        		</div>
-	      		</div>
-
-	      		<section class="about-mf sect-pt4 route">
-			        <div class="container">
-			          	<div class="row">
-			            	<div class="col-sm-12">
-			              		<div class="box-shadow-full">
-			                		<div class="row">
-			                  			<div class="col-md-6">
-			                    			<div class="skill-mf">
-			                      				<img src="img/logo.png" class="img-fluid rounded b-shadow-a" id="logo-cite" alt="">
-			                    			</div>
-			                  			</div>
-			                  			<div class="col-md-6">
-			                    			<div class="about-me pt-4 pt-md-0">
-			                      				<div class="title-box-2">
-			                        				<h5 class="title-left">
-			                          					Mot du Proviseur
-			                        				</h5>
-			                      				</div>
-			                      				<p class="lead">
-			                        				<section class="about-mf sect-pt4 route">
-			                          					<div>
-			                            					<div class="row">
-			                              						<div class="col-sm-12">
-			                                						<div class="box-shadow-full">
-									                                  	<div class="row">
-									                                    	<div class="skill-mf">
-									                                      		<p>
-			                                        
-											                                        <?php
-
-											                                          echo $cite->getmotProviseur();
-
-											                                        ?>
-
-									                                      		</p>
-									                                    	</div>
-									                                  	</div>
-									                                </div>
-									                            </div>
-									                        </div>
-			                          					</div>
-			                        				</section>
-			                      				</p>
-			                    			</div>
-										</div>
-										<!-- Bouton de navigation vers la cité scolaire -->
-										<center>
-											<a href="index.php?action=citeScolaire&typeArt=5&etab=4">
-												<button type="button" class="button button-a  button-rounded">Actualités</button>
-											</a>
-											<a href="index.php?action=citeScolaire&typeArt=2&etab=4">
-												<button type="button" class="button button-a  button-rounded">Internat</button>
-											</a>
-											<a href="index.php?action=citeScolaire&typeArt=3&etab=4">
-												<button type="button" class="button button-a  button-rounded">Self</button>
-											</a>
-											<a href="index.php?action=citeScolaire&typeArt=7&etab=4">
-												<button type="button" class="button button-a  button-rounded">Inscription</button>
-											</a>
-											<a href="index.php?action=citeScolaire&typeArt=4&etab=4">
-												<button type="button" class="button button-a  button-rounded">Bourses / Aides</button>
-											</a>
-										</center>
-			                		</div>
-			              		</div>
-			            	</div>
-			          	</div>
-			        </div>
-			    </section>
-	    	</div>
-	  	</div>
-	  	<!-- End Cité Scolaire Area -->
 
   		<!-- Start college EJ Area -->
 	  	<div id="college_EJ" class="portfolio-area area-padding fix">
@@ -630,7 +572,7 @@
 		<script src="lib/jquery/jquery.min.js"></script>
 		<script src="lib/jquery/jquery-migrate.min.js"></script>
 		<script src="lib/popper/popper.min.js"></script>
-		<script src="lib/bootstrap/js/bootstrap.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 		<script src="lib/easing/easing.min.js"></script>
 		<script src="lib/counterup/jquery.waypoints.min.js"></script>
 		<script src="lib/counterup/jquery.counterup.js"></script>
@@ -672,9 +614,9 @@
 					$("#logo-fond").css('opacity', '1');
 					$("#logo-fond").css('z-index', '3');
 				}
-				$("#logo-fond,.box-shadow-full").css('filter', 'blur(0px)');
-					$(".box-shadow-full").css('opacity', '1');
-					$(".box-shadow-full").css('z-index', '3');
+				$(".box-shadow-full").css('filter', 'blur(0px)');
+				$(".box-shadow-full").css('opacity', '1');
+				$(".box-shadow-full").css('z-index', '3');
 			});
 			$("#b").mouseover(function () {
 				$("#logo-fond").css('filter', 'blur(5px)');
@@ -706,6 +648,9 @@
 				}
 			
 			});
+			$("#mot-proviseur").click(function () {
+				$(".mot-du-pro").toggle();
+			});	
 		</script>
 	</body>
 

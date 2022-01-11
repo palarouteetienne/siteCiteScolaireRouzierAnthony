@@ -19,7 +19,12 @@
 		
 		<script>
 			tinyMCE.init({
-			mode:"textareas"});
+				mode:"textareas",
+				plugins: 'link,lists',
+				menubar: 'insert',
+				toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link',
+				menubar: 'edit view'
+			});
 		</script>	
 
         <title>Saisie nouvel article</title>

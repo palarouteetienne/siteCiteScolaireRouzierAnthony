@@ -20,7 +20,13 @@
 
         <script src="lib/tinymce/js/tinymce/tinymce.min.js"></script>
 		<script>
-			tinyMCE.init({mode:"textareas"});
+			tinyMCE.init({
+				mode:"textareas",
+				plugins: 'link,lists',
+				menubar: 'insert',
+				toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link',
+				menubar: 'edit view'
+			});
 		</script>	
 
         <link href="../css/styleFormulaire.css" rel="sylesheet">
