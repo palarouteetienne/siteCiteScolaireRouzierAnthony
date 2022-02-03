@@ -14,7 +14,7 @@
 							$_POST["TITREA"], 
 							$_POST["VOIEA"], 
 							$_POST["TYPEA"], 
-							$_POST["COMMENTAIREA"], 
+							addslashes($_POST["COMMENTAIREA"]), 
 							$_POST["DATEDEBR"], 
 							$_POST["DATEFINR"]
 						);
@@ -37,8 +37,18 @@
 
 		//Extraction de l'extension (.pdf ou.jpg, etc.) du nom de fichier en cours de traitement
 		$formatr=substr($nomFichier, strpos($nomFichier, ".", 0)+2-count($nomFichier));
+		
+		if($formatr == "mp4" || $formatr == "ogg")
+		{
+			$dossier="vdo";
+		}
+		else
+		{
+			$dossier="fichier";
+		}
+		$cheminr=$dossier."/".$nomsFichiers[$i];
 
-		$cheminr="fichier/".$nomsFichiers[$i];
+		
 		$poidsr=$taille[$i];
 
 		if (strlen($nomFichier) > 0) 
@@ -49,7 +59,7 @@
 			$Res = new Ressource($IDR, $articler, $nomFichier, $formatr, $cheminr, $poidsr);
 			$Res->create();
 			
-			$cible = "fichier/".basename($nomFichier);
+			$cible = $dossier."/".basename($nomFichier);
 			$ext = strtolower(substr($nomFichier,$positionPoint,$longueur-$positionPoint));
 
 			$tmpName=$nomsTemps[$i];
@@ -71,7 +81,7 @@
 
 	//MAJ Resources à supprimer
 	$ressASupp = $_POST["listASuppr"];
-	
+
 	for($i=0;$i<count($ressASupp);$i++)
 	{
 		$res = new Ressource();
@@ -81,6 +91,6 @@
 		$res->delete($ressASupp[$i]);
 
 		//Rq.: Supprimer aussi le fichier sur le disque.
-		suppression("fichier",$nomFichier);
+		suppression($dossier,$nomFichier);
 	}
 ?>

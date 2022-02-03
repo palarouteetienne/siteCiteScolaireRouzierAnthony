@@ -36,7 +36,11 @@
 	</head>
 
 	<body data-spy="scroll">
-		
+		<img id="logo"/> <!-- Logo partenaires cf. Jquery en bas -->
+		<video id="vdo" width=320  height=240 controls poster="img/logo-blanc.png">
+			Cette vidéo ne peut être affichée sur votre navigateur.<br>
+			Elle est disponible à <a href="https://vimeo.com/654855486/7e6cec2774"> vidéo cité scolaire </a> . 
+		</video>
 		<div id="logo-fond">
 			<img src="img/logo_blanc.png"/>
 		</div>
@@ -74,8 +78,48 @@
 						<div id="mot-proviseur" class="col titre-menu">
 							<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modaleMotPro">
 								Mot du Proviseur
-								<i class="fa fa-chevron-right" aria-hidden="true"></i>
 							</button>
+						</div>
+					</div>
+					<div id="direction" class="row g-0">
+						<div class="col-12 g-0">
+							<div class="row g-0">
+								<div class="col-12">
+									Equipe Direction :
+								</div>
+							</div>	
+							<div class="row g-0">
+								<div class="col-7 chefs-menu">
+									Mme Dubois
+								</div>
+								<div class="col-5 fonctions-menu">
+									Prov.
+								</div>
+							</div>
+							<div class="row g-0">
+								<div class="col-7 chefs-menu">
+									M. Raia
+								</div>
+								<div class="col-5 fonctions-menu">
+									Prov. Adj.
+								</div>
+							</div>
+							<div class="row g-0">
+								<div class="col-7 chefs-menu">
+									M. Gibouret
+								</div>
+								<div class="col-5 fonctions-menu">
+									Princ. Adj.
+								</div>
+							</div>
+							<div class="row g-0">
+								<div class="col-7 chefs-menu">
+									M. Célerier
+								</div>
+								<div class="col-5 fonctions-menu">
+									Chef Travaux
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="row">
@@ -105,12 +149,10 @@
 						<h5 class="modal-title">Le Mot de la Proviseure</h5>
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
-					<div class="modal-body">
-						<p>
+					<div id="texteMotPro" class="modal-body">
 							<?php
 								echo $cite->getmotProviseur();
 							?>
-						</p>
 					</div>
 				</div>
 			</div>
@@ -584,6 +626,46 @@
 
 		<!-- Template Main Javascript File -->
 		<script src="js/main.js"></script>
+
+		<script type="text/javascript">
+  			let images= [<?php
+					$dossier='img/logos';
+					$fichiers=scandir($dossier);
+					for($i=0;$i<count($fichiers);$i++)
+					{
+						if($fichiers[$i] != "." && $fichiers[$i] != "..")
+						{
+							if($i==count($fichiers)-1)
+							{
+								echo '"'.$fichiers[$i].'"';
+							}
+							else
+							{
+								echo '"'.$fichiers[$i].'",';
+							}
+						}
+					}
+				?>];
+			
+			i = 0;
+
+			var lance = setInterval(
+				function logos() {
+					const image=document.getElementById("logo");
+					if(i>=0 && i<images.length)
+					{
+						image.src="img/logos/"+images[i];
+						i+=1;
+					}
+					else
+					{
+						i=0;
+						image.src="img/logos/"+images[i];
+					}
+					
+				},2000);
+			
+		</script>
 		<script type="text/javascript">
 			$(window).load(function () {
 				var niveau = $(window).scrollTop();
@@ -619,9 +701,9 @@
 				$(".box-shadow-full").css('z-index', '3');
 			});
 			$("#b").mouseover(function () {
-				$("#logo-fond").css('filter', 'blur(5px)');
-				$("#logo-fond").css('opacity', '0.2');
-				$("#logo-fond").css('z-index', '-10');
+				$("#logo-fond,.box-shadow-full").css('filter', 'blur(5px)');
+				$("#logo-fond,.box-shadow-full").css('opacity', '0.2');
+				$("#logo-fond,.box-shadow-full").css('z-index', '-10');
 			});
 			$("#b").mouseout(function () {var niveau = $(window).scrollTop();
 				if(niveau  <= 350) 
@@ -630,6 +712,12 @@
 					$("#logo-fond").css('opacity', '1');
 					$("#logo-fond").css('z-index', '3');
 				}
+				$(".box-shadow-full").css('filter', 'blur(0px)');
+				$(".box-shadow-full").css('opacity', '1');
+				$(".box-shadow-full").css('z-index', '3');
+			});
+			$( window ).on( "load", function() {
+				$("#vdo").html('<source src="vdo/teaser_091221.mp4" type="video/mp4"></source>');
 			});
 			$(window).scroll(function () {
 				var niveau = $(window).scrollTop();

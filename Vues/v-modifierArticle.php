@@ -21,10 +21,10 @@
         <script src="lib/tinymce/js/tinymce/tinymce.min.js"></script>
 		<script>
 			tinyMCE.init({
-				mode:"textareas",
-				plugins: 'link,lists',
-				menubar: 'insert',
-				toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link',
+				selector:"textarea#commentaire",
+				plugins: 'link,lists,paste',
+				menubar: 'insert,edit',
+				toolbar: 'paste,undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link',
 				menubar: 'edit view'
 			});
 		</script>	
@@ -36,7 +36,7 @@
 		<script type="text/javascript">
 
 
-                // Delete row on delete button click
+                // Supprimer une ligne sur clic bouton Suppr
 			$(document).on("click", ".supprimer", function(){
 				
 				var $parent = $(this).closest('.row');
@@ -130,7 +130,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-8">
-					<center><textarea name="COMMENTAIREA" cols="100" rows="10"><?php echo $lArticle->getcommentairea(); ?></textarea></center>
+					<center><textarea id="commentaire" name="COMMENTAIREA" cols="100" rows="10"><?php echo $lArticle->getcommentairea(); ?></textarea></center>
 				</div>
 				<div class="col-md-4">
 					<center><span class="btn btn-info">Ressources de l'article :</span></center>

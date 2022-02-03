@@ -10,11 +10,28 @@
 	$unUtilisateur->retrieve("MAILU='".$_SESSION['emailu']."'");
 
 	$numUtilisateur = $unUtilisateur->getidu();
-	$unArticle = new Article("", $numEtablissement, $numUtilisateur, $_POST['titre'], $_POST['voie'], $_POST['typeArticle'], $_POST['contenuArticle'], $_POST['dateDebutParution'], $_POST['dateFinParution']);
+	$unArticle = new Article("", $numEtablissement, $numUtilisateur, $_POST['titre'], $_POST['voie'], $_POST['typeArticle'], addslashes($_POST['contenuArticle']), $_POST['dateDebutParution'], $_POST['dateFinParution']);
 	
 	$numArticleCree=$unArticle->numero();
 	$unArticle->create();
-	
+	// Create a FileInfo object
+	$type=$_FILES['image']['tmp_name']['mime'];
+
+	// Determine the MIME type of the uploaded file
+	switch ($type) {        
+		case 'image/jpg':
+			$im = imagecreatefromjpeg($_FILES['image']['tmp_name']);
+		break;
+
+		case 'image/png':
+			$im = imagecreatefrompng($_FILES['image']['tmp_name']);
+		break;
+
+		case 'image/gif':
+			$im = imagecreatefromgif($_FILES['image']['tmp_name']);
+		break;
+	}
+
 	$nomsFichiers=$_FILES['tabRessources']['name'];
 	$taillesFichiers=$_FILES['tabRessources']['size']; 
 	$nomsTemps=$_FILES['tabRessources']['tmp_name'];
@@ -29,7 +46,14 @@
 			// On préfixe le nom des fichiers envoyés par la date et l'heure
 			$nomFichier=date("Y") . date("m") . date("j") . "-" . date("G") . date("i") . date("s") . "-" . $nomFichier;
 			
-			$cheminDestination = "fichier/".$nomFichier;
+			if($type == "mp4" || $type == "ogg")
+			{
+				$cheminDestination = "vdo/".$nomFichier;
+			}
+			else
+			{
+				$cheminDestination = "fichier/".$nomFichier;
+			}
 			$ext = strtolower(strrchr($nomFichier, "."));
 			$tailleFichier=$taillesFichiers[$i];
 			$tmpName=$nomsTemps[$i];

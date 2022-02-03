@@ -40,7 +40,15 @@
 /*======================================
 //--//-->   STYLE POLICES FONTS
 ======================================*/
-
+/* Police mot du pro */
+@font-face {
+  font-family: 'franklin';
+  font-style: normal;
+  font-weight: 100;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/librefranklin/v7/jizOREVItHgc8qDIbSTKq4XkRg8T88bjFuXOnduhLsSkANDPTedX18mE.woff) format('woff');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
 @font-face {
   font-family: 'Raleway';
   src:url('../fonts/Raleway/Raleway-VariableFont_wght.ttf') format('woff'); 
@@ -114,8 +122,8 @@
 .carte{
   height: 400px;
   width: 270px;
+  cursor: pointer;
 }
-
 #myBtn {
   display: none;
   position: fixed;
@@ -1443,11 +1451,24 @@ footer .credits a {
 a:focus {
   outline: 0px solid;
 }
-
+#logo{
+  height: 90px;
+  width: auto;
+  position: fixed;
+  top: 80vh;
+  right: 0px;
+  margin:0px;
+  padding: 0px;
+  overflow-x: hidden;
+  background-color: rgb(255, 255, 255);
+  border: solid rgb(190, 186, 187);
+  border-radius:10px 0% 0% 10px;
+  z-index: 5;
+}
 #logo-cite{
   height: 20em;
 }
-img:not(#logo-fond img, #logo-cite) {
+img:not(#logo-fond img, #logo-cite, #logo) {
 	max-width: 100%;
 	height: 10em;
 }
@@ -1608,7 +1629,7 @@ input, select, textarea, input[type="text"], input[type="date"], input[type="url
   display: inline-block;
   font-size: 40px;
   font-weight: 600;
-  margin-bottom: 0px;
+  margin-bottom: 15px;
   position: relative;
   text-transform: capitalize;
 }
@@ -3613,6 +3634,7 @@ span.email-notes {
   margin: 0;
   padding-top: 30px;
 }
+
 .espacementhaut {
   margin-top: 10%;
 }
@@ -3696,7 +3718,37 @@ span.email-notes {
   font-weight:900;
   font-size:large;
 }
-#mot-proviseur{
+.titre-menu .btn{
+  cursor: pointer;
+  color: #ffffff;
+  padding-left: 1em;
+  margin-top: 0.1em;
+}
+.chefs-menu{
+  font-weight: 900;
+  color: #d6d6dd;
+}
+.fonctions-menu{
+  font-weight: bold;
+  color: #9c9cb4;
+}
+#direction *{
+  margin: 0%;
+  padding: O.5vw;
+}
+#bleuMDP{
+  font-weight: bold;
+  color: #0000ff !important;
+}
+#vertMDP{
+  font-weight: bold;
+  color: #009900 !important;
+}
+#rougeMDP{
+  font-weight: bold;
+  color: #dd6421 !important;
+}
+#mot-proviseur .btn{
   font-weight:900;
   font-size:large;
   padding-left: 1em;
@@ -3705,6 +3757,16 @@ span.email-notes {
 .mot-du-pro{
   display: none;
 }
+#modaleMotPro{
+  font-family: initial;
+  color: initial;
+}
+#texteMotPro *{
+  font-family: franklin;
+  color:#000;
+  padding: 5px;
+}
+
 .boite-boite-vignette{
   display: block;
   height: 70px;
@@ -3743,6 +3805,20 @@ span.email-notes {
   overflow-x: hidden;
   z-index: 5;
 }
+#vdo{
+  border-radius: 30px;
+  height: 90px;
+  width: auto;
+  position: fixed;
+  top: 80vh;
+  left: 0px;
+  margin:0px;
+  padding: 0px;
+  overflow-x: hidden;
+  border: solid rgb(190, 186, 187);
+  border-radius:0% 10px 10px 0%;
+  z-index: 5;
+}
 @keyframes secoue {
   0% { transform: translate(1.1em, 0.7em) }
   5% { transform: translate(1.15em, 0.7em); }
@@ -3765,6 +3841,42 @@ span.email-notes {
   90% { transform: translate(1.37em, 0.7em); }
   95% { transform: translate(1.25em, 0.7em) }
   100% { transform: translate(1.13em, 0.7em) }
+}
+#menu-voies{
+
+  width: 100%;
+  overflow:visible;
+  line-height:normal;
+  cursor: pointer;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 12px;
+  margin-bottom: 20px;
+}
+.btn-menu{
+  font-size: 3vw;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(245, 239, 220);
+  border-style: solid;
+  text-align: center;
+  margin-right: 10px;
+}
+.btn-menu:hover{
+  color: rgb(228, 90, 26);
+  background-color: rgba(26, 25, 25, 0.705);
+}
+#menu-recherche {
+  overflow:visible;
+  color: rgb(245, 239, 220);
+  border-bottom-style: solid;
+  border-color: rgb(168, 149, 131);
+  float: top;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#tout{
+  color: rgb(245, 239, 220);
+  font-family: 'Chalkduster';
 }
 /*----------------------------------------
  .End CSS

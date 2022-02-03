@@ -1,6 +1,6 @@
-A FAIRE CITESCOLAIRE
+dans CITESCOLAIRE
 Faire apparaître les actus sous forme de tuiles, dans v-citescolaire.php. FAIT
-    Chaque actu/tuile ouvre les photos qu'elle inclue qd clic dessus. A FAIRE
+    Chaque actu/tuile ouvre les photos qu'elle inclue qd clic dessus. FAIT
 Il y a une petite icône de téléchargement pour le PDF
 Copier le code de la page v-citescolaire pour faire la vue internat, la vue inscriptions, self, bourses. FAIT
 Procéder à la correction de la page collège, lycée jamot et jaurès FAIT
@@ -33,31 +33,52 @@ Vérifier que si l'on ne saisit pas les date (null) d'un article, il reste tout 
 Actu sans vibration à gauche surgissant FAIT
 Pas de scroll toutes les infos sur la page de garde : menu à droite avec les bulles de chaque établissement (surgissant) FAIT
 Pour chaque cadre blanc de chaque étab intégrer les boutons bleus dans la présentation FAIT
-Oter le cadre blanc de la cité scolaire et son menu. A FAIRE
-A la place : dans le menu surgissant des actus, mettre le mot du pro ET tous les liens Internat self inscription Bourse, etc. (tout ce qui concerne la cité sco) A FAIRE
+Oter le cadre blanc de la cité scolaire et son menu. FAIT
+A la place : dans le menu surgissant des actus, mettre le mot du pro ET tous les liens Internat self inscription Bourse, etc. (tout ce qui concerne la cité sco) FAIT
 
-Tuiles des articles entièrement cliquables ENVOYER DU TEXTE descriptif des articles et, plus tard, SUR LES VIDEOS A FAIRE
-Tuiles articles : pas de dates apparentes A FAIRE
+Tuiles des articles entièrement cliquables ENVOYER DU TEXTE descriptif des articles et, plus tard, SUR LES VIDEOS FAIT
+Tuiles articles : pas de dates apparentes FAIT
+
 Intégration de vidéos dans les articles A FAIRE
 
 Ajouter GRETA et Apprentissage dans une seule bulle supplémentaire à droite. A FAIRE
 Le clique nous amène à une page avec un article pour le GRETA, un pour le CFA A FAIRE
 
-Dans Formation  (METTRE UN "S" FAIT):
-4 Bulles : Voie Générale Voie technologique Voie Professionnelle Post-bac (Regarder si toutes ces voies sont ans la BDD) A FAIRE
 
-Logos du ministère, région, Département, ... A FAIRE
+Logos du ministère, région, Département, ... FAIT
 
-Créer compte Marc Celerier
-marc.celerier@ac-limoges.fr adminJaures@23 FAIT
+Créer compte Marc Celerier marc.celerier@ac-limoges.fr adminJaures@23 FAIT
 
-Faire clignoter la flèche pour remonter + mention "Accueil"
+Faire clignoter la flèche pour remonter + mention "Accueil" A FAIRE
 
-Affichage des tuiles : Mettre un bouton retour "Accueil"
+Affichage des tuiles : Mettre un bouton retour "Accueil" FAIT
 
-Mettre une grosse loupe à côté de la zone de recherche des filières v-citescolaire.php.
-Saisie/modif mot du proviseur
+Mettre une loupe à côté de la zone de recherche des filières v-citescolaire.php. FAIT
+Saisie/modif mot du proviseur FAIT
 
-Clef TinyMCE
-rdiilpifek0eghc9o6835o977cnmntdlxnph6m0fr8m96mg8
-(palarouteetienne@gmx.fr mdp 63zKepdBSC@&FsGi)
+Mot du proviseur : Mettre en forme sans trop d'espace. "Mot de la proviseure" en trop. Remettre les couleurs. FAIT
+
+Mettre numéros de téléphone Accueil et noms / fonctions des 4 chefs. FAIT
++ saisie dans la partie admin des infos sur les chefs. A FAIRE
+
+Consultation article :  A FAIRE pour avant le 20/01/2022
+
+- 4 "voies" : Voie Générale Voie technologique Voie Professionnelle Post-bac (Regarder si toutes ces voies sont dans la BDD) A FAIRE
+- Tuiles centrées quand seules.
+- Regroupement par voie
+- Remplacer option_seconde_lyceeEJ par option_terminale_lyceeEJ (Maths compl, MAths expertes et DGEMC)
+
+Intégrer VDO A FAIRE
+
+Menu droite : déflouter le fond quand clic A FAIRE
+
+DONNER LE DROIT ACCES AUX ACTUS A TOUS LE MONDE. FAIT (pour chq établissement)
+
+Logo Cité Tapisserie Plus petit FAIT
+
+VDO Cité Scolaire sur la page d'accueil au milieu (un bouton PLAY) FAIT
+
+Afficher un document "charte dans la page de saisie modif article" cf. Christine A FAIRE
+
+Envoyer une alerte à chaque nouvelle publication. A FAIRE
+

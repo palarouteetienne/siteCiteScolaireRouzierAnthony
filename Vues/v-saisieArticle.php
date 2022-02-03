@@ -19,10 +19,10 @@
 		
 		<script>
 			tinyMCE.init({
-				mode:"textareas",
-				plugins: 'link,lists',
-				menubar: 'insert',
-				toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link',
+				selector:"textarea#contenuArticle",
+				plugins: 'link,lists,paste',
+				menubar: 'insert,edit',
+				toolbar: 'paste,undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | numlist bullist | link',
 				menubar: 'edit view'
 			});
 		</script>	
@@ -109,7 +109,7 @@
 			<div class="row">
 				<div class="col-md-1"></div>
 				<div class="col-md-8">
-					<center><textarea name="contenuArticle" cols="70" rows="25"></textarea></center>
+					<center><textarea id="contenuArticle" name="contenuArticle" cols="70" rows="25"></textarea></center>
 				</div>
 				<div class="col-md-3">
 					<center><span class="">Ressources de l'articles :</span></center>

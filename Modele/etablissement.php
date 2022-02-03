@@ -13,6 +13,7 @@ class Etablissement
 	private $emailE;
 	private $motProviseur; // type : string
 	private $lesarticles = array(); //Pour les articles d'un établissement
+	private $lesvoies = array(); //Liste des voies concernées par les articles de cet établissement
 
 	//Operations
 	//Constructeur
@@ -129,7 +130,7 @@ class Etablissement
 
 	public function numero()
 	{
-		echo "numero";
+
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 
@@ -141,6 +142,27 @@ class Etablissement
 
 		return $nombre + 1;
 
+	}
+	public function getlesvoies() //Retourne une collection de voies
+	{
+		include_once "connexionBDD.php";
+		include_once "Modele/voie.php";
+		$connStr = getBDD();
+
+		$req = 'SELECT DISTINCT IDV,VOIE
+		FROM article
+		INNER JOIN voie
+		ON VOIEA = IDV
+		WHERE ETABA ='.$this->IDE.';';
+
+		$stmt = $connStr->query($req);
+		while ($ligne = $stmt->fetch())
+		{
+			$nouvVoie = new Voie($ligne["IDV"],$ligne["VOIE"]);
+			array_push($this->lesvoies, $nouvVoie);
+		}
+
+		return $this->lesvoies;
 	}
 	public function getIDE()
 	{

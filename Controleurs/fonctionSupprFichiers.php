@@ -2,8 +2,9 @@
 // Fonction de suppression des fichiers ressources dans le dossier img.
 function suppression($dossier,$nomFichier_choisi)
 {
+    echo "dossier ".$dossier;
     // On ouvre le dossier.
-    $repertoire = opendir($dossier);
+    $repertoire = opendir($dossier."/");
  
     // On lance notre boucle qui lira les fichiers un par un.
     while(false !== ($fichier = readdir($repertoire)))

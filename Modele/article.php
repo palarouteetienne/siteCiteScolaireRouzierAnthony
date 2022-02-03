@@ -13,6 +13,7 @@ class Article
 	private $voiea;
 	private $datedebr;
 	private $datefinr;
+	private $resumea; //Pour afficher juste le résumé de l'article
 
 	private $lesRessources = array();
 
@@ -38,6 +39,7 @@ class Article
 		$this->typea=$typea;
 		$this->datedebr=$datedebr;
 		$this->datefinr=$datefinr;
+		$this->resumea = substr($this->commentairea, 0, 30).' ...';
 	}
 	
 	public function create()
@@ -313,6 +315,10 @@ class Article
 	public function getcommentairea()
 	{
 		return $this->commentairea;
+	}
+	public function getresumea()
+	{
+		return $this->resumea;
 	}
 	public function getvoiea()
 	{
