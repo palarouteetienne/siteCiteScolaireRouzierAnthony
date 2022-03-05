@@ -1,0 +1,195 @@
+<?php
+
+class Utilisateur{
+
+	//Attributs
+	private $idUtil;
+	private $laCiteScolaire;
+	private $nom;
+	private $prenom;
+	private $adresseMail;
+	private $mdp;
+
+	//Méthodes
+	//Constructeur
+	function __construct($idUtil=0, $laCiteScolaire="", $nom="", $prenom="", $adresseMail="", $mdp=0)
+	{
+		$this->idUtil = $idUtil;
+		$this->laCiteScolaire = $laCiteScolaire;
+		$this->nom = $nom;
+		$this->prenom = $prenom;
+		$this->adresseMail = $adresseMail;
+		$this->mdp = $mdp;
+	}
+
+	//Get
+	public function getIdUtil()
+	{
+		return $this->idUtil;
+	}
+
+	public function getNom()
+	{
+		return $this->nom;
+	}
+
+	public function getPrenom()
+	{
+		return $this->prenom;
+	}
+
+	public function getAdresseMail()
+	{
+		return $this->adresseMail;
+	}
+
+	public function getMdp()
+	{
+		return $this->mdp;
+	}
+
+	public function getLaCiteScolaire()
+	{
+		return $this->laCiteScolaire;
+	}
+	
+	//Set
+	public function setIdUtil($idUtil)
+	{
+		$this->idUtil = $idUtil;
+	}
+	
+	public function setNom($nom)
+	{
+		$this->nom = $nom;
+	}
+	
+	public function setPrenom($prenom)
+	{
+		$this->prenom = $prenom;
+	}
+	
+	public function setAdresseMail($adresseMail)
+	{
+		$this->adresseMail = $adresseMail;
+	}
+	
+	public function setMdp($mdp)
+	{
+		$this->mdp = $mdp;
+	}
+	
+	public function setLaCiteScolaire($laCiteScolaire)
+	{
+		$this->laCiteScolaire = $laCiteScolaire;
+	}
+
+	public function create()
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+
+		$req = "INSERT into UTILISATEUR values ('".$this->idUtil."','".$this->getLaCiteScolaire()."','".$this->nom."','".$this->prenom."','".$this->adresseMail."','".$this->mdp."');";
+
+		$stmt = $connStr->query($req);
+	}
+
+	public function delete($idUtil)
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+		$req = "DELETE from UTILISATEUR where IDUTIL =".$idUtil;
+		$connStr->exec($req);
+
+	}
+
+	public function retrieve($condition)
+	{		
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+
+		$req = "SELECT * FROM UTILISATEUR WHERE ".$condition;
+
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		$this->idUtil= $ligne["IDUTIL"];
+
+		$this->laCiteScolaire = new CiteScolaire();
+		$this->laCiteScolaire->retrieve($ligne["CITESCOLAIRE"]);
+
+		$this->nom = $ligne["NOM"];
+		$this->prenom = $ligne["PRENOM"];
+		$this->adresseMail = $ligne["ADRESSEMAIL"];
+		$this->mdp = $ligne["MDP"];
+	}
+
+	public function findAll()
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+		$req="SELECT * FROM UTILISATEUR";
+		$lesUtilisateurs = array();
+
+		$stmt = $connStr->query($req);
+
+		while ($ligne = $stmt->fetch())
+		{
+			$laCiteScolaire = new CiteScolaire();
+			$laCiteScolaire->retrieve($ligne["CITESCOLAIRE"]);
+
+			$newUtilisateur = new Utilisateur($ligne["IDUTIL"], $laCiteScolaire, $ligne["NOM"], $ligne["PRENOM"], $ligne["ADRESSEMAIL"], $ligne["MDP"]);
+
+			array_push($lesUtilisateurs, $newUtilisateur);
+		}
+
+		return $lesUtilisateurs;
+	}
+
+	public function numero()
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+
+		$req="SELECT MAX(IDUTIL) as MAX FROM UTILISATEUR";
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		$nombre = $ligne["MAX"];
+
+		return $nombre + 1;
+
+	}
+
+	public function nbFichier($Util){
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+
+		$req="SELECT COUNT(*) as nbFichier FROM RESSOURCE WHERE UTILISATEUR=".$Util;
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		$nbFichier = $ligne["nbFichier"];
+
+		return $nbFichier;
+
+	}
+
+	public function tailleTotalFichier($Util){
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+
+		$req="SELECT SUM(POIDSRESSOURCE) as tailleTotalFichier FROM RESSOURCE WHERE UTILISATEUR=".$Util;
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		$tailleTotalFichier = $ligne["tailleTotalFichier"];
+
+		return $tailleTotalFichier;
+
+	}
+
+
+}
+
+?>

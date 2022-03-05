@@ -7,7 +7,11 @@
 	include_once "Modele/ressource.php";
 
 	$IDEtab=$_REQUEST["IDEtab"];
+<<<<<<< HEAD
 	
+=======
+	$_SESSION["IDEtab"] = $IDEtab;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 	$monEtablissement = new Etablissement();
 	$condition="IDE=".$IDEtab;
 	$monEtablissement->retrieve($condition);
@@ -20,6 +24,10 @@
 
 	$lesRessources = array();
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 	$ressource = new Ressource();
 
 	if (!empty($_POST['submit']))
@@ -57,7 +65,11 @@
 		
 	}
 	
+<<<<<<< HEAD
 	
+=======
+	$lesRessources = array();
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 	//$lesRessources = $ressource->findAll();
 	

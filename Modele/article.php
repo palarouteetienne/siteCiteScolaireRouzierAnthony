@@ -45,7 +45,11 @@ class Article
 	public function create()
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 		$req = "INSERT into article values (NULL,'".$this->etaba."','".$this->utila."','".$this->titrea."','".$this->voiea."','".$this->commentairea."','".$this->typea."','".$this->datedebr."','".$this->datefinr."');";
 
@@ -54,8 +58,14 @@ class Article
 
 	public function delete($ida)
 	{
+<<<<<<< HEAD
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
+=======
+		
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 		$req = "DELETE FROM article where IDA =".intval($ida).";";
 
@@ -66,7 +76,11 @@ class Article
 	public function retrieve($condition)
 	{		
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 		$req = "SELECT * FROM article WHERE ".$condition;
 
@@ -102,13 +116,21 @@ class Article
 		$this->commentairea = $ligne["COMMENTAIREA"];
 		$this->datedebr = $ligne["DATEDEBR"];
 		$this->datefinr = $ligne["DATEFINR"];
+<<<<<<< HEAD
 		$this->etaba = $ligne["ETABA"];
+=======
+		$this->etaba = $monEtab->getIDE();
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 	}
 
 	public function findAll()
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$req="SELECT * FROM article";
 		$lesarticles = array();
 
@@ -134,8 +156,13 @@ class Article
 	public function update()
 	{ 
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
 		
+=======
+		$connStr = getBDD();;
+
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$req = "UPDATE article set 
 		etaba = '".$this->etaba."',
 		titrea = '".$this->titrea."',
@@ -154,7 +181,11 @@ class Article
 	public function numero()
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 		$req="SELECT MAX(IDa) as MAX FROM article";
 		$stmt = $connStr->query($req);
@@ -169,7 +200,11 @@ class Article
 	public function findByEtab($etab) //Param : le num de l'établissement dont on veut les articles
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$req="SELECT * FROM article WHERE etaba = '".$etab."';";
 
 		$articles = array();
@@ -187,6 +222,7 @@ class Article
 		return $articles;
 	}
 
+<<<<<<< HEAD
 	public function findActu($etab=null)
 	{ //Seulement les 10 premières actus pour la page d'accueil
 		include_once "connexionBDD.php";
@@ -215,6 +251,18 @@ class Article
 					LIMIT 10;";
 		}
 		$lesarticlesActu = array();
+=======
+	public function findIns($etab)
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+		$req=	"SELECT *
+				FROM article
+				WHERE ETABA = ".$etab."
+				AND TYPEA = 'inscriptions';";
+		$lesArticlesIns = array();
+
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$stmt = $connStr->query($req);
 		
 		while ($ligne = $stmt->fetch())
@@ -227,6 +275,7 @@ class Article
 	}
 	public function findByType($type,$etab)
 	{
+<<<<<<< HEAD
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 		$req =	"SELECT *
@@ -239,6 +288,15 @@ class Article
 				ORDER BY DATEDEBR DESC;";
 
 		$lesarticles = array();
+=======
+
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+		$req=	"SELECT *
+				FROM article
+				WHERE ETABA = ".$etab." AND TYPEA = 'actu';";
+		$lesArticlesActu = array();
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$stmt = $connStr->query($req);
 
 		while ($ligne = $stmt->fetch())
@@ -265,7 +323,11 @@ class Article
 	public function chercheLesRessources()
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$ressources = array();
 
 		$req="SELECT * FROM `ressource` WHERE `ARTICLER` = ".$this->ida.";";

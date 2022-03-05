@@ -18,7 +18,11 @@ class Type
 	public function create()
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 		$req = "INSERT into type values ('".$this->idt."','".$this->type."');";
 
@@ -28,7 +32,11 @@ class Type
 	public function delete($idt)
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$req = "DELETE FROM type where IDT =".$idt;
 		$connStr->exec($req);
 
@@ -37,7 +45,11 @@ class Type
 	public function retrieve($condition)
 	{		
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 		$req = "SELECT * FROM type WHERE ".$condition;
 
@@ -67,7 +79,11 @@ class Type
 	public function findAll()
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$req="SELECT * FROM type";
 		$lesTypes = array();
 
@@ -85,7 +101,11 @@ class Type
 	public function update($idt)
 	{ 
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 		$req = "UPDATE type set 
 		IDT = '".$this->idt."',
@@ -98,7 +118,11 @@ class Type
 	public function numero()
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 		$req="SELECT MAX(IDT) as MAX FROM type";
 		$stmt = $connStr->query($req);

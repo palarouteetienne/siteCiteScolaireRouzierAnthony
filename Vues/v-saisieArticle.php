@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round|Open+Sans">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/croix.css">
 
         <script src="lib/jquery/jquery.min.js"></script>
         <script src="lib/jquery/jquery-migrate.min.js"></script>
@@ -112,6 +113,7 @@
 					<center><textarea id="contenuArticle" name="contenuArticle" cols="70" rows="25"></textarea></center>
 				</div>
 				<div class="col-md-3">
+<<<<<<< HEAD
 					<center><span class="">Ressources de l'articles :</span></center>
 					
 					<!-- AJOUT FICHIER -->
@@ -132,6 +134,47 @@
 					
 					<div id="choixFichier"></div>
 					
+=======
+					<center><span class="btn btn-info">Pièce(s) jointe(s) :</span></center>
+					<br><br>
+					<!-- ADD CHOICE FILE -->
+					<button type="button" class="croix" onclick="addChoiceFile()" formnovalidate>
+						<span id="l1"></span>	
+						<span id="l2"></span>	
+					</button>
+
+					
+					<!--<form action="index.php?action=ressourceAjouter" method ="post" class="form" id="form1">-->
+					
+					<script>
+						function addChoiceFile()
+						{
+							let listChoiceFile = document.getElementById('listChoiceFile');
+							let node = document.createElement('input');
+    							node.type="file";
+								node.name="pieceJointe[]";
+							listChoiceFile.appendChild(node);
+						}
+					</script>
+					<!--<form action="index.php?action=ressourceSupprimer" method ="post" class="form" id="form1">-->
+					
+				
+					<div id="listChoiceFile"></div>
+					<!-- END ADD CHOICE FILE -->
+					<!--<input type="file" name="pieceJointe[]">
+					<br><br>
+					<input type="file" name="pieceJointe[]">
+					<br><br>
+					<input type="file" name="pieceJointe[]">
+					<br><br>
+					<input type="file" name="pieceJointe[]">-->
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<center><input type="submit" class="btn btn-success" value="Valider"></input></center>
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 				</div>
 			</div>
 

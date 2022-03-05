@@ -31,11 +31,19 @@ class Etablissement
 
 	public function create()
 	{
+<<<<<<< HEAD
 		echo "create Etablissement";
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 
 		$req = "INSERT into etablissement values ('".$this->IDE."','".$this->nomE."','".$this->rueE."','".$this->codePostalE."','".$this->villeE."','".$this->telephoneE."','".$this->emailE."','".$this->motProviseur."', '".$this->$lesarticles."');";
+=======
+		
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+
+		$req = "INSERT into etablissement values ('".$this->IDE."','".$this->nomE."','".$this->rueE."','".$this->codePostalE."','".$this->villeE."','".$this->telephoneE."','".$this->emailE."','".$this->motProviseur."', '".$this->$lesArticles."');";
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 		$stmt = $connStr->query($req);
 	}
@@ -43,7 +51,11 @@ class Etablissement
 	public function delete($IDE)
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$req = "DELETE from etablissement where IDE =".$IDE;
 		$connStr->exec($req);
 	}
@@ -93,7 +105,11 @@ class Etablissement
 	public function findAll()
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$req="SELECT * FROM etablissement";
 		$lesEtablissements = array();
 
@@ -113,7 +129,11 @@ class Etablissement
 	public function update($IDE)
 	{ 
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 		$req = "UPDATE etablissement set
 		NOME = '".$this->nomE."',
@@ -130,10 +150,16 @@ class Etablissement
 
 	public function numero()
 	{
+<<<<<<< HEAD
 
 		include_once "connexionBDD.php";
 		$connStr = getBDD();
 
+=======
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$req="SELECT MAX(IDE) as MAX FROM etablissement";
 		$stmt = $connStr->query($req);
 		$ligne = $stmt->fetch();
@@ -143,6 +169,7 @@ class Etablissement
 		return $nombre + 1;
 
 	}
+<<<<<<< HEAD
 	public function getlesvoies() //Retourne une collection de voies
 	{
 		include_once "connexionBDD.php";
@@ -164,6 +191,8 @@ class Etablissement
 
 		return $this->lesvoies;
 	}
+=======
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 	public function getIDE()
 	{
 		return $this->IDE;
@@ -239,7 +268,11 @@ class Etablissement
 	public function rechercheArticlesetab()
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		include "article.php";
 		
 		$articles = array();
@@ -257,6 +290,47 @@ class Etablissement
 		}
 		return $articles;
 	}
+<<<<<<< HEAD
+=======
+	public function rechercheArticlesetabACTU($tousEtab = false)
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+		$articles = array();
+		if($tousEtab == false) //Pour les actus d'un établissement donné
+		{
+			$req="	SELECT * 
+			FROM article
+			INNER JOIN type
+			ON TYPEA = IDT
+			WHERE etaba = :etablissement
+			AND TYPE = :type;";
+
+			$stmt = $connStr->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+			$stmt->execute(array(':etablissement' => $this->IDE, ':type' => 'actu'));
+		}
+		else //Pour les actus de tous les établissements
+		{
+			$req="	SELECT * 
+			FROM article
+			INNER JOIN type
+			ON TYPEA = IDT
+			WHERE TYPE = :type;";
+
+			$stmt = $connStr->prepare($req, array(PDO::ATTR_CURSOR => PDO::CURSOR_FWDONLY));
+			$stmt->execute(array(':type' => 'actu'));
+		}
+
+		foreach($stmt as $enr)
+		{
+			include_once "article.php";
+			$nouvelArticle = new Article($enr["IDA"], $enr["ETABA"], $enr["UTILA"], $enr["TITREA"], $enr["VOIEA"], $enr["TYPEA"], $enr["COMMENTAIREA"], $enr["DATEDEBR"], $enr["DATEFINR"]);
+			array_push($articles, $nouvelArticle);
+
+		}
+		return $articles;
+	}
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 	public function setIDE($IDE)
 	{

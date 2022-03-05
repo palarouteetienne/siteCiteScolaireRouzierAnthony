@@ -1,0 +1,234 @@
+<?php
+
+class Etablissement{
+
+	//Attributs
+	private $IDE;
+	private $nomE;
+	private $rueE;
+	private $codePostalE;
+	private $villeE;
+	private $paysE;
+	private $telephoneE;
+	private $mailE;
+	private $motProviseur;
+	private $lesFormations = array();
+
+	//Méthodes
+	//Constructeur
+	function __construct($IDE=0, $nomE="", $rueE="", $codePostalE=0, $villeE="", $paysE="", $telephoneE=0, $mailE = "", $motProviseur="", $lesFormations="")
+	{
+		$this->IDE = $IDE;
+		$this->nomE = $nomE;
+		$this->rueE = $rueE;
+		$this->codePostalE = $codePostalE;
+		$this->villeE = $villeE;
+		$this->paysE = $paysE;
+		$this->telephoneE = $telephoneE;
+		$this->mailE = $mailE;
+		$this->motProviseur = $motProviseur;
+	}
+
+	//Get
+	public function getIDE()
+	{
+		return $this->IDE;
+	}
+
+	public function getNomE()
+	{
+		return $this->nomE;
+	}
+
+	public function getRueE()
+	{
+		return $this->rueE;
+	}
+
+	public function getCodePostalE()
+	{
+		return $this->codePostalE;
+	}
+
+	public function getVilleE()
+	{
+		return $this->villeE;
+	}
+
+	public function getPaysE()
+	{
+		return $this->paysE;
+	}
+
+	public function getTelephoneE()
+	{
+		return $this->telephoneE;
+	}
+
+	public function getMailE()
+	{
+		return $this->mailE;
+	}
+
+	public function getMotProviseur()
+	{
+		return $this->motProviseur;
+	}
+
+	public function getLesFormations()
+	{
+		return $this->lesFormations;
+	}
+
+
+	
+	//Set
+	public function setIDE($IDE)
+	{
+		$this->IDE = $IDE;
+	}
+	
+	public function setNomE($nomE)
+	{
+		$this->nomE = $nomE;
+	}
+	
+	public function setRueE($rueE)
+	{
+		$this->rueE = $rueE;
+	}
+	
+	public function setCodePostalE($codePostalE)
+	{
+		$this->codePostalE = $codePostalE;
+	}
+	
+	public function setVilleE($villeE)
+	{
+		$this->villeE = $villeE;
+	}
+	
+	public function setPaysE($paysE)
+	{
+		$this->paysE = $paysE;
+	}
+
+	public function setTelephoneE($telephoneE)
+	{
+		$this->telephoneE = $telephoneE;
+	}
+
+	public function setMailE($mailE)
+	{
+		$this->mailE = $mailE;
+	}
+
+	public function setMotProviseur($motProviseur)
+	{
+		$this->motProviseur = $motProviseur;
+	}
+
+	public function setLesFormations($lesFormations)
+	{
+		$this->lesFormations = $lesFormations;
+	}
+
+
+
+	public function create()
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+
+		$req = "INSERT into ETABLISSEMENT values ('".$this->IDE."','".$this->nomE."','".$this->rueE."','".$this->codePostalE."','".$this->villeE."','".$this->paysE."','".$this->telephoneE."','".$this->mailE."','".$this->motProviseur."');";
+
+		$stmt = $connStr->query($req);
+	}
+
+	public function delete($IDE)
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+		$req = "DELETE from ETABLISSEMENT where IDE =".$IDE;
+		$connStr->exec($req);
+
+	}
+
+	public function retrieve($condition)
+	{		
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+
+		$req = "SELECT * FROM ETABLISSEMENT WHERE ".$condition;
+
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		$this->IDE= $ligne["IDE"];
+
+		$this->nomE = $ligne["NOME"];
+		$this->rueE = $ligne["RUEE"];
+		$this->codePostalE = $ligne["CODEPOSTALE"];
+		$this->villeE = $ligne["VILLEE"];
+		$this->paysE = $ligne["PAYSE"];
+		$this->telephoneE = $ligne["TELEPHONEE"];
+		$this->mailE = $ligne["MAILE"];
+		$this->motProviseur = $ligne["MOTPROVISEUR"];	
+	}
+
+	public function findAll()
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+		$req="SELECT * FROM ETABLISSEMENT";
+		$lesEtablissements = array();
+
+		$stmt = $connStr->query($req);
+
+		while ($ligne = $stmt->fetch())
+		{
+
+			$newEtablissement = new Etablissement($ligne["IDE"],$ligne["NOME"], $ligne["RUEE"], $ligne["CODEPOSTALE"], $ligne["VILLEE"], $ligne["PAYSE"], $ligne["TELEPHONEE"], $ligne["MAILE"], $ligne["MOTPROVISEUR"]);
+
+			array_push($lesEtablissements, $newEtablissement);
+		}
+
+		return $lesEtablissements;
+	}
+
+	public function update($IDE)
+	{ 
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+
+		$req = "UPDATE ETABLISSEMENT set
+		NOME = '".$this->nomE."',
+		RUEE = '".$this->rueE."',
+		CODEPOSTALE = '".$this->codePostalE."',
+		VILLEE = '".$this->villeE."',
+		PAYSE = '".$this->paysE."',
+		TELEPHONEE = '".$this->telephoneE."',
+		MAILE = '".$this->mailE."',
+		MOTPROVISEUR = '".$this->motProviseur."'
+		where IDE = '".$IDE."'";
+
+		$connStr->exec($req);
+	}
+
+	public function numero()
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();;
+
+		$req="SELECT MAX(IDE) as MAX FROM ETABLISSEMENT";
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		$nombre = $ligne["MAX"];
+
+		return $nombre + 1;
+
+	}
+}
+
+?>

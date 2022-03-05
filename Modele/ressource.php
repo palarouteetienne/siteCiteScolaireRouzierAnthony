@@ -28,6 +28,7 @@ class Ressource
 	public function create()
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
 		$req = "INSERT into ressource values (
 			NULL,
@@ -37,13 +38,25 @@ class Ressource
 			'".$this->cheminr."',
 			'".$this->poidsr."');";
 			
+=======
+		$connStr = getBDD();;
+		$req = "INSERT into ressource values (NULL,'"
+
+			.$this->articler."',
+			'".$this->nomr."','".$this->formatr."',
+			'".$this->cheminr."','".$this->poidsr."');";
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$connStr->exec($req);
 	}
 
 	public function delete($IDR)
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$req = "DELETE from ressource where IDR =".$IDR;
 		$connStr->exec($req);
 
@@ -52,7 +65,11 @@ class Ressource
 	public function deleteParArticle($ida)
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$req = "DELETE from ressource where ARTICLER =".$ida;
 		$connStr->exec($req);
 
@@ -61,7 +78,11 @@ class Ressource
 	public function retrieve($condition)
 	{		
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 		$req = "SELECT * FROM ressource WHERE ".$condition;
 
@@ -103,7 +124,11 @@ class Ressource
 	public function numero()
 	{
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 		$req="SELECT MAX(IDR) as MAX FROM ressource";
 		$stmt = $connStr->query($req);
@@ -118,7 +143,11 @@ class Ressource
 
 	public function tailleTotale(){
 		include_once "connexionBDD.php";
+<<<<<<< HEAD
 		$connStr = getBDD();
+=======
+		$connStr = getBDD();;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 		$req="SELECT SUM(poidsr) as tailleTotale FROM ressource";
 		$stmt = $connStr->query($req);

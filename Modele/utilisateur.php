@@ -9,6 +9,7 @@ class Utilisateur
 	private $prenomu; // type : string
 	private $mailu; // type : string
 	private $mdpu; // type : string
+<<<<<<< HEAD
 	private $adminu; //Est-il admin ou pas ?
 	
 	private $lesetab = array();
@@ -26,10 +27,21 @@ class Utilisateur
 		{
 			$this->idu = $idu;
 		}
+=======
+	
+	private $lesArticles;
+
+	//Operations
+	//Constructeur
+	function __construct($idu=0,$nomu="", $prenomu="", $mailu="", $mdpu="")
+	{
+		$this->idu = $idu;
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 		$this->nomu = $nomu;
 		$this->prenomu = $prenomu;
 		$this->mailu = $mailu;
 		$this->mdpu = $mdpu;
+<<<<<<< HEAD
 		$this->adminu = $adminu;
 		if($lesetab!="")
 		{
@@ -41,10 +53,16 @@ class Utilisateur
 				$i++;
 			}
 		}
+=======
+		
+	
+		$this->lesArticles = array();
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 	}
 
 	public function create()
 	{
+<<<<<<< HEAD
 		$mailExiste = $this->verifmailexiste($this->mailu);
 
 		if($mailExiste == true)
@@ -64,6 +82,12 @@ class Utilisateur
 			{
 				$admin = true;
 			}
+=======
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+
+		$req = "INSERT INTO UTILISATEUR values ('".$this->idu."','".$this->nomu."','".$this->prenomu."','".$this->mailu."','".$this->mdpu."');";
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 			$req = "INSERT INTO utilisateur values (".$this->idu.",'".$this->nomu."','".$this->prenomu."','".$this->mailu."','".$this->mdpu."','".$admin."');";
 
@@ -108,6 +132,7 @@ class Utilisateur
 	}
 
 	public function retrieve($condition)
+<<<<<<< HEAD
 	{
 		//****************************************************************************/
 		//Parfaitement Débile dans le cas où on a plusieurs enregistrements en réponse
@@ -148,6 +173,25 @@ class Utilisateur
 		$this->mailu = $ligne["MAILU"];
 		$this->mdpu = $ligne["MDPU"];
 		$this->adminu = $ligne["ADMINU"];
+=======
+	{		
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+
+		$req = "SELECT * FROM utilisateur WHERE ".$condition;
+		//var_dump($req);
+
+		$stmt = $connStr->query($req);
+		// var_dump($stmt);
+		while ($ligne = $stmt->fetch())
+		{
+			$this->idu= $ligne["IDU"];
+			$this->nomu = $ligne["NOMU"];
+			$this->prenomu = $ligne["PRENOMU"];
+			$this->mailu = $ligne["MAILU"];
+			$this->mdpu = $ligne["MDPU"];
+		}
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 	}
 
 	public function findAll()
@@ -162,7 +206,11 @@ class Utilisateur
 		while ($ligne = $stmt->fetch())
 		{
 
+<<<<<<< HEAD
 			$newUtilisateur = new Utilisateur($ligne["IDU"], $ligne["NOMU"], $ligne["PRENOMU"], $ligne["MAILU"], $ligne["MDPU"], $ligne["ADMINU"]);
+=======
+			$newUtilisateur = new Utilisateur($ligne["IDU"], $ligne["NOMU"], $ligne["PRENOMU"], $ligne["MAILU"], $ligne["MDPU"]);
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 
 			array_push($lesUtilisateurs, $newUtilisateur);
 		}
@@ -224,6 +272,20 @@ class Utilisateur
 		}
 	}
 
+	public function exist($condition){
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+		$req = "SELECT * FROM utilisateur WHERE ".$condition;
+
+		$stmt = $connStr->query($req);
+		$ligne = $stmt->fetch();
+
+		if($ligne) {
+			return new Utilisateur($ligne["IDU"], $ligne["NOMU"], $ligne["PRENOMU"], $ligne["MAILU"], $ligne["MDPU"]);
+		}
+		return false;
+	}
+
 	public function getidu()
 	{
 		return $this->idu;
@@ -244,11 +306,15 @@ class Utilisateur
 	{
 		return $this->mdpu;
 	}
+<<<<<<< HEAD
 	public function getlesarticles()
 	{
 		return $this->lesarticles;
 	}
 	public function getlesetab()
+=======
+	public function getlesArticles()
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 	{
 		return $this->lesetab;
 	}
@@ -276,6 +342,7 @@ class Utilisateur
 	{
 		$this->mdpu=$mdpu;
 	}
+<<<<<<< HEAD
 	public function setlesarticles()
 	{
 		//On place les articles de l'util de la BDD dans l'attribut lesart
@@ -296,6 +363,9 @@ class Utilisateur
 		$this->lesarticles=$lesarticles;
 	}
 	public function setlesetab()
+=======
+	public function setlesArticles($lesArticles)
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
 	{
 		//On place les etab de l'util de la BDD dans l'attribut lesetab
 		include_once "connexionBDD.php";
@@ -315,4 +385,8 @@ class Utilisateur
 	}
 } // End Class Utilisateur
 
+<<<<<<< HEAD
 ?>
+=======
+?>
+>>>>>>> 3c2182c71c5f87abf9365c47696c8da223497f83
