@@ -290,7 +290,46 @@ class Article
 		return $ressources;
 	}
 
-	
+	public function getLaRessource()
+	{
+		if(!empty($this->ida))
+		{
+			$this->lesRessources = $this->chercheLaRessource();
+		}
+		else
+		{
+			$this->lesRessources=NULL;
+		}
+		return $this->lesRessources;
+	} 
+
+	public function chercheLaRessource()
+	{
+		include_once "connexionBDD.php";
+		$connStr = getBDD();
+		$ressources = array();
+
+		$req="SELECT * FROM `ressource` WHERE `ARTICLER` = ".$this->ida." AND `FORMATR` = 'jpg' OR `FORMATR` = 'png';";
+		
+		$stmt = $connStr->query($req);
+		
+		$ligneR = $stmt->fetch();
+		
+		include_once "ressource.php";
+
+		$newRessource = new Ressource(
+			$ligneR["IDR"],
+			$ligneR["ARTICLER"],
+			$ligneR["NOMR"],
+			$ligneR["FORMATR"], 
+			$ligneR["CHEMINR"], 
+			$ligneR["POIDSR"]
+		);
+		array_push($ressources, $newRessource);
+		return $ressources;
+	}
+
+
 	public function getida()
 	{
 		return $this->ida;

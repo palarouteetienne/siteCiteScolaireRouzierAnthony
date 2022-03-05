@@ -1,0 +1,577 @@
+
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="utf-8">
+  <title>Cité Scolaire Jamot - Jaurès</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/nivo-slider/css/nivo-slider.css" rel="stylesheet">
+
+
+
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+
+  <!-- Sliders Theme -->
+  <link href="css/nivo-slider-theme.css" rel="stylesheet">
+  <link href="css/style-slider-ti.css" rel="stylesheet">
+  
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- Responsive Stylesheet File -->
+  <link href="css/responsive.css" rel="stylesheet">
+  
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+
+    <!-- Zone actualité -->
+    <div id="menu-recherche">
+      <div class="row">
+        <div class='col-lg-7 col-md-7 col-sm-7 col-xs-7'>
+          <input class="form-control" id="myInput" type="text" placeholder="Rechercher dans la page ..." size="60%">
+        </div>
+        <div class='col-lg-1 col-md-1 col-sm-1 col-xs-1'>
+          <i id="loupe" class="fa fa-search" aria-hidden="true"></i>
+        </div>
+        <div class='col-lg-2 col-md-3 col-sm-3 col-xs-2'>
+          <a href="#" id="tout" value="tout" class="active" data-filter="*">Tout afficher</a>
+        </div>
+          <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+          
+              <a href='index.php?action=init' style='color: grey;font-size: 20px;'>Retour accueil</a>
+
+          </div> 
+      </div>
+    </div>
+
+    <div id="formations" class="portfolio-area area-padding fix">
+    <div class="container-fluid">
+
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="section-headline text-center">
+            <br>
+            <br>
+            <h2>formations</h2>
+          </div>
+        </div>
+      </div>
+<center>
+      
+        <div id="menu-voies" class="container">
+          <div class="btn-group"><div id="1" class="btn-menu">technologique</div><div id="2" class="btn-menu">formation seconde</div><div id="3" class="btn-menu">option seconde</div><div id="4" class="btn-menu">option enseignement général</div><div id="5" class="btn-menu">spécialité enseignement général</div><div id="6" class="btn-menu">supérieur</div><div id="16" class="btn-menu">lycée</div>
+          </div>
+        </div>
+        </center>
+   
+   
+      </div> <!-- Fin menu page article -->
+
+      <div class="container"> <!-- Début page article -->
+      
+      <br>
+      
+      <div class="card-group" id="cartes">
+
+      
+
+              <div class="row ligne">
+              <div id="1" class="1 col-lg-3">
+                <div class="card carte" onclick="consulterArt(1)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="1" class="card-title">S.T.M.G</h5> 
+                    <p class="card-text">Sciences et Technologies du Ma ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/stmg2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              <div id="2" class="2 col-lg-3">
+                <div class="card carte" onclick="consulterArt(2)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="2" class="card-title">Seconde</h5> 
+                    <p class="card-text">Seconde générale ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/seconde2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              <div id="3" class="3 col-lg-3">
+                <div class="card carte" onclick="consulterArt(3)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="3" class="card-title">Arts seconde</h5> 
+                    <p class="card-text">Arts Plastiques ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/art_seconde2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              <div id="4" class="3 col-lg-3">
+                <div class="card carte" onclick="consulterArt(4)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="4" class="card-title">T.E.D seconde</h5> 
+                    <p class="card-text">Théâtre Expression Dramatiqu ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/theatre_seconde2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              </div> <!-- fin div row ligne --> 
+              <div class="row ligne">
+              <div id="5" class="3 col-lg-3">
+                <div class="card carte" onclick="consulterArt(5)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="5" class="card-title">M.G seconde</h5> 
+                    <p class="card-text">Management et Gestion ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/mg2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              <div id="6" class="4 col-lg-3">
+                <div class="card carte" onclick="consulterArt(6)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="6" class="card-title">Arts</h5> 
+                    <p class="card-text">Arts Plastiques ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/art_générale2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              <div id="7" class="4 col-lg-3">
+                <div class="card carte" onclick="consulterArt(7)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="7" class="card-title">T.E.D</h5> 
+                    <p class="card-text">Théâtre Expression Dramatiqu ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/theatre_generale2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              <div id="8" class="4 col-lg-3">
+                <div class="card carte" onclick="consulterArt(8)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="8" class="card-title">Langue Vivante</h5> 
+                    <p class="card-text">Anglais Euro ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/drapeau2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              </div> <!-- fin div row ligne --> 
+              <div class="row ligne">
+              <div id="9" class="5 col-lg-3">
+                <div class="card carte" onclick="consulterArt(9)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="9" class="card-title">Théâtre</h5> 
+                    <p class="card-text">Expression Théâtrale ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/theatre_spe2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              <div id="10" class="5 col-lg-3">
+                <div class="card carte" onclick="consulterArt(10)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="10" class="card-title">H.G.G.S.P</h5> 
+                    <p class="card-text">Histoire-géographie, géopoli ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/hggsp2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              <div id="11" class="5 col-lg-3">
+                <div class="card carte" onclick="consulterArt(11)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="11" class="card-title">H.L.P</h5> 
+                    <p class="card-text">Humanités, littérature et ph ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/hlp2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              <div id="12" class="5 col-lg-3">
+                <div class="card carte" onclick="consulterArt(12)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="12" class="card-title">L.L.C.E.A</h5> 
+                    <p class="card-text">Langues, littératures et cult ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/LLCEA2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              </div> <!-- fin div row ligne --> 
+              <div class="row ligne">
+              <div id="13" class="5 col-lg-3">
+                <div class="card carte" onclick="consulterArt(13)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="13" class="card-title">Mathématiques</h5> 
+                    <p class="card-text">Scientifiques et Economiques ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/math2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              <div id="14" class="5 col-lg-3">
+                <div class="card carte" onclick="consulterArt(14)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="14" class="card-title">Physique-Chimie</h5> 
+                    <p class="card-text">Scientifiques ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/PC2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              <div id="15" class="5 col-lg-3">
+                <div class="card carte" onclick="consulterArt(15)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="15" class="card-title">S.V.T</h5> 
+                    <p class="card-text">Sciences de la Vie et de la Te ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/SVT2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              <div id="16" class="5 col-lg-3">
+                <div class="card carte" onclick="consulterArt(16)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="16" class="card-title">S.E.S</h5> 
+                    <p class="card-text">Sciences économiques et socia ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/SES2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              </div> <!-- fin div row ligne --> 
+              <div class="row ligne">
+              <div id="18" class="3 col-lg-4">
+                <div class="card carte" onclick="consulterArt(18)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="18" class="card-title">Latin seconde</h5> 
+                    <p class="card-text">Langues et Cultures Antiquité ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/latin_seconde2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              <div id="19" class="4 col-lg-4">
+                <div class="card carte" onclick="consulterArt(19)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="19" class="card-title">Latin</h5> 
+                    <p class="card-text">Langues et Cultures Antiquité ...</p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src="fichier/latin2019-02-14.jpg"/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+              <div id="41" class="6 col-lg-4">
+                <div class="card carte" onclick="consulterArt(41)">
+                  <div class="card-header">lycée Eugène Jamot</div>
+                  <div class="card-body">
+                    <h5 id="41" class="card-title">BTS SIO</h5> 
+                    <p class="card-text"></p>
+                    <p class="card-text"></p>
+                    <p class="card-text"> <img src=""/>
+                      </p>
+                    <p class="card-text"></p>
+                  </div>
+
+                  <!--
+                    <div class="card-footer">
+                      <small class="text-muted">du 0000-00-00 au 0000-00-00</small>
+                    </div> 
+                  -->
+                </div>
+              </div>
+              
+        </div> <!-- fin dernier div row ligne -->       </div><!-- card-group -->
+    </div> <!-- container principal fin -->
+</center>
+  <!-- Start Footer bottom Area -->
+  <footer>
+    <div class="footer-area-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="copyright text-center">
+              <p>
+                &copy; <strong> Cité Scolaire Jamot - Jaurès </strong>. Tous droits réservés.
+              </p>
+            </div>
+            <div class="credits">
+              Design et développement par : BTS SIO</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- Libraries JavaScript -->
+
+  <script src="lib/jquery/jquery.min.js"></script>
+  <script src="lib/jquery/jquery-migrate.min.js"></script>
+  <script src="lib/popper/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function(){
+
+      $("#myInput").on("keyup", function() {
+        var value = $(this).val().toLowerCase();
+        $("#cartes .card").filter(function() {
+          $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+
+      $("#collegeEJ").on("click",function() {
+        var value = $(this).attr('value').toLowerCase();
+        $("#cartes .card").filter(function() {
+          $(this).toggle($(".card-header",this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+
+      $("#BTS").on("click",function() {
+        var value = $(this).attr('value').toLowerCase();
+        $("#cartes .card").filter(function() {
+          $(this).toggle($(".card-header",this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+
+      $("#lyceeEJ").on("click",function() {
+        var value = $(this).attr('value').toLowerCase();
+        $("#cartes .card").filter(function() {
+          $(this).toggle($(".card-header",this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+
+      $("#lyceeJJ").on("click",function() {
+        var value = $(this).attr('value').toLowerCase();
+        $("#cartes .card").filter(function() {
+          $(this).toggle($(".card-header",this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+      
+      $('#tout').on('click',function(){
+        $("#cartes .card").filter(function() {
+          $(this).toggle(true);
+          $("#myInput").val("");
+        });
+      });
+
+      $("#citescolaire").on("click",function() {
+        var value = $(this).attr('value').toLowerCase();
+        $("#cartes .card").filter(function() {
+          $(this).toggle($(".card-header",this).text().toLowerCase().indexOf(value) > -1)
+        });
+      });
+    });
+    function consulterArt(ida)
+    {
+      window.location.href = "index.php?action=consulterArticle&ida="+ida;
+    }
+    $('.btn-menu').on('click',function(){
+      $('.col-lg').hide();
+      $(this.id+'.col-lg').show();
+    });
+    $('#tout').on('click',function(){
+      $('.col-lg').show();
+    });
+  </script>
+
+</body>
+
+</html>

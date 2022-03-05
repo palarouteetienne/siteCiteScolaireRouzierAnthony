@@ -19,7 +19,6 @@
 
         $lesArtCiteScolaire = $unArt->findByType($typeArt,$_REQUEST["etab"]);
         $etat = "citeScolaire";
-
     }
     else
     {

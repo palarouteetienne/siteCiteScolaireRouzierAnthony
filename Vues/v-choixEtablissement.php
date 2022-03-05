@@ -107,7 +107,7 @@
                         ?>
 
                                 <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <span class="sr-only">Toggle Dropdown</span>
+                                    <span class="sr-only">Cliquer pour dérouler</span>
                                 </button>
                                 <div class="dropdown-menu">
 

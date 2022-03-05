@@ -30,12 +30,43 @@
 
 		<!-- Responsive Stylesheet File -->
 		<link href="css/responsive.css" rel="stylesheet">
+		<link href="css/styleBandeauActu.css" rel="stylesheet">
 
 		<title> Jamot - Jaurès </title>
 
 	</head>
 
 	<body data-spy="scroll">
+		<div id="important" class="effet">
+			<i id="croix" class="fa fa-window-close" aria-hidden="true"><div id="aide">Fermer</div></i>
+			<?php
+				for($i=0;$i<count($actus);$i++)
+				{
+					setlocale(LC_TIME, "fr_FR.UTF-8"); //Pour les accents sur les mois de la date
+					echo '<div id="liste-actu">
+							<div class="text-center">
+								<form id="'.$actus[$i]->getida().'" method="POST" onclick="document.getElementById('.$actus[$i]->getida().
+									').submit();" action="index.php?action=citeScolaire&typeArt='.$actus[$i]->gettypea().'&etab='.$actus[$i]->getetaba().'">
+									<p class="grosvert">'
+										.$actus[$i]->gettitrea().'
+									</p>
+									<p class="fleche">
+										<span class="circle">
+											<i class="ga fa fa-hand-pointer-o"></i>
+										</span>
+									</p>
+								</form>
+							</div>
+							<div class="text-center noir">
+								<div>
+									Le '.
+									strftime("%d %B", strtotime($actus[$i]->getdatedebr())).
+								'</div>
+							</div>
+						</div>';
+				}
+			?>
+		</div>
 		<img id="logo"/> <!-- Logo partenaires cf. Jquery en bas -->
 		<video id="vdo" width=320  height=240 controls poster="img/logo-blanc.png">
 			Cette vidéo ne peut être affichée sur votre navigateur.<br>
@@ -44,6 +75,7 @@
 		<div id="logo-fond">
 			<img src="img/logo_blanc.png"/>
 		</div>
+		
 		<!-- Début Page accueil -->
 		<div class="boite-boite">
 			<div id="b" class="boite">
@@ -59,8 +91,7 @@
 								setlocale(LC_TIME, "fr_FR.UTF-8"); //Pour les accents sur les mois de la date
 								echo '<div class="row">
 										<div class="col vert">
-											<form id="'.$actus[$i]->getida().'" method="POST" onclick="document.getElementById('.$actus[$i]->getida().
-											').submit();" action="index.php?action=citeScolaire&typeArt='.$actus[$i]->gettypea().'&etab='.$actus[$i]->getetaba().'">'
+											<form method="POST" onclick="$(this).submit();" action="index.php?action=citeScolaire&typeArt='.$actus[$i]->gettypea().'&etab='.$actus[$i]->getetaba().'">'
 												.$actus[$i]->gettitrea().
 											'</form>
 										</div>
@@ -667,7 +698,31 @@
 			
 		</script>
 		<script type="text/javascript">
+			$('#croix').on("click", function(){
+				$('#important').css("display","none");
+			});
+			$('#croix').on("mouseover", function(){
+				$('#aide').css("display","block");
+				$('#aide').css("rotate","-25deg");
+			});
+			$('#croix').on("mouseout", function(){
+				$('#aide').css("display","none");
+				$('#aide').css("rotate","0deg");
+			});
 			$(window).load(function () {
+
+				$('#important').animate(
+				{
+					opacity: "+=10"
+				},  
+				{
+					duration: 5000,
+					specialEasing: 
+					{
+						opacity: "easeOutBounce"
+					}
+				});
+
 				var niveau = $(window).scrollTop();
 				if(niveau  > 350 || $("#bv").is(':visible')) 
 				{

@@ -84,6 +84,15 @@
   src: url(https://fonts.gstatic.com/s/saira/v8/memWYa2wxmKQyPMrZX79wwYZQMhsyuShhKMjjbU9uXuA773Fks8xkCQjQVcuxA.woff) format('woff');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+@font-face {
+  font-family: 'Chalkduster';
+  src:local('../fonts/webfonts_Chalkduster/Chalkduster.ttf.woff') format('woff'),
+      local('../fonts/webfonts_Chalkduster/Chalkduster.ttf.svg#Chalkduster') format('svg'),
+      local('../fonts/webfonts_Chalkduster/Chalkduster.ttf.eot'),
+      local('../fonts/webfonts_Chalkduster/Chalkduster.ttf.eot?#iefix') format('embedded-opentype'); 
+  font-weight: normal;
+  font-style: normal;
+}
 
 /*======================================
 //--//-->   STYLE LOGO BS
@@ -2043,7 +2052,6 @@ input, select, textarea, input[type="text"], input[type="date"], input[type="url
 .second-row {
   margin-top: 30px;
 }
-
 .event-content.head-team h4 {
   background: transparent none repeat scroll 0 0;
   color: #333;
@@ -2051,6 +2059,41 @@ input, select, textarea, input[type="text"], input[type="date"], input[type="url
   font-weight: 500;
   text-transform: capitalize;
 }
+
+#important{
+  top:0%;
+  width: 100%;
+  background: #FAF0E6;
+  margin: 4em auto;
+  padding-bottom: 30px;
+  padding-top: 150px;
+  border-top: 5px;
+  border-top-style: solid;
+  border-color: #82c46c;
+}
+/*Effet shadow*/
+.effet {
+  position: relative;
+}
+.effet:before,.effet:after {
+  z-index: -10;
+  position: absolute;
+  content: "";
+  bottom: 1em;
+  width: 50%;
+  top: 80%;
+  background: rgb(0, 0, 0);
+  box-shadow: 0 1em 0.5em rgb(0, 0, 0);
+}
+.effet:before {
+  transform: rotate(-3deg);
+  left: 0.5em;
+}
+.effet:after {
+  transform: rotate(3deg);
+  right: 0.5em;
+}
+
 
 .tab-menu .nav-tabs>li>a:hover {
   border-color: #eee #eee #ddd;
@@ -3648,7 +3691,7 @@ span.email-notes {
   font-size: 25px;
   animation: secoue 1.9s;
   animation-iteration-count: infinite;
-  color:#8dee67;
+  color:#82c46c;
 }
 .boite{
   font-family: 'Saira', sans-serif;
@@ -3702,11 +3745,23 @@ span.email-notes {
   color:#8dee67;
   background-color: rgba(0, 0, 0, 0.534);
   cursor: pointer;
+  font-family: "Chalkduster";
 }
 .blanc{
   font-weight:normal;
   color: #ffffff;
   background-color: rgba(0, 0, 0, 0.534);
+}
+.grosvert{
+  font-family: "Chalkduster";
+  font-size: 50px;
+  line-height:initial;
+  color:#82c46c;
+  cursor: pointer;
+}
+.noir{
+  font-size: xx-large;
+  color: #040404;
 }
 .titre-menu{
   cursor: pointer;

@@ -11,7 +11,7 @@ $etablissementChoisi->retrieve("IDE=".$_REQUEST['q']);
 $article = new Article();
 $lesarticlesEtab = $article->findByEtab($_REQUEST['q']);
 
-echo "<H3>".$etablissementChoisi->getNomE()."</H3>";
+echo "<H3 id='titre'>".$etablissementChoisi->getNomE()."</H3>";
 
 ?>
 
